@@ -1,0 +1,12 @@
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\bin\Debug\net8.0\SMSystem.Models.deps.json
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\bin\Debug\net8.0\SMSystem.Models.dll
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\bin\Debug\net8.0\SMSystem.Models.pdb
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.csproj.AssemblyReference.cache
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.AssemblyInfoInputs.cache
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.AssemblyInfo.cs
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.csproj.CoreCompileInputs.cache
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.dll
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\refint\SMSystem.Models.dll
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\SMSystem.Models.pdb
+C:\Users\PULSE Electronics\source\repos\SMSystem\SMSystem.Models\obj\Debug\net8.0\ref\SMSystem.Models.dll

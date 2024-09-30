@@ -1,0 +1,23 @@
+﻿@model RegisterViewModel
+@{
+    Layout = null;
+}
+
+<form asp-area="Client" asp-controller="Account" asp-action="Register" method="post">
+    <h1>Create Account</h1>
+    <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <span>or use your email for registration</span>
+    @*<input type="text" asp-for="Name" class="form-control" placeholder="Name" />*@
+    <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
+    <span asp-validation-for="Email" class="text-danger left"></span>
+    <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+    <span asp-validation-for="Password" class="text-danger left"></span>
+    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" />
+    <span asp-validation-for="ConfirmPassword" class="text-danger left"></span>
+    <button type="submit">Sign Up</button>
+</form>
+
