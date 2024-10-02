@@ -265,3 +265,4 @@ C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\bin\Debug\net8.0\M
 C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\bin\Debug\net8.0\SMSystem.Data.dll
 C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\bin\Debug\net8.0\SMSystem.Data.pdb
+C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\obj\Debug\net8.0\Presentation.sourcelink.json
