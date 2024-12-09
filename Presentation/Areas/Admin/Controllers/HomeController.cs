@@ -26,5 +26,17 @@ namespace Presentation.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Staff()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddStaff()
+        {
+            return View();
+        }
     }
 }
