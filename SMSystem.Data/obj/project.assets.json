@@ -2180,11 +2180,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj",
+      "projectUniqueName": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj",
       "projectName": "SMSystem.Data",
-      "projectPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj",
+      "projectPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj",
       "packagesPath": "C:\\Users\\PULSE Electronics\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Data\\obj\\",
+      "outputPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PULSE Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2255,7 +2255,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

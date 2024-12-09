@@ -17,183 +17,227 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Presentation
 build_property.RootNamespace = Presentation
-build_property.ProjectDir = C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation\
+build_property.ProjectDir = C:\Users\PULSE Electronics\Desktop\SMSystem\Presentation\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\PULSE Electronics\source\repos\SMSystem\Presentation
+build_property.MSBuildProjectDirectory = C:\Users\PULSE Electronics\Desktop\SMSystem\Presentation
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/AccessDenied.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Home/AddSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxBZGRTdWJqZWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Home/Subjects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxTdWJqZWN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/_CookieConsentPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Db29raWVDb25zZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/_Navbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcQWNjZXNzRGVuaWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ConfirmEmail.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcQ29uZmlybUVtYWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ExternalLogin.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcRXh0ZXJuYWxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ForgotPassword.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcRm9yZ290UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ForgotPasswordConfirmation.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcRm9yZ290UGFzc3dvcmRDb25maXJtYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/Lockout.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcTG9ja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/Login.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/LoginWith2fa.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcTG9naW5XaXRoMmZhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/LoginWithRecoveryCode.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcTG9naW5XaXRoUmVjb3ZlcnlDb2RlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/Register.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ResetPassword.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcUmVzZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/ResetPasswordConfirmation.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcUmVzZXRQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Account/SignedOut.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Account/SignedOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEFjY291bnRcU2lnbmVkT3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Home/Index.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Home/Privacy.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Home/Subjects.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Home/Subjects.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXEhvbWVcU3ViamVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/ChangePassword.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/Disable2fa.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxEaXNhYmxlMmZhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/EnableAuthenticator.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxFbmFibGVBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/ExternalLogins.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxFeHRlcm5hbExvZ2lucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/GenerateRecoveryCodes.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxHZW5lcmF0ZVJlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/Index.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/ResetAuthenticator.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxSZXNldEF1dGhlbnRpY2F0b3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/SetPassword.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxTZXRQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/ShowRecoveryCodes.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxTaG93UmVjb3ZlcnlDb2Rlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/TwoFactorAuthentication.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxUd29GYWN0b3JBdXRoZW50aWNhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/_Layout.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/_ManageNav.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxfTWFuYWdlTmF2LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/_StatusMessage.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Manage/_ViewImports.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXE1hbmFnZVxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/Error.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/_CookieConsentPartial.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/_CookieConsentPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxfQ29va2llQ29uc2VudFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/_Layout.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/_Navbar.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/_Navbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxfTmF2YmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/_ViewImports.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Areas/Client/Views/_ViewStart.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Areas/Client/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ2xpZW50XFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Pages/Shared/_Layout.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Pages/Shared/_LoginPartial.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Pages/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Pages/_ViewImports.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PULSE Electronics/source/repos/SMSystem/Presentation/Pages/_ViewStart.cshtml]
+[C:/Users/PULSE Electronics/Desktop/SMSystem/Presentation/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

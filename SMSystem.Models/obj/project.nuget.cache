@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+v0HO5+qDsZiKsUGvg/R4bOA6FAHAWquAaxuScBYRCfckYvI0nml9teJrTd1gbZo1gS1utlsvENRxJmlhOE+Dg==",
+  "dgSpecHash": "EFyWpDbOpR3/1QiIHYZnu55rc93q7nlEpR2kw7I0fbM0BVlOgxHWsXH6GUdjl6fypG9TuIjSNlNsVNvLS6XBuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Models\\SMSystem.Models.csproj",
+  "projectFilePath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Models\\SMSystem.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.8\\microsoft.aspnetcore.cryptography.internal.8.0.8.nupkg.sha512",
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.8\\microsoft.aspnetcore.cryptography.keyderivation.8.0.8.nupkg.sha512",

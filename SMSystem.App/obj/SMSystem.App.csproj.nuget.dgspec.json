@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\SMSystem.App.csproj": {}
+    "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\SMSystem.App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\SMSystem.App.csproj": {
+    "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\SMSystem.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
+        "projectUniqueName": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
         "projectName": "SMSystem.App",
-        "projectPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
+        "projectPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
         "packagesPath": "C:\\Users\\PULSE Electronics\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\obj\\",
+        "outputPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PULSE Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

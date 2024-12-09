@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YffGqXZH0ep8gY73COrkYlIxbWLzDXsbEVMmkyLx06dTj/if8QNZhHsV1ZI2L5+3/8of7t6neX9zxBqbUA4vzw==",
+  "dgSpecHash": "p7XA8T8T5dorLCsv56JqGhpZeNPlIvCnNRvFmEZZkv95lcTvBuVDts866wKpcOe/FkybAnccRKdAxpqeAl0PuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
+  "projectFilePath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.App\\SMSystem.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.8\\microsoft.aspnetcore.cryptography.internal.8.0.8.nupkg.sha512",

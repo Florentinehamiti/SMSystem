@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TSQ1t4CN1vHn6wVKvE4Tmk392xiBmZjZwTn/Io2P01TtF7ypbMfo0GrXPYxbilOh638Ze/0fdd5oAzXMsFMuPQ==",
+  "dgSpecHash": "1a57KgxlMv1esGOzFxWJLYCQfFJUEd0mdYhBD9rli9IQKm1ezFq7jcXH+mmUrQhglGu0Tq4yvahgluBriUvLug==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\Presentation\\Presentation.csproj",
+  "projectFilePath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\Presentation\\Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\PULSE Electronics\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

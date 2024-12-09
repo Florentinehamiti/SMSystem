@@ -8956,11 +8956,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\Presentation\\Presentation.csproj",
+      "projectUniqueName": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\Presentation\\Presentation.csproj",
       "projectName": "Presentation",
-      "projectPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\Presentation\\Presentation.csproj",
+      "projectPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\Presentation\\Presentation.csproj",
       "packagesPath": "C:\\Users\\PULSE Electronics\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\Presentation\\obj\\",
+      "outputPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PULSE Electronics\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8977,8 +8977,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj": {
-              "projectPath": "C:\\Users\\PULSE Electronics\\source\\repos\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj"
+            "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj": {
+              "projectPath": "C:\\Users\\PULSE Electronics\\Desktop\\SMSystem\\SMSystem.Data\\SMSystem.Data.csproj"
             }
           }
         }
@@ -9050,7 +9050,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
