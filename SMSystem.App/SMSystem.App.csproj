@@ -8,10 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Cache\" />
-    <Folder Include="Constants\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Implementations\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Mappers\" />
   </ItemGroup>
 
@@ -22,6 +19,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMSystem.Data\SMSystem.Data.csproj" />
   </ItemGroup>
 
 </Project>
