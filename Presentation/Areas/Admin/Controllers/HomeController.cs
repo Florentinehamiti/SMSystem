@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SMSystem.App.Constants;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Area(AreasConstants.Admin)]
+    [Authorize(Roles = AreasConstants.Admin)]
     public class HomeController : Controller
     {
         public IActionResult Index()

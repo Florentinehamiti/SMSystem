@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMSystem.Data.Entities
+namespace SMSystem.Models.Entities
 {
     public partial class AspNetRole
     {

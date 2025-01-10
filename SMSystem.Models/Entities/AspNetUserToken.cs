@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
@@ -7,22 +6,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMSystem.Data.Entities
+namespace SMSystem.Models.Entities
 {
-    [Index("UserId", Name = "IX_AspNetUserLogins_UserId")]
-    public partial class AspNetUserLogin
+    public partial class AspNetUserToken
     {
+        [Key]
+        public string UserId { get; set; } = null!;
         [Key]
         [StringLength(128)]
         public string LoginProvider { get; set; } = null!;
         [Key]
         [StringLength(128)]
-        public string ProviderKey { get; set; } = null!;
-        public string? ProviderDisplayName { get; set; }
-        public string UserId { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public string? Value { get; set; }
 
         [ForeignKey("UserId")]
-        [InverseProperty("AspNetUserLogins")]
+        [InverseProperty("AspNetUserTokens")]
         public virtual AspNetUser User { get; set; } = null!;
     }
 }

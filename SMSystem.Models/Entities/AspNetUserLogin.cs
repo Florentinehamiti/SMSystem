@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SMSystem.Data.Entities
+namespace SMSystem.Models.Entities
 {
-    [Index("UserId", Name = "IX_AspNetUserClaims_UserId")]
-    public partial class AspNetUserClaim
+    [Index("UserId", Name = "IX_AspNetUserLogins_UserId")]
+    public partial class AspNetUserLogin
     {
         [Key]
-        public int Id { get; set; }
+        [StringLength(128)]
+        public string LoginProvider { get; set; } = null!;
+        [Key]
+        [StringLength(128)]
+        public string ProviderKey { get; set; } = null!;
+        public string? ProviderDisplayName { get; set; }
         public string UserId { get; set; } = null!;
-        public string? ClaimType { get; set; }
-        public string? ClaimValue { get; set; }
 
         [ForeignKey("UserId")]
-        [InverseProperty("AspNetUserClaims")]
+        [InverseProperty("AspNetUserLogins")]
         public virtual AspNetUser User { get; set; } = null!;
     }
 }
