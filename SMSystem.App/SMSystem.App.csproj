@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SMSystem.Data\SMSystem.Data.csproj" />
+    <ProjectReference Include="..\SMSystem.Models\SMSystem.Models.csproj" />
   </ItemGroup>
 
 </Project>

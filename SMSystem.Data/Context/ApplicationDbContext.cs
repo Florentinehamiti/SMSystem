@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SMSystem.Data.Entities;
+using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,8 @@ namespace SMSystem.Data.Context
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; } = null!;
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; } = null!;
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
+        public virtual DbSet<Teacher> Teachers { get; set; } = null!;
+        public virtual DbSet<Subject> Subjects { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

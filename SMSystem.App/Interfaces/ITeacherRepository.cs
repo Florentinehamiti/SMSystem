@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace SMSystem.App.Interfaces
 {
-    public interface IUserRepository : IRepository<AspNetUser>
+    public interface ITeacherRepository: IRepository<Teacher>
     {
-        AspNetUser? GetByStringId(string id);
-        List<AspNetUser> GetAllWithRoles();
-
-
     }
 }

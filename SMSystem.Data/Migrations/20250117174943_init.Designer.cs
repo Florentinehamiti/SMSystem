@@ -12,7 +12,7 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250110175404_init")]
+    [Migration("20250117174943_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -53,7 +53,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetRole", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -78,7 +78,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetRoleClaim", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetRoleClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUser", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -173,7 +173,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserClaim", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -198,7 +198,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserLogin", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserLogin", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -222,7 +222,7 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserToken", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserToken", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -243,24 +243,74 @@ namespace SMSystem.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("SMSystem.Models.Entities.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateOnly>("Birthday")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InsertedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("InsertedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LUB")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("LUD")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LUN")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfilePhotoPath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Qualified")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers");
+                });
+
             modelBuilder.Entity("AspNetUserRole", b =>
                 {
-                    b.HasOne("SMSystem.Data.Entities.AspNetRole", null)
+                    b.HasOne("SMSystem.Models.Entities.AspNetRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SMSystem.Data.Entities.AspNetUser", null)
+                    b.HasOne("SMSystem.Models.Entities.AspNetUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetRoleClaim", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetRoleClaim", b =>
                 {
-                    b.HasOne("SMSystem.Data.Entities.AspNetRole", "Role")
+                    b.HasOne("SMSystem.Models.Entities.AspNetRole", "Role")
                         .WithMany("AspNetRoleClaims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -269,9 +319,9 @@ namespace SMSystem.Data.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserClaim", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserClaim", b =>
                 {
-                    b.HasOne("SMSystem.Data.Entities.AspNetUser", "User")
+                    b.HasOne("SMSystem.Models.Entities.AspNetUser", "User")
                         .WithMany("AspNetUserClaims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -280,9 +330,9 @@ namespace SMSystem.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserLogin", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserLogin", b =>
                 {
-                    b.HasOne("SMSystem.Data.Entities.AspNetUser", "User")
+                    b.HasOne("SMSystem.Models.Entities.AspNetUser", "User")
                         .WithMany("AspNetUserLogins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -291,9 +341,9 @@ namespace SMSystem.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUserToken", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUserToken", b =>
                 {
-                    b.HasOne("SMSystem.Data.Entities.AspNetUser", "User")
+                    b.HasOne("SMSystem.Models.Entities.AspNetUser", "User")
                         .WithMany("AspNetUserTokens")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -302,12 +352,12 @@ namespace SMSystem.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetRole", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetRole", b =>
                 {
                     b.Navigation("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("SMSystem.Data.Entities.AspNetUser", b =>
+            modelBuilder.Entity("SMSystem.Models.Entities.AspNetUser", b =>
                 {
                     b.Navigation("AspNetUserClaims");
 

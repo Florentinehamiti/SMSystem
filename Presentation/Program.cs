@@ -26,7 +26,9 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
-//builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
 
 
 
@@ -148,6 +150,17 @@ var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(sup
 
 app.UseRequestLocalization(localizationOptions);
 app.UseRouting();
+
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/Client/Account/Login");
+    return Task.CompletedTask;
+});
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "/",
+    defaults: new { area = "Client", controller = "Account", action = "Login" });
 
 app.MapControllerRoute(
     name: "MyArea",

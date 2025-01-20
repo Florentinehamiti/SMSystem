@@ -1,4 +1,4 @@
-﻿namespace Presentation.Areas.Client.Models.UserViewModel
+﻿namespace Presentation.Areas.Client.Models.ViewModels
 {
     public class UserViewModel
     {

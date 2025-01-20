@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
-using SMSystem.Data.Entities;
+using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

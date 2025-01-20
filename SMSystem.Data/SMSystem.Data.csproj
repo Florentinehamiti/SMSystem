@@ -19,4 +19,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SMSystem.Models\SMSystem.Models.csproj" />
+  </ItemGroup>
+
 </Project>

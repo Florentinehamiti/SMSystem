@@ -26,7 +26,7 @@ namespace SMSystem.App.Implementations
                 _context.Set<T>().Add(entity);
                 _context.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

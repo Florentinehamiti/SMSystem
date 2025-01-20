@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
-using SMSystem.Data.Entities;
+using SMSystem.Models.Entities;
 using SMSystem.Data.Identity;
 using System;
 using System.Collections.Generic;
