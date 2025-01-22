@@ -13,7 +13,6 @@ namespace SMSystem.App.Interfaces
         IEnumerable<Teacher> GetAllTeachers();
         Teacher GetById(int id);
         void Update(Teacher teacher);
-
         void Remove(Teacher teacher);
     }
 }

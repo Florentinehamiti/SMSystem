@@ -14,11 +14,13 @@ namespace Presentation.Areas.Admin.Controllers
     {
         private readonly ITeacherService _teacherService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IUserService _userService;
 
-        public TeacherController(ITeacherService teacherService, IWebHostEnvironment webHostEnvironment)
+        public TeacherController(ITeacherService teacherService, IWebHostEnvironment webHostEnvironment, IUserService userService)
         {
             _teacherService = teacherService;
             _webHostEnvironment = webHostEnvironment;
+            _userService = userService;
         }
         public IActionResult Index()
         {
