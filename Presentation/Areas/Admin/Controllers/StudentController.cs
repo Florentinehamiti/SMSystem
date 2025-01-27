@@ -6,21 +6,9 @@ namespace Presentation.Areas.Admin.Controllers
 {
     [Area(AreasConstants.Admin)]
     [Authorize(Roles = AreasConstants.Admin)]
-    public class HomeController : Controller
+    public class StudentController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Staff()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddStaff()
         {
             return View();
         }
