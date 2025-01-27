@@ -8,10 +8,10 @@ namespace SMSystem.Models.Entities
 {
     public class Base
     {
-        public int InsertedBy { get; set; }
-        public DateTime InsertedDate { get; set; }
-        public int LUB { get; set; }
-        public DateTime LUD { get; set; }
-        public int LUN { get; set; }
+        public string? InsertedBy { get; set; } = null;
+        public DateTime? InsertedDate { get; set; }
+        public string? LUB { get; set; } = null;
+        public DateTime? LUD { get; set; }
+        public int? LUN { get; set; }
     }
 }

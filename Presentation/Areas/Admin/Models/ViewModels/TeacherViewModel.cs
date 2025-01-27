@@ -16,11 +16,11 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         public bool Qualified { get; set; }
         public string? ProfilePhotoPath { get; set; }
         public IFormFile? ProfilePhoto { get; set; }
-        public int InsertedBy { get; set; }
+        public string InsertedBy { get; set; }
         public DateTime InsertedDate { get; set; }
-        public int LUB { get; set; }
-        public DateTime LUD { get; set; }
-        public int LUN { get; set; }
+        public string LUB { get; set; }
+        public DateTime? LUD { get; set; }
+        public int? LUN { get; set; }
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Areas.Admin.Models.ViewModels;
 using SMSystem.App.Constants;
@@ -44,12 +45,94 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("","");
+                ModelState.AddModelError("","Please check the data entered");
                 return View(subject);
             }
 
-            
+            subject.InsertedDate = DateTime.Now;
+            subject.LUD = DateTime.Now;
+            subject.InsertedBy = _userService.GetUserId();
             _subjectsService.AddSubject(subject);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            try
+            {
+                var subject = _subjectsService.GetById(id);
+
+                if (subject == null)
+                {
+                    return NotFound();
+                }
+
+                return View(subject);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Subject subject)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var existingSubject = _subjectsService.GetById(subject.Id);
+
+                    if (existingSubject == null)
+                    {
+                        return NotFound();
+                    }
+
+
+                    existingSubject.Name = subject.Name;
+                    existingSubject.BookName = subject.BookName;
+                    existingSubject.Author = subject.Author;
+                    existingSubject.PublicationYear = subject.PublicationYear;
+                    existingSubject.LUB = _userService.GetUserId();
+                    existingSubject.LUD = DateTime.Now;
+                    existingSubject.LUN = existingSubject.LUN + 1;
+
+                  
+                    _subjectsService.Update(existingSubject);
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
+                }
+            }
+
+            return View(subject);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            var subject = _subjectsService.GetById(id);
+            if (subject == null)
+            {
+                TempData["ErrorMessage"] = "The subject could not be found.";
+                return RedirectToAction("Index");
+            }
+
+            try
+            {
+                _subjectsService.Remove(subject);
+                TempData["SuccessMessage"] = "The subject was successfully deleted.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"An error occurred while deleting the subject: {ex.Message}";
+            }
 
             return RedirectToAction("Index");
         }

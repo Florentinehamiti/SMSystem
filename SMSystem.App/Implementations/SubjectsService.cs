@@ -13,7 +13,6 @@ namespace SMSystem.App.Implementations
 
         public void AddSubject(Subject subject)
         {
-            subject.InsertedDate = DateTime.Now;
             _subjectsRepository.Add(subject);
         }
 

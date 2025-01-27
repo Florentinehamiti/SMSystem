@@ -36,8 +36,8 @@ namespace Presentation.Areas.Admin.Controllers
                     Email = t.Email,
                     Qualified = t.Qualified,
                     ProfilePhotoPath = t.ProfilePhotoPath,
-                    InsertedBy = t.InsertedBy,
-                    InsertedDate = t.InsertedDate,
+                    InsertedBy = _userService.GetUserId(),
+                    InsertedDate = DateTime.Now,
                     LUB = t.LUB,
                     LUD = t.LUD,
                     LUN = t.LUN
@@ -93,7 +93,7 @@ namespace Presentation.Areas.Admin.Controllers
                     Email = teacherViewModel.Email,
                     Qualified = teacherViewModel.Qualified,
                     ProfilePhotoPath = photoPath, 
-                    InsertedBy = teacherViewModel.InsertedBy,
+                    InsertedBy = _userService.GetUserId(),
                     InsertedDate = DateTime.Now
                 };
 
@@ -126,11 +126,9 @@ namespace Presentation.Areas.Admin.Controllers
                     Email = teacher.Email,
                     Qualified = teacher.Qualified,
                     ProfilePhotoPath = teacher.ProfilePhotoPath,
-                    InsertedBy = teacher.InsertedBy,
-                    InsertedDate = teacher.InsertedDate,
-                    LUB = teacher.LUB,
-                    LUD = teacher.LUD,
-                    LUN = teacher.LUN
+                    LUB = _userService.GetUserId(),
+                    LUD = DateTime.Now,
+                    LUN = teacher.LUN + 1
                 };
 
                 return View(teacherViewModel); 
@@ -161,9 +159,9 @@ namespace Presentation.Areas.Admin.Controllers
                     existingTeacher.Birthday = teacherViewModel.Birthday;
                     existingTeacher.Email = teacherViewModel.Email;
                     existingTeacher.Qualified = teacherViewModel.Qualified;
-                    existingTeacher.LUB = teacherViewModel.LUB;
+                    existingTeacher.LUB = _userService.GetUserId();
                     existingTeacher.LUD = DateTime.Now;
-                    existingTeacher.LUN = teacherViewModel.LUN;
+                    existingTeacher.LUN = teacherViewModel.LUN +1;
 
                     if (teacherViewModel.ProfilePhoto != null)
                     {

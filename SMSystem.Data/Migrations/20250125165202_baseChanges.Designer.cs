@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSystem.Data.Context;
 
@@ -11,9 +12,11 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250125165202_baseChanges")]
+    partial class baseChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,18 +260,20 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InsertedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("InsertedDate")
+                    b.Property<DateTime>("InsertedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LUB")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("LUD")
+                    b.Property<DateTime>("LUD")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LUN")
+                    b.Property<int>("LUN")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -299,18 +304,20 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("InsertedBy")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("InsertedDate")
+                    b.Property<DateTime>("InsertedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LUB")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("LUD")
+                    b.Property<DateTime>("LUD")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("LUN")
+                    b.Property<int>("LUN")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
