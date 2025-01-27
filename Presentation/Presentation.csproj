@@ -32,7 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Teacher\Models\" />
+    <Folder Include="Areas\Educator\Controllers\" />
+    <Folder Include="Areas\Educator\Models\" />
+    <Folder Include="Areas\Educator\Views\" />
   </ItemGroup>
 
 </Project>
