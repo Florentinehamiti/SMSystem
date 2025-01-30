@@ -21,6 +21,8 @@ namespace SMSystem.Models.Entities
         public string Email { get; set; }
         public bool Gender { get; set; }
         public int AddressId { get; set; }
+        public string ProfilePhotoPath { get; set; }
+
         //[ForeignKey("AddressId")]
         //public Address Address { get; set; } 
 

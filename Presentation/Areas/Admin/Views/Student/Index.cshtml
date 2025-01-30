@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TeacherViewModel>
+﻿@model IEnumerable<StudentViewModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -47,14 +47,14 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Teachers</h6>
+                        <h6 class="text-white text-capitalize ps-3">Students</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>All teachers</h6>
-                            <a asp-action="Create" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-primary"><i class="fa fa-plus d-inline" style="font-size:12px"></i> + Add new</a>
+                            <h6>All students</h6>
+                            <a asp-action="Create" asp-controller="Student" asp-area="Admin" type="button" class="btn btn-primary"><i class="fa fa-plus d-inline" style="font-size:12px"></i> + Add new</a>
                         </div>
                         <table class="table align-items-center mb-0">
 
@@ -70,58 +70,58 @@
                             </thead>
                             <tbody>
 
-                                @foreach (var teacher in Model)
+                                @foreach (var student in Model)
                                 {
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="@Url.Content("~/Images/" + teacher.ProfilePhotoPath)" class="avatar avatar-sm me-3 border-radius-lg" alt="user">
+                                                    <img src="@Url.Content("~/Images/" + student.ProfilePhotoPath)" class="avatar avatar-sm me-3 border-radius-lg" alt="user">
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">@teacher.Name @teacher.Surname</h6>
+                                                    <h6 class="mb-0 text-sm">@student.Name @student.Lastname</h6>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0">Lecturer</p>
-                                            <p class="text-xs text-secondary mb-0">@teacher.Email</p>
+                                            <p class="text-xs text-secondary mb-0">@student.Email</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm @(teacher.Qualified ? "bg-gradient-success" : "bg-gradient-secondary")">@teacher.Qualified</span>
+                                            <span class="badge badge-sm @(student.Gender ? "bg-gradient-success" : "bg-gradient-secondary")">@student.Gender</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">@teacher.Birthday</span>
+                                            <span class="text-secondary text-xs font-weight-bold">@student.Birthday</span>
                                         </td>
                                         <td class="d-flex align-items-center justify-content-center">
-                                            <a asp-action="Edit" asp-controller="Teacher" asp-area="Admin" asp-route-id="@teacher.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a asp-action="Edit" asp-controller="Student" asp-area="Admin" asp-route-id="@student.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
                                             </a>
-                                            <a href="#deleteModal-@teacher.Id"
+                                            <a href="#deleteModal-@student.Id"
                                                class="text-secondary font-weight-bold text-xs btn border mb-0 delete-button"
                                                data-toggle="modal"
-                                               data-target="#deleteModal-@teacher.Id">
+                                               data-target="#deleteModal-@student.Id">
                                                 Delete
                                             </a>
                                         </td>
                                     </tr>
 
-                                    <div class="modal fade" id="deleteModal-@teacher.Id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@teacher.Id" aria-hidden="true">
+                                    <div class="modal fade" id="deleteModal-@student.Id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@student.Id" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel-@teacher.Id">Confirm Deletion</h5>
+                                                    <h5 class="modal-title" id="deleteModalLabel-@student.Id">Confirm Deletion</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure you want to delete this teacher?
+                                                    Are you sure you want to delete this student?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                    <form asp-action="Delete" asp-controller="Teacher" asp-area="Admin" method="post">
-                                                        <input type="hidden" name="id" value="@teacher.Id" />
+                                                    <form asp-action="Delete" asp-controller="Student" asp-area="Admin" method="post">
+                                                        <input type="hidden" name="id" value="@student.Id" />
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </div>
@@ -155,8 +155,8 @@
 </script>
 <script>
     $(document).on('click', '.delete-button', function () {
-        const teacherId = $(this).data('id');
-        $('#deleteTeacherId').val(teacherId);
+        const studentId = $(this).data('id');
+        $('#deleteTeacherId').val(studentId);
     });
 </script>
 
