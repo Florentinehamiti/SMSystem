@@ -12,12 +12,12 @@ namespace SMSystem.Models.Entities
         public int Id { get; set; }
         public int SchoolCode { get; set; }
         public int AddressId { get; set; }
-        [ForeignKey("Address")]
-        public Address Address { get; set; }
+        //[ForeignKey("AddressId")]
+        //public Address Address { get; set; }
         public int Year { get; set; }
         public int Paralel { get; set; }
         public int TeacherId { get; set; }
-        [ForeignKey("Teacher")]
+        [ForeignKey("TeacherId")]
         public Teacher Teacher { get; set; }
     }
 }

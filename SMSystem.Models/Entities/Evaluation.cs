@@ -12,10 +12,10 @@ namespace SMSystem.Models.Entities
         public int Id { get; set; }
         public int Value { get; set; }
         public int SubjectId { get; set; }
-        [ForeignKey("Subject")]
-        public Subject Subject { get; set; }
+        //[ForeignKey("SubjectId")]
+        //public Subject Subject { get; set; }
         public int StudentId { get; set; }
-        [ForeignKey("Student")]
-        public Student Student { get; set; }
+        //[ForeignKey("StudentId")]
+        //public Student Student { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace SMSystem.Models.Entities
     {
         public int Id { get; set; }
         public int RemarkId { get; set; }
-        [ForeignKey("Remark")]
-        public Remark Remark { get; set; }
+        //[ForeignKey("RemarkId")]
+        //public Remark Remark { get; set; }
         public int StudentId { get; set; }
-        [ForeignKey("Student")]
-        public Student Student { get; set; }
+        //[ForeignKey("StudentId")]
+        //public Student Student { get; set; }
     }
 }

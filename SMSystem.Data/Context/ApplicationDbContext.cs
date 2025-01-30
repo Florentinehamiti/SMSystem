@@ -27,6 +27,14 @@ namespace SMSystem.Data.Context
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
         public virtual DbSet<Teacher> Teachers { get; set; } = null!;
         public virtual DbSet<Subject> Subjects { get; set; } = null!;
+        public virtual DbSet<Absence> Absences { get; set; } = null!;
+        public virtual DbSet<SchoolHour> SchoolHours { get; set; } = null!;
+        public virtual DbSet<Student> Students { get; set; } = null!;
+        public virtual DbSet<Diary> Diaries { get; set; } = null!;
+        public virtual DbSet<Address> Addresses { get; set; } = null!;
+        public virtual DbSet<Evaluation> Evaluations { get; set; } = null!;
+        public virtual DbSet<Remark> Remarks { get; set; } = null!;
+        public virtual DbSet<RemarkStudent> RemarkStudents { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
