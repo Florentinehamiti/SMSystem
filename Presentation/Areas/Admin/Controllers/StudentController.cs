@@ -17,6 +17,12 @@ namespace Presentation.Areas.Admin.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUserService _userService;
        
+        public StudentController(IStudentService studentService, IWebHostEnvironment webHostEnvironment, IUserService userService)
+        {
+            _studentService = studentService;
+            _webHostEnvironment = webHostEnvironment;
+            _userService = userService;
+        }
         public IActionResult Index()
         {
             try

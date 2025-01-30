@@ -29,12 +29,12 @@ namespace SMSystem.App.Implementations
 
         public void Remove(Student student)
         {
-            _studentRepository.Update(student);
+            _studentRepository.Remove(student);
         }
 
         public void Update(Student student)
         {
-            throw new NotImplementedException();
+            _studentRepository.Update(student);
         }
     }
 }

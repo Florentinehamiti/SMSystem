@@ -31,6 +31,9 @@ builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<ISubjectsService, SubjectsService>();
 builder.Services.AddScoped<ISubjectsRepository, SubjectsRepository>();
+builder.Services.AddScoped<IDiaryRepository, DiaryRepository>();
+builder.Services.AddScoped<IDiaryService, DiaryService>();
+
 
 
 
