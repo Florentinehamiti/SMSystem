@@ -16,12 +16,26 @@
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Lastname" class="form-label font-weight-bold">Surname</label>
-                    <input asp-for="Lastname" placeholder="Surname" type="text" class="form-control border px-2" />
+                    <label asp-for="ParentName" class="form-label font-weight-bold">Parent name</label>
+                    <input asp-for="ParentName" placeholder="Parent name" type="text" class="form-control border px-2" />
                 </div>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="Lastname" class="form-label font-weight-bold">Surname</label>
+                    <input asp-for="Lastname" placeholder="Surname" type="text" class="form-control border px-2" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="Tel" class="form-label font-weight-bold">Telephone</label>
+                    <input asp-for="Tel" placeholder="Telephone" type="text" class="form-control border px-2" />
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-6">
@@ -30,11 +44,21 @@
                     <input asp-for="Email" placeholder="Email" type="text" class="form-control border px-2" />
                 </div>
             </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <div class="form-check form-switch d-flex align-items-center">
-                    <input class="form-check-input" asp-for="Gender" type="checkbox" id="flexSwitchCheckDefault" />
-                    <label class="form-check-label mx-3 mb-0" for="Gender">Gender</label>
+            <div class="col-md-6">
+                <label class="form-check-label font-weight-bold">Gender</label>
+
+                <div class="d-flex align-items-center">
+                    <div class="form-check p-1">
+                        <input class="form-check-input" type="radio" asp-for="Gender" value="true" id="genderMale" />
+                        <label class="form-check-label" for="genderMale">Male</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="Gender" value="false" id="genderFemale" />
+                        <label class="form-check-label" for="genderFemale">Female</label>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -43,7 +67,7 @@
             <div class="col-md-6">
                 <div class="input-container">
                     <label class="font-weight-bold">Profile Picture</label>
-                    <input asp-for="ProfilePhoto" type="file" class="form-control" />
+                    <input asp-for="ProfilePhoto" type="file" class="form-control border px-2" />
                     @if (!string.IsNullOrEmpty(Model.ProfilePhotoPath))
                     {
                         <img src="~/Images/@Model.ProfilePhotoPath" alt="Profile Photo" class="mt-3 profile-pic" />
