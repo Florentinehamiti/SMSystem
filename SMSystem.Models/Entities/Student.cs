@@ -11,20 +11,17 @@ namespace SMSystem.Models.Entities
     {
         public int Id { get; set; }
         public string ParentName { get; set; }
-        public int DiaryId { get; set; }
-        //[ForeignKey("DiaryId")]
-        //public Diary Diary { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthday { get; set; }
         public string Tel { get; set; }
         public string Email { get; set; }
-        public bool Gender { get; set; }
-        public int AddressId { get; set; }
+        public bool? Gender { get; set; }
+        public int? AddressId { get; set; }
         public string ProfilePhotoPath { get; set; }
 
         //[ForeignKey("AddressId")]
-        //public Address Address { get; set; } 
+        //public virtual Address Address { get; set; }
 
     }
 }

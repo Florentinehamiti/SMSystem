@@ -5,7 +5,7 @@
 namespace SMSystem.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class subjects : Migration
+    public partial class FixCascadeDelete : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

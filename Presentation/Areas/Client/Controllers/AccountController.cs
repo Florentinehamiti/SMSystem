@@ -41,7 +41,10 @@ namespace Presentation.Areas.Client
             //var result = await _roleManager.CreateAsync(identityRole);
 
             //IdentityRole identityRole2 = new IdentityRole("Admin");
-            //var result2 = await _roleManager.CreateAsync(identityRole2);
+            //var result2 = await _roleManager.CreateAsync(identityRole2);  
+            
+            IdentityRole identityRole2 = new IdentityRole("Teacher");
+            var result3 = await _roleManager.CreateAsync(identityRole2);
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);

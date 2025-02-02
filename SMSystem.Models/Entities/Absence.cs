@@ -11,11 +11,11 @@ namespace SMSystem.Models.Entities
     {
         public int Id { get; set; }
         public int SchoolHourId { get; set; }
-        //[ForeignKey("SchoolHourId")]
-        //public SchoolHour SchoolHour { get; set; }
+        [ForeignKey("SchoolHourId")]
+        public virtual SchoolHour SchoolHour { get; set; }
         public bool Status { get; set; }
         public int StudentId { get; set; }
-        //[ForeignKey("StudentId")]
-        //public Student Student { get; set; }
+        [ForeignKey("StudentId")]
+        public virtual Student Student { get; set; }
     }
 }

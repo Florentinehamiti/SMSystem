@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Admin\Views\Student\Create.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Student\Create.cshtml" />
     <_ContentIncludedByDefault Remove="wwwroot\theme\css\formStyle.css" />
   </ItemGroup>
 
@@ -40,14 +35,6 @@
     <Folder Include="Areas\Educator\Controllers\" />
     <Folder Include="Areas\Educator\Models\" />
     <Folder Include="Areas\Educator\Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Areas\Admin\Views\Student\Create.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Areas\Admin\Views\Student\Create.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -12,8 +12,8 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250130203932_addProfilePhotoPath")]
-    partial class addProfilePhotoPath
+    [Migration("20250201155642_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,6 +86,10 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SchoolHourId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Absences");
                 });
@@ -364,6 +368,8 @@ namespace SMSystem.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId");
+
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Diaries");
@@ -403,6 +409,10 @@ namespace SMSystem.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
+
                     b.ToTable("Evaluations");
                 });
 
@@ -433,15 +443,17 @@ namespace SMSystem.Data.Migrations
                     b.Property<int?>("LUN")
                         .HasColumnType("int");
 
-                    b.Property<string>("SchoolHourId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SchoolHourId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("StudentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SchoolHourId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Remarks");
                 });
@@ -461,6 +473,10 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RemarkId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("RemarkStudents");
                 });
@@ -505,6 +521,12 @@ namespace SMSystem.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DiaryId");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("TeacherId");
+
                     b.ToTable("SchoolHours");
                 });
 
@@ -522,7 +544,7 @@ namespace SMSystem.Data.Migrations
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DiaryId")
+                    b.Property<int?>("DiaryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -568,6 +590,10 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("DiaryId");
 
                     b.ToTable("Students");
                 });
@@ -680,6 +706,25 @@ namespace SMSystem.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SMSystem.Models.Entities.Absence", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.SchoolHour", "SchoolHour")
+                        .WithMany()
+                        .HasForeignKey("SchoolHourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SchoolHour");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("SMSystem.Models.Entities.AspNetRoleClaim", b =>
                 {
                     b.HasOne("SMSystem.Models.Entities.AspNetRole", "Role")
@@ -726,13 +771,120 @@ namespace SMSystem.Data.Migrations
 
             modelBuilder.Entity("SMSystem.Models.Entities.Diary", b =>
                 {
+                    b.HasOne("SMSystem.Models.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SMSystem.Models.Entities.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Address");
+
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.Evaluation", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.Remark", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.SchoolHour", "SchoolHour")
+                        .WithMany()
+                        .HasForeignKey("SchoolHourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SchoolHour");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.RemarkStudent", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.Remark", "Remark")
+                        .WithMany()
+                        .HasForeignKey("RemarkId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Remark");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.SchoolHour", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.Diary", "Diary")
+                        .WithMany()
+                        .HasForeignKey("DiaryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Diary");
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.Student", b =>
+                {
+                    b.HasOne("SMSystem.Models.Entities.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SMSystem.Models.Entities.Diary", null)
+                        .WithMany("Students")
+                        .HasForeignKey("DiaryId");
+
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("SMSystem.Models.Entities.AspNetRole", b =>
@@ -747,6 +899,11 @@ namespace SMSystem.Data.Migrations
                     b.Navigation("AspNetUserLogins");
 
                     b.Navigation("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("SMSystem.Models.Entities.Diary", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

@@ -32,7 +32,7 @@ namespace Presentation.Areas.Admin.Controllers
                 {
                     Id = t.Id,
                     ParentName = t.ParentName,
-                    DiaryId = t.DiaryId,
+                    //DiaryId = t.DiaryId,
                     Name = t.Name,
                     Lastname = t.Lastname,
                     Birthday = t.Birthday,
@@ -94,14 +94,14 @@ namespace Presentation.Areas.Admin.Controllers
                 var student = new Student
                 {
                     ParentName= studentViewModel.ParentName,
-                    DiaryId = studentViewModel.DiaryId,
+                    //DiaryId = studentViewModel.DiaryId,
                     Name = studentViewModel.Name,
                     Lastname = studentViewModel.Lastname,
                     Birthday = studentViewModel.Birthday,
                     Email = studentViewModel.Email,
                     Tel = studentViewModel.Tel,
                     Gender = studentViewModel.Gender,
-                    AddressId = studentViewModel.AddressId,
+                    //AddressId = studentViewModel.AddressId,
                     ProfilePhotoPath = photoPath,
                     InsertedBy = _userService.GetUserId(),
                     InsertedDate = DateTime.Now
@@ -131,7 +131,7 @@ namespace Presentation.Areas.Admin.Controllers
                 {
                     Id = student.Id,
                     ParentName = student.ParentName,
-                    DiaryId = student.DiaryId,
+                    //DiaryId = student.DiaryId,
                     Name = student.Name,
                     Lastname = student.Lastname,
                     Birthday = student.Birthday,
@@ -169,7 +169,7 @@ namespace Presentation.Areas.Admin.Controllers
 
 
                     existingStudent.ParentName = studentViewModel.ParentName;
-                    existingStudent.DiaryId = studentViewModel.DiaryId;
+                    //existingStudent.DiaryId = studentViewModel.DiaryId;
                     existingStudent.Name = studentViewModel.Name;
                     existingStudent.Lastname = studentViewModel.Lastname;
                     existingStudent.Birthday = studentViewModel.Birthday;

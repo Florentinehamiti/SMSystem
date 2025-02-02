@@ -1,4 +1,5 @@
 ﻿using SMSystem.Models.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Presentation.Areas.Admin.Models.ViewModels
 {
@@ -14,12 +15,14 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         public string Email { get; set; }
         public string? ProfilePhotoPath { get; set; }
         public IFormFile? ProfilePhoto { get; set; }
-        public bool Gender { get; set; }
-        public int AddressId { get; set; }
-        public IEnumerable<Address> Addresses { get; set; }
-        public string InsertedBy { get; set; }
+        [AllowNull]
+        public bool? Gender { get; set; }
+        public int? AddressId { get; set; }
+        [AllowNull]
+        public IEnumerable<Address>? Addresses { get; set; }
+        public string? InsertedBy { get; set; }
         public DateTime InsertedDate { get; set; }
-        public string LUB { get; set; }
+        public string? LUB { get; set; }
         public DateTime? LUD { get; set; }
         public int? LUN { get; set; }
     }

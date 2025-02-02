@@ -5,7 +5,7 @@
 namespace SMSystem.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class newTables : Migration
+    public partial class FixRemarkStudentsCascadeDelete : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

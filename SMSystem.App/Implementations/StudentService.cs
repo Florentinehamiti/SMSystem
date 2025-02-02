@@ -12,6 +12,11 @@ namespace SMSystem.App.Implementations
     {
         private readonly IStudentRepository _studentRepository;
 
+        public StudentService(IStudentRepository studentRepository)
+        {
+            this._studentRepository = studentRepository;
+        }
+
         public void AddStudent(Student student)
         {
             _studentRepository.Add(student);

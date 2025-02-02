@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace SMSystem.Models.Entities
 {
-    public class Remark:Base
+    public class Remark : Base
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public string SchoolHourId { get; set; }
-        //[ForeignKey("SchoolHourId")]
-        //public SchoolHour SchoolHour { get; set; }
-        public string StudentId { get; set; }
-        //[ForeignKey("StudentId")]
-        //public Student Student { get; set; }
+        public int SchoolHourId { get; set; }
+        [ForeignKey("SchoolHourId")]
+        public virtual SchoolHour SchoolHour { get; set; }
+        public int StudentId { get; set; }
+        [ForeignKey("StudentId")]
+        public virtual Student Student { get; set; }
     }
 }
