@@ -1,0 +1,155 @@
+﻿@model IEnumerable<DiaryViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid py-4">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+            <div class="toast fade p-2 bg-white show" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="material-icons text-success me-2">
+                        check
+                    </i>
+                    <span class="me-auto font-weight-bold">Deleted successfully </span>
+                    <small class="text-body">0 seconds ago</small>
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    @TempData["SuccessMessage"]
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="toast fade p-2 mt-2 bg-white show" role="alert" aria-live="assertive" id="dangerToast" aria-atomic="true">
+            <div class="toast-header border-0">
+                <i class="material-icons text-danger me-2">
+                    campaign
+                </i>
+                <span class="me-auto text-gradient text-danger font-weight-bold">Couldn`t delete </span>
+                <small class="text-body">11 mins ago</small>
+                <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+            </div>
+            <hr class="horizontal dark m-0">
+            <div class="toast-body">
+                @TempData["ErrorMessage"]
+            </div>
+        </div>
+
+    }
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Diaries</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
+                            <h6>All diaries</h6>
+                            <a asp-action="Create" asp-controller="Diary" asp-area="Admin" type="button" class="btn btn-primary">+ Add new</a>
+                        </div>
+                        <table class="table align-items-center mb-0">
+
+                            <thead>
+
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">School code</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Year</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Paralel</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Teacher</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var diary in Model)
+                                {
+                                    <tr>
+                                        
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">Lecturer</p>
+                                            <p class="text-xs text-secondary mb-0">@diary.SchoolCode</p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm">
+                                                @diary.Year
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">@diary.Paralel</span>
+                                        </td>
+                                        <td class="d-flex align-items-center justify-content-center">
+                                            <a asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@diary.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
+                                                Edit
+                                            </a>
+                                            <a href="#deleteModal-@diary.Id"
+                                               class="text-secondary font-weight-bold text-xs btn border mb-0 delete-button"
+                                               data-toggle="modal"
+                                               data-target="#deleteModal-@diary.Id">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                    <div class="modal fade" id="deleteModal-@diary.Id" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@diary.Id" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel-@diary.Id">Confirm Deletion</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete this diary?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                    <form asp-action="Delete" asp-controller="Diary" asp-area="Admin" method="post">
+                                                        <input type="hidden" name="id" value="@diary.Id" />
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+        crossorigin="anonymous">
+</script>
+<script>
+    $(document).on('click', '.delete-button', function () {
+        const diaryId = $(this).data('id');
+        $('#deleteTeacherId').val(diaryId);
+    });
+</script>
+

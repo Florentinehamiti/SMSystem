@@ -12,6 +12,11 @@ namespace SMSystem.App.Implementations
     {
         private readonly IDiaryRepository _diaryRepository;
 
+        public DiaryService(IDiaryRepository diaryRepository)
+        {
+            _diaryRepository = diaryRepository;
+        }
+
         public void AddDiary(Diary diary)
         {
             _diaryRepository.Add(diary);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Areas.Admin.Models.ViewModels;
 using SMSystem.App.Constants;
 using SMSystem.App.Implementations;
 using SMSystem.App.Interfaces;
@@ -12,22 +13,35 @@ namespace Presentation.Areas.Admin.Controllers
     public class DiaryController : Controller
     {
         private readonly IDiaryService _diaryService;
+        private readonly ITeacherService _teacherService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUserService _userService;
 
-        public DiaryController(IDiaryService diaryService, IWebHostEnvironment webHostEnvironment, IUserService userService)
+        public DiaryController(IDiaryService diaryService, IWebHostEnvironment webHostEnvironment, IUserService userService, ITeacherService teacherService)
         {
             _diaryService = diaryService;
+            _teacherService = teacherService;
             _webHostEnvironment = webHostEnvironment;
             _userService = userService;
         }
+        
         public IActionResult Index()
         {
             try
             {
                 var diaries = _diaryService.GetAllDiaries();
 
-                return View(diaries);
+                var diaryViewModels = diaries.Select(d => new DiaryViewModel
+                {
+                    Id = d.Id,
+                    SchoolCode = d.SchoolCode,
+                    Year = d.Year,
+                    Paralel = d.Paralel,
+                    TeacherId = d.TeacherId,
+                    Teachers = _teacherService.GetAllTeachers(),
+                }).ToList();
+
+                return View(diaryViewModels);
             }
             catch (Exception ex)
             {
@@ -38,20 +52,44 @@ namespace Presentation.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var teachers = _teacherService.GetAllTeachers();
+
+            var viewModel = new DiaryViewModel
+            {
+                Teachers = teachers
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Diary diary)
+        public async Task<IActionResult> Create(DiaryViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _diaryService.AddDiary(diary);
-
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    
+                    var diary = new Diary
+                    {
+                        SchoolCode = viewModel.SchoolCode ?? 0, 
+                        Year = viewModel.Year ?? 0,
+                        Paralel = viewModel.Paralel ?? 0,
+                        TeacherId = viewModel.TeacherId ?? 0
+                    };
+                    
+                    _diaryService.AddDiary(diary);
+                   
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred while saving the diary.");
+                }
             }
 
-            return View(diary);
+            viewModel.Teachers = _teacherService.GetAllTeachers();
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -59,6 +97,7 @@ namespace Presentation.Areas.Admin.Controllers
         {
             try
             {
+                // Fetch the diary from the service
                 var diary = _diaryService.GetById(id);
 
                 if (diary == null)
@@ -66,7 +105,21 @@ namespace Presentation.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                return View(diary);
+                // Fetch the list of teachers for the dropdown
+                var teachers = _teacherService.GetAllTeachers();
+
+                // Map the Diary entity to the DiaryViewModel
+                var viewModel = new DiaryViewModel
+                {
+                    Id = diary.Id,
+                    SchoolCode = diary.SchoolCode,
+                    Year = diary.Year,
+                    Paralel = diary.Paralel,
+                    TeacherId = diary.TeacherId,
+                    Teachers = teachers // Populate the Teachers dropdown
+                };
+
+                return View(viewModel);
             }
             catch (Exception ex)
             {
