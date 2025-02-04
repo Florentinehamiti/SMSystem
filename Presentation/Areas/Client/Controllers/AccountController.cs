@@ -43,8 +43,8 @@ namespace Presentation.Areas.Client
             //IdentityRole identityRole2 = new IdentityRole("Admin");
             //var result2 = await _roleManager.CreateAsync(identityRole2);  
             
-            IdentityRole identityRole2 = new IdentityRole("Teacher");
-            var result3 = await _roleManager.CreateAsync(identityRole2);
+            //IdentityRole identityRole2 = new IdentityRole("Teacher");
+            //var result3 = await _roleManager.CreateAsync(identityRole2);
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
@@ -265,7 +265,7 @@ namespace Presentation.Areas.Client
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(AccountController.Login), "Home");
         }
 
         [HttpPost]
