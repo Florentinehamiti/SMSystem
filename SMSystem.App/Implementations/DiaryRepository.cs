@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
 using SMSystem.Models.Entities;
 using System;
@@ -15,6 +16,11 @@ namespace SMSystem.App.Implementations
         public DiaryRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
+        }
+
+        public IQueryable<Diary> GetAllWithTeachers()
+        {
+            return _context.Diaries.Include(d => d.Teacher);
         }
     }
 }

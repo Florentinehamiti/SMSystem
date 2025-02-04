@@ -19,7 +19,7 @@ namespace SMSystem.Models.Entities
         public bool? Gender { get; set; }
         public int? AddressId { get; set; }
         public string ProfilePhotoPath { get; set; }
-        public int DiaryId { get; set; }
+        public int? DiaryId { get; set; }
         [ForeignKey("DiaryId")]
         public Diary Diary { get; set; }
 

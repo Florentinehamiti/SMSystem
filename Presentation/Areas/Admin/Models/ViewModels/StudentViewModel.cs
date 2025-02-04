@@ -7,7 +7,9 @@ namespace Presentation.Areas.Admin.Models.ViewModels
     {
         public int Id { get; set; }
         public string ParentName { get; set; }
-        public int DiaryId { get; set; }
+        public IEnumerable<Diary>? Diaries { get; set; }
+        public Diary? Diary { get; set; }
+        public int? DiaryId { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthday { get; set; }

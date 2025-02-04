@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSystem.Data.Context;
 
@@ -11,9 +12,11 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250204204936_diaryClassChanges")]
+    partial class diaryClassChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,17 +357,17 @@ namespace SMSystem.Data.Migrations
                     b.Property<int?>("LUN")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Paralel")
+                    b.Property<int>("Paralel")
                         .HasColumnType("int");
 
                     b.Property<string>("SchoolCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TeacherId")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Year")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -544,7 +547,7 @@ namespace SMSystem.Data.Migrations
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DiaryId")
+                    b.Property<int>("DiaryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -775,7 +778,9 @@ namespace SMSystem.Data.Migrations
 
                     b.HasOne("SMSystem.Models.Entities.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
@@ -870,7 +875,9 @@ namespace SMSystem.Data.Migrations
                 {
                     b.HasOne("SMSystem.Models.Entities.Diary", "Diary")
                         .WithMany("Students")
-                        .HasForeignKey("DiaryId");
+                        .HasForeignKey("DiaryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Diary");
                 });

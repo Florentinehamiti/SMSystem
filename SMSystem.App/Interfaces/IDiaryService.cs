@@ -14,5 +14,6 @@ namespace SMSystem.App.Interfaces
         Diary GetById(int id);
         void Update(Diary diary);
         void Remove(Diary diary);
+        List<Diary> GetDiariesWithTeachers();
     }
 }

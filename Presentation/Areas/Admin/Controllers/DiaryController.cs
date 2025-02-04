@@ -36,8 +36,10 @@ namespace Presentation.Areas.Admin.Controllers
                     Id = d.Id,
                     SchoolCode = d.SchoolCode,
                     Year = d.Year,
+                    Class = d.Class,
                     Paralel = d.Paralel,
                     TeacherId = d.TeacherId,
+                    Teacher = d.TeacherId.HasValue ? _teacherService.GetById(d.TeacherId.Value) : null,
                     Teachers = _teacherService.GetAllTeachers(),
                 }).ToList();
 
@@ -72,8 +74,9 @@ namespace Presentation.Areas.Admin.Controllers
                     
                     var diary = new Diary
                     {
-                        SchoolCode = viewModel.SchoolCode ?? 0, 
-                        Year = viewModel.Year ?? 0,
+                        SchoolCode = viewModel.SchoolCode, 
+                        Year = viewModel.Year,
+                        Class = viewModel.Class,
                         Paralel = viewModel.Paralel ?? 0,
                         TeacherId = viewModel.TeacherId ?? 0
                     };
@@ -97,7 +100,6 @@ namespace Presentation.Areas.Admin.Controllers
         {
             try
             {
-                // Fetch the diary from the service
                 var diary = _diaryService.GetById(id);
 
                 if (diary == null)
@@ -105,18 +107,17 @@ namespace Presentation.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                // Fetch the list of teachers for the dropdown
                 var teachers = _teacherService.GetAllTeachers();
 
-                // Map the Diary entity to the DiaryViewModel
                 var viewModel = new DiaryViewModel
                 {
                     Id = diary.Id,
                     SchoolCode = diary.SchoolCode,
                     Year = diary.Year,
+                    Class = diary.Class,
                     Paralel = diary.Paralel,
                     TeacherId = diary.TeacherId,
-                    Teachers = teachers // Populate the Teachers dropdown
+                    Teachers = teachers 
                 };
 
                 return View(viewModel);
@@ -128,7 +129,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Diary diary)
+        public async Task<IActionResult> Edit(DiaryViewModel diary)
         {
             if (ModelState.IsValid)
             {
@@ -141,12 +142,14 @@ namespace Presentation.Areas.Admin.Controllers
                         return NotFound();
                     }
 
-                    //existingDiary.ParentName = diary.ParentName;
-                    
+                    existingDiary.SchoolCode = diary.SchoolCode;
+                    existingDiary.Year = diary.Year;
+                    existingDiary.Class = diary.Class;
+                    existingDiary.Paralel = diary.Paralel;
+                    existingDiary.TeacherId = diary.TeacherId;
                     existingDiary.LUB = _userService.GetUserId();
                     existingDiary.LUD = DateTime.Now;
-                    existingDiary.LUN = diary.LUN + 1;
-
+                    existingDiary.LUN += 1;
 
                     _diaryService.Update(existingDiary);
 

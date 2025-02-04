@@ -9,5 +9,6 @@ namespace SMSystem.App.Interfaces
 {
     public interface IDiaryRepository : IRepository<Diary>
     {
+        IQueryable<Diary> GetAllWithTeachers();
     }
 }

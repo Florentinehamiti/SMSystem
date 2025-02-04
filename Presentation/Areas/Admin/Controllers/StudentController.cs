@@ -14,14 +14,16 @@ namespace Presentation.Areas.Admin.Controllers
     public class StudentController : Controller
     {
         private readonly IStudentService _studentService;
+        private readonly IDiaryService _diaryService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUserService _userService;
        
-        public StudentController(IStudentService studentService, IWebHostEnvironment webHostEnvironment, IUserService userService)
+        public StudentController(IStudentService studentService, IWebHostEnvironment webHostEnvironment, IUserService userService, IDiaryService diaryService)
         {
             _studentService = studentService;
             _webHostEnvironment = webHostEnvironment;
             _userService = userService;
+            _diaryService = diaryService;
         }
         public IActionResult Index()
         {
@@ -60,7 +62,14 @@ namespace Presentation.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            var diaries = _diaryService.GetDiariesWithTeachers();
+
+            var viewModel = new StudentViewModel
+            {
+                Diaries = diaries
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -94,7 +103,7 @@ namespace Presentation.Areas.Admin.Controllers
                 var student = new Student
                 {
                     ParentName= studentViewModel.ParentName,
-                    //DiaryId = studentViewModel.DiaryId,
+                    DiaryId = studentViewModel.DiaryId,
                     Name = studentViewModel.Name,
                     Lastname = studentViewModel.Lastname,
                     Birthday = studentViewModel.Birthday,

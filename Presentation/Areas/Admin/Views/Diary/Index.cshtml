@@ -73,18 +73,19 @@
                                 @foreach (var diary in Model)
                                 {
                                     <tr>
-                                        
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">Lecturer</p>
-                                            <p class="text-xs text-secondary mb-0">@diary.SchoolCode</p>
+
+                                        <td class="">
+                                            <p class="text-xs font-weight-bold m-3">@diary.SchoolCode</p>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm">
-                                                @diary.Year
-                                            </span>
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0">@diary.Year</p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">@diary.Paralel</span>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0">@diary.Class / @diary.Paralel</p>
+                                        </td>
+                                       
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary font-weight-bold text-xs">@diary.Teacher.Name @diary.Teacher.Surname</span>
                                         </td>
                                         <td class="d-flex align-items-center justify-content-center">
                                             <a asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@diary.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">

@@ -10,13 +10,14 @@ namespace SMSystem.Models.Entities
     public class Diary:Base
     {
         public int Id { get; set; }
-        public int SchoolCode { get; set; }
+        public string? SchoolCode { get; set; }
+        public int? Class { get; set; }
         public int? AddressId { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address? Address { get; set; }
-        public int Year { get; set; }
-        public int Paralel { get; set; }
-        public int TeacherId { get; set; }
+        public string? Year { get; set; }
+        public int? Paralel { get; set; }
+        public int? TeacherId { get; set; }
         [ForeignKey("TeacherId")]
         public Teacher Teacher { get; set; }
         public virtual ICollection<Student> Students { get; set; }

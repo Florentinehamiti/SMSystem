@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Interfaces;
 using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,11 @@ namespace SMSystem.App.Implementations
         public Diary GetById(int id)
         {
             return _diaryRepository.GetById(id);
+        }
+
+        public List<Diary> GetDiariesWithTeachers()
+        {
+            return _diaryRepository.GetAllWithTeachers().ToList();
         }
 
         public void Remove(Diary diary)

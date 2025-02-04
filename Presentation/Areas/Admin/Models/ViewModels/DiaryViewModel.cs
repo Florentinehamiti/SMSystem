@@ -8,13 +8,16 @@ namespace Presentation.Areas.Admin.Models.ViewModels
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "School Code is required")]
-        public int? SchoolCode { get; set; }
+        public string? SchoolCode { get; set; }
 
         [Required(ErrorMessage = "Year is required")]
-        public int? Year { get; set; }
+        public string? Year { get; set; }
 
         [Required(ErrorMessage = "Paralel is required")]
         public int? Paralel { get; set; }
+
+        [Required(ErrorMessage = "Class is required")]
+        public int? Class { get; set; }
 
         [Required(ErrorMessage = "Teacher is required")]
         public int? TeacherId { get; set; }
