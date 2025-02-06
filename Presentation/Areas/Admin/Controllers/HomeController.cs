@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SMSystem.App.Constants;
+using SMSystem.App.Interfaces;
 
 namespace Presentation.Areas.Admin.Controllers
 {
@@ -8,21 +9,18 @@ namespace Presentation.Areas.Admin.Controllers
     [Authorize(Roles = AreasConstants.Admin)]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IDashboardService _dashboardService;
+
+        public HomeController(IDashboardService dashboardService)
         {
-            return View();
+            _dashboardService = dashboardService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var dashboardData = await _dashboardService.GetDashboardDataAsync();
+            return View(dashboardData);
         }
 
-        [HttpGet]
-        public IActionResult Staff()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult AddStaff()
-        {
-            return View();
-        }
+     
     }
 }

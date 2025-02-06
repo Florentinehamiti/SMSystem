@@ -78,7 +78,10 @@ namespace Presentation.Areas.Admin.Controllers
                         Year = viewModel.Year,
                         Class = viewModel.Class,
                         Paralel = viewModel.Paralel ?? 0,
-                        TeacherId = viewModel.TeacherId ?? 0
+                        TeacherId = viewModel.TeacherId ?? 0,
+                        InsertedBy = _userService.GetUserId(),
+                        InsertedDate = DateTime.Now,
+
                     };
                     
                     _diaryService.AddDiary(diary);
@@ -117,7 +120,7 @@ namespace Presentation.Areas.Admin.Controllers
                     Class = diary.Class,
                     Paralel = diary.Paralel,
                     TeacherId = diary.TeacherId,
-                    Teachers = teachers 
+                    Teachers = teachers
                 };
 
                 return View(viewModel);
