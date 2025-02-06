@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Areas.Client.Models;
+using SMSystem.App.Constants;
 using System.Diagnostics;
 
 namespace Presentation.Areas.Client
 {
-    [Area("Client")]
-    [Authorize(Roles = "Client")]
+    [Area(AreasConstants.Client)]
+    [Authorize(Roles = AreasConstants.Client)]
     public class HomeController : Controller
     {
         public IActionResult Index()

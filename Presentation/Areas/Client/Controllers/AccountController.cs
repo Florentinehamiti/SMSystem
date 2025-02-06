@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 using Presentation.Areas.Client.Models.AccountViewModels;
+using SMSystem.App.Constants;
 using SMSystem.Data.Identity;
 using System.Security.Claims;
 
@@ -71,13 +73,17 @@ namespace Presentation.Areas.Client
 
                     var roleName = roles.FirstOrDefault();
 
-                    if (roleName == "Admin")
+                    if (roleName == AreasConstants.Admin)
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                        return RedirectToAction("Index", "Home", new { area = AreasConstants.Admin });
                     }
-                    else if (roleName == "Client")
+                    else if (roleName == AreasConstants.Client)
                     {
-                        return RedirectToAction("Index", "Home", new { area = "Client" });
+                        return RedirectToAction("Index", "Home", new { area = AreasConstants.Client });
+                    }
+                    else if (roleName == AreasConstants.Teacher)
+                    {
+                        return RedirectToAction("Index", "Home", new { area = AreasConstants.Teacher });
                     }
 
                     _logger.LogInformation("User logged in.");
