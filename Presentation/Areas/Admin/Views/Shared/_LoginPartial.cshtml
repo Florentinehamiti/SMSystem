@@ -54,12 +54,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" asp-action="Logout" asp-controller="Account" asp-area="Client">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">logout</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Log Out</span>
-                </a>
+                <form asp-action="Logout" asp-controller="Account" asp-area="Client" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="nav-link text-white" style="background: none; border: none;">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">logout</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Log Out</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>
