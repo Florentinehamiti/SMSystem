@@ -3,6 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="container-fluid py-4">
     @if (TempData["SuccessMessage"] != null)
     {
@@ -24,7 +25,7 @@
         </div>
     }
 
-     @if (TempData["ErrorMessage"] != null)
+    @if (TempData["ErrorMessage"] != null)
     {
         <div class="toast fade p-2 mt-2 bg-white show" role="alert" aria-live="assertive" id="dangerToast" aria-atomic="true">
             <div class="toast-header border-0">
@@ -40,21 +41,26 @@
                 @TempData["ErrorMessage"]
             </div>
         </div>
-    
+
     }
+    <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
+        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
+        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
+    </div>
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
+               
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                         <h6 class="text-white text-capitalize ps-3">Teachers</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">  
+                    <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
                             <h6>All teachers</h6>
-                            <a asp-action="Create" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-primary"><i class="fa fa-plus d-inline" style="font-size:12px"></i> Add new</a>
+                            <a asp-action="Create" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-primary">+ Add new</a>
                         </div>
                         <table class="table align-items-center mb-0">
 
@@ -130,12 +136,12 @@
                                     </div>
                                 }
 
-                                
+
 
                             </tbody>
                         </table>
 
-                       
+
 
                     </div>
                 </div>
@@ -146,19 +152,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
         asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
         asp-fallback-test="window.jQuery"
-        crossorigin="anonymous"
-        >
+        crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"
         asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
         asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-        crossorigin="anonymous"
-      >
+        crossorigin="anonymous">
 </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
     $(document).on('click', '.delete-button', function () {
         const teacherId = $(this).data('id');
         $('#deleteTeacherId').val(teacherId);
+    });
+
+    document.getElementById('exportPdf').addEventListener('click', function () {
+        const doc = new jspdf.jsPDF();
+        doc.autoTable({
+            html: '.table',
+            theme: 'grid',
+            headStyles: { fillColor: [41, 128, 185] },
+            styles: { fontSize: 10, cellPadding: 2 },
+            margin: { top: 10 },
+        });
+        doc.save('Teachers.pdf');
+    });
+
+
+    document.getElementById('exportExcel').addEventListener('click', function () {
+        const table = document.querySelector('.table');
+        const workbook = XLSX.utils.table_to_book(table, { sheet: 'Teachers' });
+        XLSX.writeFile(workbook, 'Teachers.xlsx');
     });
 </script>
 
