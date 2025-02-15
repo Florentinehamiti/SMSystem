@@ -14,12 +14,14 @@ namespace Presentation.Areas.Admin.Controllers
     public class SubjectsController : Controller
     {
         private readonly ISubjectsService _subjectsService;
+        private readonly IClassService _classService;
         private readonly IUserService _userService;
 
-        public SubjectsController(ISubjectsService subjectsService, IUserService userService)
+        public SubjectsController(ISubjectsService subjectsService, IUserService userService, IClassService classService)
         {
             this._subjectsService = subjectsService;
             _userService = userService;
+            _classService = classService;
         }
         public IActionResult Index()
         {
@@ -38,20 +40,36 @@ namespace Presentation.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult AddSubject()
         {
-            return View();
+            var classes = _classService.GetAllClasses();
+
+            var viewModel = new SubjectViewModel
+            {
+                Classes = classes
+            };
+            return View(viewModel);
         }
         [HttpPost]
-        public IActionResult AddSubject(Subject subject)
+        public IActionResult AddSubject(SubjectViewModel subjectVM)
         {
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("","Please check the data entered");
-                return View(subject);
+                return View(subjectVM);
             }
 
-            subject.InsertedDate = DateTime.Now;
-            subject.LUD = DateTime.Now;
-            subject.InsertedBy = _userService.GetUserId();
+            var subject = new Subject
+            {
+                Name = subjectVM.Name,
+                BookName = subjectVM.BookName,
+                Author = subjectVM.Author,
+                PublicationYear = subjectVM.PublicationYear,
+                ClassId = subjectVM.ClassId ?? 0,
+                InsertedDate = DateTime.Now,
+                LUD = DateTime.Now,
+                InsertedBy = _userService.GetUserId(),
+            };
+
+          
             _subjectsService.AddSubject(subject);
 
             return RedirectToAction("Index");
@@ -69,7 +87,19 @@ namespace Presentation.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                return View(subject);
+                var classes = _classService.GetAllClasses();
+
+                var viewModel = new SubjectViewModel
+                {
+                    Id = subject.Id,
+                    Name = subject.Name,
+                    BookName = subject.BookName,
+                    Author = subject.Author,
+                    PublicationYear = subject.PublicationYear,
+                    ClassId = subject.ClassId,
+                    Classes = classes,
+                };
+                return View(viewModel);
             }
             catch (Exception ex)
             {
@@ -78,7 +108,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Subject subject)
+        public async Task<IActionResult> Edit(SubjectViewModel subject)
         {
             if (ModelState.IsValid)
             {
@@ -96,6 +126,7 @@ namespace Presentation.Areas.Admin.Controllers
                     existingSubject.BookName = subject.BookName;
                     existingSubject.Author = subject.Author;
                     existingSubject.PublicationYear = subject.PublicationYear;
+                    existingSubject.ClassId = subject.ClassId;
                     existingSubject.LUB = _userService.GetUserId();
                     existingSubject.LUD = DateTime.Now;
                     existingSubject.LUN = existingSubject.LUN + 1;

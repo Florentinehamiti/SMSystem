@@ -238,8 +238,8 @@ namespace Presentation.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
-            var teacher = _studentService.GetById(id);
-            if (teacher == null)
+            var student = _studentService.GetById(id);
+            if (student == null)
             {
                 TempData["ErrorMessage"] = "Student could not be found.";
                 return RedirectToAction("Index");
@@ -247,7 +247,18 @@ namespace Presentation.Areas.Admin.Controllers
 
             try
             {
-                _studentService.Remove(teacher);
+                if (!string.IsNullOrEmpty(student.ProfilePhotoPath))
+                {
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "Images", student.ProfilePhotoPath);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+
+              
+                _studentService.Remove(student);
+
                 TempData["SuccessMessage"] = "Student was successfully deleted.";
             }
             catch (Exception ex)

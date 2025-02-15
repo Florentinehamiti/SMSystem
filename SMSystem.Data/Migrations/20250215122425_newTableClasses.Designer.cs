@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSystem.Data.Context;
 
@@ -11,9 +12,11 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250215122425_newTableClasses")]
+    partial class newTableClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -352,7 +355,7 @@ namespace SMSystem.Data.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClassId")
+                    b.Property<int?>("Class")
                         .HasColumnType("int");
 
                     b.Property<string>("InsertedBy")
@@ -385,8 +388,6 @@ namespace SMSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("ClassId");
 
                     b.HasIndex("TeacherId");
 
@@ -630,9 +631,6 @@ namespace SMSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ClassId")
-                        .HasColumnType("int");
-
                     b.Property<string>("InsertedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -656,8 +654,6 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
 
                     b.ToTable("Subjects");
                 });
@@ -796,17 +792,11 @@ namespace SMSystem.Data.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("SMSystem.Models.Entities.Classes", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
                     b.HasOne("SMSystem.Models.Entities.Teacher", "Teacher")
                         .WithMany()
                         .HasForeignKey("TeacherId");
 
                     b.Navigation("Address");
-
-                    b.Navigation("Class");
 
                     b.Navigation("Teacher");
                 });
@@ -902,15 +892,6 @@ namespace SMSystem.Data.Migrations
                         .HasForeignKey("DiaryId");
 
                     b.Navigation("Diary");
-                });
-
-            modelBuilder.Entity("SMSystem.Models.Entities.Subject", b =>
-                {
-                    b.HasOne("SMSystem.Models.Entities.Classes", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
-                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("SMSystem.Models.Entities.AspNetRole", b =>

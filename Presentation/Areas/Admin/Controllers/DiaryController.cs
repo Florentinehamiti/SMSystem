@@ -13,16 +13,18 @@ namespace Presentation.Areas.Admin.Controllers
     public class DiaryController : Controller
     {
         private readonly IDiaryService _diaryService;
+        private readonly IClassService _classService;
         private readonly ITeacherService _teacherService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IUserService _userService;
 
-        public DiaryController(IDiaryService diaryService, IWebHostEnvironment webHostEnvironment, IUserService userService, ITeacherService teacherService)
+        public DiaryController(IDiaryService diaryService, IWebHostEnvironment webHostEnvironment, IUserService userService, ITeacherService teacherService, IClassService classService)
         {
             _diaryService = diaryService;
             _teacherService = teacherService;
             _webHostEnvironment = webHostEnvironment;
             _userService = userService;
+            _classService = classService;
         }
         
         public IActionResult Index()
@@ -36,7 +38,8 @@ namespace Presentation.Areas.Admin.Controllers
                     Id = d.Id,
                     SchoolCode = d.SchoolCode,
                     Year = d.Year,
-                    Class = d.Class,
+                    ClassId = d.ClassId,
+                    Class = d.ClassId.HasValue ? _classService.GetById(d.ClassId.Value): null,
                     Paralel = d.Paralel,
                     TeacherId = d.TeacherId,
                     Teacher = d.TeacherId.HasValue ? _teacherService.GetById(d.TeacherId.Value) : null,
@@ -55,10 +58,12 @@ namespace Presentation.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var teachers = _teacherService.GetAllTeachers();
+            var classes = _classService.GetAllClasses();
 
             var viewModel = new DiaryViewModel
             {
-                Teachers = teachers
+                Teachers = teachers,
+                Classes = classes
             };
 
             return View(viewModel);
@@ -76,7 +81,7 @@ namespace Presentation.Areas.Admin.Controllers
                     {
                         SchoolCode = viewModel.SchoolCode, 
                         Year = viewModel.Year,
-                        Class = viewModel.Class,
+                        ClassId = viewModel.ClassId ?? 0,
                         Paralel = viewModel.Paralel ?? 0,
                         TeacherId = viewModel.TeacherId ?? 0,
                         InsertedBy = _userService.GetUserId(),
@@ -111,13 +116,15 @@ namespace Presentation.Areas.Admin.Controllers
                 }
 
                 var teachers = _teacherService.GetAllTeachers();
+                var classes = _classService.GetAllClasses();
 
                 var viewModel = new DiaryViewModel
                 {
                     Id = diary.Id,
                     SchoolCode = diary.SchoolCode,
                     Year = diary.Year,
-                    Class = diary.Class,
+                    ClassId = diary.ClassId ?? 0,
+                    Classes = classes,
                     Paralel = diary.Paralel,
                     TeacherId = diary.TeacherId,
                     Teachers = teachers
@@ -147,7 +154,7 @@ namespace Presentation.Areas.Admin.Controllers
 
                     existingDiary.SchoolCode = diary.SchoolCode;
                     existingDiary.Year = diary.Year;
-                    existingDiary.Class = diary.Class;
+                    existingDiary.ClassId = diary.ClassId;
                     existingDiary.Paralel = diary.Paralel;
                     existingDiary.TeacherId = diary.TeacherId;
                     existingDiary.LUB = _userService.GetUserId();

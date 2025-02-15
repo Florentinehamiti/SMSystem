@@ -35,6 +35,7 @@ namespace SMSystem.Data.Context
         public virtual DbSet<Evaluation> Evaluations { get; set; } = null!;
         public virtual DbSet<Remark> Remarks { get; set; } = null!;
         public virtual DbSet<RemarkStudent> RemarkStudents { get; set; } = null!;
+        public virtual DbSet<Classes> Classes { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

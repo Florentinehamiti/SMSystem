@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSystem.Data.Context;
 
@@ -11,9 +12,11 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250215130429_changeClassToClassIdInDiary")]
+    partial class changeClassToClassIdInDiary
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -630,9 +633,6 @@ namespace SMSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ClassId")
-                        .HasColumnType("int");
-
                     b.Property<string>("InsertedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -656,8 +656,6 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
 
                     b.ToTable("Subjects");
                 });
@@ -902,15 +900,6 @@ namespace SMSystem.Data.Migrations
                         .HasForeignKey("DiaryId");
 
                     b.Navigation("Diary");
-                });
-
-            modelBuilder.Entity("SMSystem.Models.Entities.Subject", b =>
-                {
-                    b.HasOne("SMSystem.Models.Entities.Classes", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
-                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("SMSystem.Models.Entities.AspNetRole", b =>

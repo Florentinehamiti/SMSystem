@@ -120,5 +120,22 @@ namespace SMSystem.App.Implementations
                 return "";
             }
         }
+
+        public async Task<IdentityResult> CreateUserAsync(ApplicationUser user, string password)
+        {
+            return await _userManager.CreateAsync(user, password);
+        }
+
+        public async Task<IdentityResult> AddToRoleAsync(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                throw new ArgumentException("User not found.");
+            }
+
+            return await _userManager.AddToRoleAsync(user, role);
+        }
     }
 }

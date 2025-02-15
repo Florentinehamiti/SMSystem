@@ -11,7 +11,9 @@ namespace SMSystem.Models.Entities
     {
         public int Id { get; set; }
         public string? SchoolCode { get; set; }
-        public int? Class { get; set; }
+        public int? ClassId { get; set; }
+        [ForeignKey("ClassId")]
+        public Classes Class { get; set; }
         public int? AddressId { get; set; }
         [ForeignKey("AddressId")]
         public virtual Address? Address { get; set; }

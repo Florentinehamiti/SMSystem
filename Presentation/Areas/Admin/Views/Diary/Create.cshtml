@@ -22,9 +22,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Class" class="form-label font-weight-bold">Class</label>
-                    <input asp-for="Class" placeholder="Class" type="number" class="form-control border px-2" />
-                    <span asp-validation-for="Class" class="text-danger"></span>
+                    <label asp-for="ClassId" class="form-label font-weight-bold">Class</label>
+                    <select asp-for="ClassId" asp-items="@(new SelectList(Model.Classes.Select(c => new { c.Id, FullName =  c.ClassNumber}), "Id", "FullName"))" class="form-control border px-2">
+                        <option value="">Select class</option>
+                    </select>
+                    <span asp-validation-for="ClassId" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">

@@ -16,13 +16,13 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         [Required(ErrorMessage = "Paralel is required")]
         public int? Paralel { get; set; }
 
-        [Required(ErrorMessage = "Class is required")]
-        public int? Class { get; set; }
-
         [Required(ErrorMessage = "Teacher is required")]
         public int? TeacherId { get; set; }
         public Teacher? Teacher { get; set; }
         public IEnumerable<Teacher>? Teachers { get; set; }
+        public int? ClassId { get; set; }
+        public Classes? Class { get; set; }
+        public IEnumerable<Classes>? Classes { get; set; }
         public string? InsertedBy { get; set; } = null;
         public DateTime? InsertedDate { get; set; }
         public string? LUB { get; set; } = null;

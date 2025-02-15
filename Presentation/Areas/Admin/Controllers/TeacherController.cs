@@ -219,7 +219,18 @@ namespace Presentation.Areas.Admin.Controllers
 
             try
             {
+               
+                if (!string.IsNullOrEmpty(teacher.ProfilePhotoPath))
+                {
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "Images", teacher.ProfilePhotoPath);
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+             
                 _teacherService.Remove(teacher);
+
                 TempData["SuccessMessage"] = "The teacher was successfully deleted.";
             }
             catch (Exception ex)

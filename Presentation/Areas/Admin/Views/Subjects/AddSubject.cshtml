@@ -1,4 +1,4 @@
-﻿@model Subject
+﻿@model SubjectViewModel
 <div class="container-fluid px-4 py-4">
 
     @if (!ViewData.ModelState.IsValid)
@@ -16,7 +16,15 @@
                     <input asp-for="Name" type="text" class="form-control border px-2" placeholder="Subject title">
                 </div>
             </div>
-
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="ClassId" class="form-label font-weight-bold">Class</label>
+                    <select asp-for="ClassId" asp-items="@(new SelectList(Model.Classes.Select(c => new { c.Id, FullName =  c.ClassNumber}), "Id", "FullName"))" class="form-control border px-2">
+                        <option value="">Select class</option>
+                    </select>
+                    <span asp-validation-for="ClassId" class="text-danger"></span>
+                </div>
+            </div>
         </div>
         <h6 class="mt-2">Book details</h6>
         <div class="row">
