@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
 using SMSystem.Models.Entities;
 using System;

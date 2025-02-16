@@ -60,6 +60,7 @@ namespace Presentation.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TeacherViewModel teacherViewModel)
         {
+
             if (ModelState.IsValid)
             {
                 string photoPath = null;
@@ -81,7 +82,6 @@ namespace Presentation.Areas.Admin.Controllers
                         await teacherViewModel.ProfilePhoto.CopyToAsync(fileStream);
                     }
 
-       
                     photoPath = fileName;
                 }
 
@@ -92,12 +92,30 @@ namespace Presentation.Areas.Admin.Controllers
                     Birthday = teacherViewModel.Birthday,
                     Email = teacherViewModel.Email,
                     Qualified = teacherViewModel.Qualified,
-                    ProfilePhotoPath = photoPath, 
+                    ProfilePhotoPath = photoPath,
                     InsertedBy = _userService.GetUserId(),
                     InsertedDate = DateTime.Now
                 };
 
                 _teacherService.AddTeacher(teacher);
+
+                var defaultPassword = "Password123!"; 
+                var result = await _userService.CreateUserForEntityAsync(
+                    teacher.Email,
+                    teacher.Name,
+                    teacher.Surname,
+                    AreasConstants.Teacher,
+                    defaultPassword
+                );
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(teacherViewModel);
+                }
 
                 return RedirectToAction(nameof(Index));
             }

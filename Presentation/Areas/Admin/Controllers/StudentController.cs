@@ -96,13 +96,12 @@ namespace Presentation.Areas.Admin.Controllers
                         await studentViewModel.ProfilePhoto.CopyToAsync(fileStream);
                     }
 
-
                     photoPath = fileName;
                 }
 
                 var student = new Student
                 {
-                    ParentName= studentViewModel.ParentName,
+                    ParentName = studentViewModel.ParentName,
                     DiaryId = studentViewModel.DiaryId,
                     Name = studentViewModel.Name,
                     Lastname = studentViewModel.Lastname,
@@ -110,13 +109,31 @@ namespace Presentation.Areas.Admin.Controllers
                     Email = studentViewModel.Email,
                     Tel = studentViewModel.Tel,
                     Gender = studentViewModel.Gender,
-                    //AddressId = studentViewModel.AddressId,
                     ProfilePhotoPath = photoPath,
                     InsertedBy = _userService.GetUserId(),
                     InsertedDate = DateTime.Now
                 };
 
                 _studentService.AddStudent(student);
+
+            
+                var defaultPassword = "Password123!";
+                var result = await _userService.CreateUserForEntityAsync(
+                    student.Email,
+                    student.Name,
+                    student.Lastname,
+                    AreasConstants.Client, 
+                    defaultPassword
+                );
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(studentViewModel);
+                }
 
                 return RedirectToAction(nameof(Index));
             }

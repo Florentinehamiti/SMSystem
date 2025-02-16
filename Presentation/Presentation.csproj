@@ -31,8 +31,4 @@
     <ProjectReference Include="..\SMSystem.Data\SMSystem.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Educator\Models\" />
-  </ItemGroup>
-
 </Project>

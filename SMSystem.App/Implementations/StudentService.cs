@@ -27,6 +27,11 @@ namespace SMSystem.App.Implementations
             return _studentRepository.GetAll();
         }
 
+        public IEnumerable<Student> GetAllStudentsForDiary(int id)
+        {
+            return _studentRepository.GetStudentsByDiaryId(id);
+        }
+
         public Student GetById(int id)
         {
             return _studentRepository.GetById(id);

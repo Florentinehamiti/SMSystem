@@ -9,5 +9,6 @@ namespace SMSystem.App.Interfaces
 {
     public interface IStudentRepository : IRepository<Student>
     {
+        IEnumerable<Student> GetStudentsByDiaryId(int id);
     }
 }

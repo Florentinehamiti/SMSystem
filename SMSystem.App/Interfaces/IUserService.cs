@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using SMSystem.Data.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +16,7 @@ namespace SMSystem.App.Interfaces
         string GetUserPhoneNumber();
         string GetUserRole();
         string GetFullName();
+        Task<ApplicationUser?> GetUserByEmail(string userEmail);
+        Task<IdentityResult> CreateUserForEntityAsync(string email, string firstName, string lastName, string roleName, string defaultPassword);
     }
 }

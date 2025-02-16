@@ -88,11 +88,11 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">Lecturer</p>
+                                            <p class="text-xs font-weight-bold mb-0">Student</p>
                                             <p class="text-xs text-secondary mb-0">@student.Email</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm @(student.Gender.GetValueOrDefault() ? "bg-gradient-success" : "bg-gradient-secondary")">
+                                            <span class="badge badge-sm @(student.Gender.GetValueOrDefault() ? "bg-gradient-info" : "bg-gradient-primary")">
                                                 @(student.Gender.HasValue ? (student.Gender.Value ? "Male" : "Female") : "Not Set")
                                             </span>
                                         </td>

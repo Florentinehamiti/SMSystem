@@ -14,5 +14,7 @@ namespace SMSystem.App.Interfaces
         Student GetById(int id);
         void Update(Student student);
         void Remove(Student student);
+        IEnumerable<Student> GetAllStudentsForDiary(int id);
+
     }
 }

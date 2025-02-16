@@ -17,5 +17,10 @@ namespace SMSystem.App.Implementations
 
             _context = context;
         }
+
+        public IEnumerable<Student> GetStudentsByDiaryId(int id)
+        {
+            return _context.Students.Where(x => x.DiaryId == id).ToList();
+        }
     }
 }

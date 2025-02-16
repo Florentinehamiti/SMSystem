@@ -12,7 +12,7 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         public int PublicationYear { get; set; }
         public int? ClassId { get; set; }
         [ForeignKey("ClassId")]
-        public Classes Class { get; set; }
-        public IEnumerable<Classes> Classes { get; set; }
+        public Classes? Class { get; set; }
+        public IEnumerable<Classes>? Classes { get; set; }
     }
 }

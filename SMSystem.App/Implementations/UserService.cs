@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace SMSystem.App.Implementations
 {
@@ -136,6 +137,30 @@ namespace SMSystem.App.Implementations
             }
 
             return await _userManager.AddToRoleAsync(user, role);
+        }
+
+        public async Task<IdentityResult> CreateUserForEntityAsync(string email, string firstName, string lastName, string roleName, string defaultPassword)
+        {
+            var user = new ApplicationUser
+            {
+                UserName = email,
+                Email = email,
+                EmailConfirmed = true
+            };
+
+            var result = await _userManager.CreateAsync(user, defaultPassword);
+
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, roleName);
+            }
+
+            return result;
+        }
+
+        public async Task<ApplicationUser?> GetUserByEmail(string userEmail)
+        {
+            return await _userManager.Users.FirstOrDefaultAsync(u => u.Email == userEmail);
         }
     }
 }

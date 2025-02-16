@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Areas.Educator.Models.ViewModels;
 using SMSystem.App.Constants;
+using SMSystem.App.Interfaces;
 
 namespace Presentation.Areas.Educator.Controllers
 {
@@ -8,9 +10,25 @@ namespace Presentation.Areas.Educator.Controllers
     [Authorize(Roles = AreasConstants.Teacher)]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ITeacherDashboardService _teacherDashboardService;
+
+        public HomeController(ITeacherDashboardService teacherDashboardService)
         {
-            return View();
+            _teacherDashboardService = teacherDashboardService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var teacherEmail = User.Identity.Name; 
+            var subjects = await _teacherDashboardService.GetSubjectsForLoggedTeacherAsync(teacherEmail);
+            var diary = await _teacherDashboardService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
+
+            var dashboard = new DashboardTeacherViewModel
+            {
+                DiaryId = diary.Id,
+                Subjects = subjects,
+
+            };
+            return View(dashboard);
         }
     }
 }
