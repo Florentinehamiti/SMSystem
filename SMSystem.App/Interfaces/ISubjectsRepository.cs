@@ -9,5 +9,6 @@ namespace SMSystem.App.Interfaces
 {
     public interface ISubjectsRepository: IRepository<Subject>
     {
+        IEnumerable<Subject> GetSubjectsByClassId(int? id);
     }
 }

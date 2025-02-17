@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse  w-auto h-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="nav-link dashboard-link text-white @(currentController == "Home" ? "active bg-gradient-primary" : "")">
+                <a asp-action="Index" asp-controller="Home" asp-area="Educator" class="nav-link dashboard-link text-white @(currentController == "Home" ? "active bg-gradient-primary" : "")">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -26,11 +26,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a asp-action="Index" asp-controller="Teacher" asp-area="Admin" class="nav-link teachers-link text-white @(currentController == "Teacher" ? "active bg-gradient-primary" : "")">
+                <a asp-action="Index" asp-controller="SchoolHour" asp-area="Educator" class="nav-link teachers-link text-white @(currentController == "SchoolHour" ? "active bg-gradient-primary" : "")">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">school</i>
                     </div>
-                    <span class="nav-link-text ms-1">Teachers</span>
+                    <span class="nav-link-text ms-1">Ora mesimore</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -38,7 +38,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">menu_book</i>
                     </div>
-                    <span class="nav-link-text ms-1">Diaries</span>
+                    <span class="nav-link-text ms-1">Vleresimit</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -46,7 +46,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">stacked_bar_chart</i>
                     </div>
-                    <span class="nav-link-text ms-1">Courses</span>
+                    <span class="nav-link-text ms-1">Verejtjet</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -54,7 +54,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">school</i>
                     </div>
-                    <span class="nav-link-text ms-1">Students</span>
+                    <span class="nav-link-text ms-1">Mungesat</span>
                 </a>
             </li>
             <li class="nav-item">

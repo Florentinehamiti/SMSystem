@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SMSystem.App.Interfaces
 {
-    public interface ITeacherRepository: IRepository<Teacher>
+    public interface ISchoolHourRepository : IRepository<SchoolHour>
     {
-        Teacher GetByEmail(string email);
-
+        IEnumerable<SchoolHour> GetAllSchoolHoursByDiaryIdAndTeacherId(int diaryId, int teacherId);
     }
 }

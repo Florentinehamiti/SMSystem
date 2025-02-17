@@ -17,5 +17,10 @@ namespace SMSystem.App.Implementations
 
             _context = context;
         }
+
+        public IEnumerable<Subject> GetSubjectsByClassId(int? id)
+        {
+            return _context.Subjects.Where(x => x.ClassId == id).ToList();
+        }
     }
 }

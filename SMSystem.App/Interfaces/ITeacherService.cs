@@ -14,5 +14,7 @@ namespace SMSystem.App.Interfaces
         Teacher GetById(int id);
         void Update(Teacher teacher);
         void Remove(Teacher teacher);
+        Teacher GetByEmail(string email);
+
     }
 }

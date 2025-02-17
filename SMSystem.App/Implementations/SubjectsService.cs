@@ -35,5 +35,9 @@ namespace SMSystem.App.Implementations
             _subjectsRepository.Remove(subject);
         }
 
+        public IEnumerable<Subject> GetSubjectsByClassId(int? classId)
+        {
+            return _subjectsRepository.GetSubjectsByClassId(classId);
+        }
     }
 }

@@ -9,6 +9,14 @@ namespace SMSystem.App.Interfaces
 {
     public interface IEvaluationService
     {
+        void AddEvaluation(Evaluation evaluation);
+        IEnumerable<Evaluation> GetAllEvaluations();
+        Evaluation GetById(int id);
+        void Update(Evaluation evaluation);
+        void Remove(Evaluation evaluation);
+        IEnumerable<Evaluation> GetAllEvaluationsForDiary(int id);
         IEnumerable<Evaluation> GetAllEvaluationsForSubjectAndDiary(int subjectId, int diaryId);
+        Evaluation GetEvaluationForStudentInSubject(int subjectId, int studentId);
+
     }
 }

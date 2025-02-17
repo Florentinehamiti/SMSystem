@@ -17,5 +17,10 @@ namespace SMSystem.App.Implementations
         
             _context = context;
         }
+
+        public Teacher GetByEmail(string email)
+        {
+            return _context.Teachers.Where(x => x.Email == email).FirstOrDefault();
+        }
     }
 }

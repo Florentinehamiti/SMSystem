@@ -21,5 +21,7 @@ namespace SMSystem.Models.Entities
         public int DiaryId { get; set; }
         [ForeignKey("DiaryId")]
         public virtual Diary Diary { get; set; }
+        public string SchoolHourDescribe { get; set; }
+
     }
 }

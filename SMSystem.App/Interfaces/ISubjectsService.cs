@@ -14,5 +14,6 @@ namespace SMSystem.App.Interfaces
         Subject GetById(int id);
         void Update(Subject subject);
         void Remove(Subject subject);
+        IEnumerable<Subject> GetSubjectsByClassId(int? classId);
     }
 }

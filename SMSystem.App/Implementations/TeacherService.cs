@@ -34,6 +34,11 @@ namespace SMSystem.App.Implementations
             return _teacherRepository.GetById(id);
         }
 
+        public Teacher GetByEmail(string email)
+        {
+            return _teacherRepository.GetByEmail(email);
+        }
+
         public void Update(Teacher teacher)
         {
             _teacherRepository.Update(teacher);

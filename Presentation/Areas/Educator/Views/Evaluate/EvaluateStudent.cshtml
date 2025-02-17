@@ -1,24 +1,33 @@
 ﻿@model EvaluateStudentViewModel
 
 <div class="container-fluid px-4 py-4">
+    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 mb-5">
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+            <h6 class="text-white text-capitalize ps-3">@Model.SubjectName</h6>
+        </div>
+    </div>
     <form class="px-3" asp-action="EvaluateStudent" asp-controller="Evaluate" asp-area="Educator">
+        <input type="hidden" asp-for="EvaluationId" />
+        <input type="hidden" asp-for="DiaryId" />
+        <input type="hidden" asp-for="SubjectId" />
+        <input type="hidden" asp-for="StudentId" />
 
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
                     <label asp-for="StudentName" class="form-label font-weight-bold">Name</label>
-                    <input asp-for="StudentName" placeholder="Name" type="text" class="form-control border px-2" />
+                    <input asp-for="StudentName" placeholder="Name" type="text" class="form-control border px-2" readonly />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
                     <label asp-for="GradeValue" class="form-label font-weight-bold">Grade</label>
-                    <input asp-for="GradeValue" placeholder="Grade" type="text" class="form-control border px-2" />
+                    <input asp-for="GradeValue" placeholder="Grade" type="text" class="form-control border px-2" value="@(Model.GradeValue > 0 ? Model.GradeValue.ToString() : "")" />
                 </div>
             </div>
         </div>
 
-        <div class="d-flex justify-content-end gap-2">
+        <div class="d-flex justify-content-end gap-2 mt-5">
             <a asp-action="Index" asp-controller="Subject" asp-area="Educator" asp-route-diaryId="@Model.DiaryId" asp-route-subjectId="@Model.SubjectId"  type="button" class="btn btn-outline-secondary">Back</a>
             <button type="submit" class="btn btn-outline-primary">Save</button>
         </div>

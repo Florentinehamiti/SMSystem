@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace SMSystem.App.Interfaces
 {
-    public interface IEvaluationRepository
+    public interface IEvaluationRepository: IRepository<Evaluation>
     {
         IEnumerable<Evaluation> GetEvaluationsBySubjectIdAndDiaryId(int subjectId, int diaryId);
+        Evaluation GetEvaluationForStudentInSubject(int subjectId, int studentId);
+        IEnumerable<Evaluation> GetAllEvaluationsForDiary(int diaryId);
+
     }
 }

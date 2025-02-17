@@ -1,0 +1,53 @@
+﻿@model SchoolHourViewModel
+
+<div class="container-fluid px-4 py-4">
+    <form class="px-3" asp-action="Create" asp-controller="SchoolHour" asp-area="Educator">
+        
+        <input type="hidden" asp-for="DiaryId" />
+        <input type="hidden" asp-for="TeacherId" />
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="HourNumber" class="form-label font-weight-bold">Numri i ores</label>
+                    <input asp-for="HourNumber" placeholder="Numri i ores" type="number" class="form-control border px-2" value="@(Model.HourNumber > 0 ? Model.HourNumber.ToString() : "")" />
+                    <span asp-validation-for="HourNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="Date" class="form-label font-weight-bold">Koha e mbajtjes se ores mesimore</label>
+                    <input asp-for="Date" placeholder="Paralel" type="datetime" readonly class="form-control border px-2" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 mb-5">
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="SubjectId" class="form-label font-weight-bold">Lenda</label>
+                    <select asp-for="SubjectId" asp-items="@(new SelectList(Model.Subjects.Select(t => new { t.Id, FullName = t.Name }), "Id", "FullName"))" class="form-control border px-2">
+                        <option value="">Select Subject</option>
+                    </select>
+                    <span asp-validation-for="SubjectId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="SchoolHourDescribe" class="form-label font-weight-bold">Përshkrimi i orës mësimore</label>
+                    <textarea asp-for="SchoolHourDescribe" placeholder="Shkruaj përshkrimin e orës mësimore..." class="form-control border px-2" rows="4"></textarea>
+                    <span asp-validation-for="SchoolHourDescribe" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="d-flex justify-content-end gap-2">
+            <a asp-action="Index" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-outline-secondary">Back</a>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+        </div>
+    </form>
+</div>

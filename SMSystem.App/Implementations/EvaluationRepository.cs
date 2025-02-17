@@ -21,6 +21,16 @@ namespace SMSystem.App.Implementations
         {
             return _context.Evaluations.Where(x => x.SubjectId == subjectId && x.DiaryId == diaryId).ToList();
         }
+
+        public Evaluation GetEvaluationForStudentInSubject(int subjectId, int studentId)
+        {
+            return _context.Evaluations.Where(x => x.SubjectId == subjectId && x.StudentId == studentId).FirstOrDefault();
+        }
+
+        public IEnumerable<Evaluation> GetAllEvaluationsForDiary(int diaryId)
+        {
+            return _context.Evaluations.Where(x => x.DiaryId == diaryId).ToList();
+        }
     }
 }
 
