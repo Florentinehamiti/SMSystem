@@ -41,6 +41,10 @@ builder.Services.AddScoped<IClassRepository, ClassRepository>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<ITeacherDashboardRepository, TeacherDashboardRepository>();
 builder.Services.AddScoped<ITeacherDashboardService, TeacherDashboardService>();
+builder.Services.AddScoped<IAbsenceService, AbsenceService>();
+builder.Services.AddScoped<IAbsenceRepository, AbsenceRepository>();
+builder.Services.AddScoped<IEvaluationRepository, EvaluationRepository>();
+builder.Services.AddScoped<IEvaluationService, EvaluationService>();
 
 
 

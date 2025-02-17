@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMSystem.Data.Context;
 
@@ -11,9 +12,11 @@ using SMSystem.Data.Context;
 namespace SMSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250216234819_changesForAbsenceAndSubjectRelation")]
+    partial class changesForAbsenceAndSubjectRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,9 +61,6 @@ namespace SMSystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DiaryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("InsertedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -89,8 +89,6 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DiaryId");
 
                     b.HasIndex("SchoolHourId");
 
@@ -411,9 +409,6 @@ namespace SMSystem.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DiaryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("InsertedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -439,8 +434,6 @@ namespace SMSystem.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DiaryId");
 
                     b.HasIndex("StudentId");
 
@@ -744,12 +737,6 @@ namespace SMSystem.Data.Migrations
 
             modelBuilder.Entity("SMSystem.Models.Entities.Absence", b =>
                 {
-                    b.HasOne("SMSystem.Models.Entities.Diary", "Diary")
-                        .WithMany()
-                        .HasForeignKey("DiaryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SMSystem.Models.Entities.SchoolHour", "SchoolHour")
                         .WithMany()
                         .HasForeignKey("SchoolHourId")
@@ -767,8 +754,6 @@ namespace SMSystem.Data.Migrations
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Diary");
 
                     b.Navigation("SchoolHour");
 
@@ -844,12 +829,6 @@ namespace SMSystem.Data.Migrations
 
             modelBuilder.Entity("SMSystem.Models.Entities.Evaluation", b =>
                 {
-                    b.HasOne("SMSystem.Models.Entities.Diary", "Diary")
-                        .WithMany()
-                        .HasForeignKey("DiaryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SMSystem.Models.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
@@ -861,8 +840,6 @@ namespace SMSystem.Data.Migrations
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Diary");
 
                     b.Navigation("Student");
 

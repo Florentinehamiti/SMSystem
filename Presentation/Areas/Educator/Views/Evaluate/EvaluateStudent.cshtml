@@ -1,0 +1,26 @@
+﻿@model EvaluateStudentViewModel
+
+<div class="container-fluid px-4 py-4">
+    <form class="px-3" asp-action="EvaluateStudent" asp-controller="Evaluate" asp-area="Educator">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="StudentName" class="form-label font-weight-bold">Name</label>
+                    <input asp-for="StudentName" placeholder="Name" type="text" class="form-control border px-2" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="GradeValue" class="form-label font-weight-bold">Grade</label>
+                    <input asp-for="GradeValue" placeholder="Grade" type="text" class="form-control border px-2" />
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+            <a asp-action="Index" asp-controller="Subject" asp-area="Educator" asp-route-diaryId="@Model.DiaryId" asp-route-subjectId="@Model.SubjectId"  type="button" class="btn btn-outline-secondary">Back</a>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+        </div>
+    </form>
+</div>
