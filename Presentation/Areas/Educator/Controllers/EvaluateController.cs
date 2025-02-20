@@ -14,16 +14,32 @@ namespace Presentation.Areas.Educator.Controllers
         private readonly IStudentService _studentService;
         private readonly IEvaluationService _evaluationService;
         private readonly ISubjectsService _subjectService;
+        private readonly ITeacherService _teacherService;
 
-        public EvaluateController(IStudentService studentService, IEvaluationService evaluationService, ISubjectsService subjectService)
+        public EvaluateController(IStudentService studentService, IEvaluationService evaluationService, ISubjectsService subjectService, ITeacherService teacherService)
         {
             _studentService = studentService;
             _evaluationService = evaluationService;
             _subjectService = subjectService;
+            _teacherService = teacherService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var teacherEmail = User.Identity.Name;
+            var diary = await _teacherService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
+
+            var evaluations = await _teacherService.GetEvaluationsAndSubjectsByDiaryId(diary.Id);
+
+
+            var evaluationViewModels = evaluations.Select(e => new EvaluateViewModel
+            {
+                StudentName = e.Student.Name +" " +e.Student.Lastname,
+                SubjectName = e.Subject.Name,
+                Grade = e.Value
+            }).ToList();
+
+            return View(evaluationViewModels);
+
         }
 
         [HttpGet]

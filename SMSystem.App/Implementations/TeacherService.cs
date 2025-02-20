@@ -47,5 +47,15 @@ namespace SMSystem.App.Implementations
         {
             _teacherRepository.Remove(teacher);
         }
+
+        public async Task<IEnumerable<Evaluation>> GetEvaluationsAndSubjectsByDiaryId(int diaryId)
+        {
+            return await _teacherRepository.GetEvaluationsAndSubjectsByDiaryId(diaryId);
+        }
+
+        public async Task<Diary?> GetDiaryIdForLoggedTeacherAsync(string teacherEmail)
+        {
+            return await _teacherRepository.GetDiaryIdByTeacherEmailAsync(teacherEmail);
+        }
     }
 }

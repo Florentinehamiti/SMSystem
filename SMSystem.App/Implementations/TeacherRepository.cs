@@ -13,14 +13,34 @@ namespace SMSystem.App.Implementations
     public class TeacherRepository : Repository<Teacher>, ITeacherRepository
     {
         private readonly ApplicationDbContext _context;
-        public TeacherRepository(ApplicationDbContext context) :base(context) {
-        
+        public TeacherRepository(ApplicationDbContext context) : base(context)
+        {
+
             _context = context;
         }
 
         public Teacher GetByEmail(string email)
         {
             return _context.Teachers.Where(x => x.Email == email).FirstOrDefault();
+        }
+
+        public async Task<IEnumerable<Evaluation>> GetEvaluationsAndSubjectsByDiaryId(int diaryId)
+        {
+            return await _context.Evaluations
+                .Where(e => e.DiaryId == diaryId)
+                .Include(e => e.Student)
+                .Include(e => e.Subject)
+                .ToListAsync();
+        }
+
+        public async Task<Diary?> GetDiaryIdByTeacherEmailAsync(string teacherEmail)
+        {
+            var diary = await _context.Diaries
+                 .Where(s => _context.Diaries
+                    .Any(d => d.Teacher.Email == teacherEmail))
+                .FirstOrDefaultAsync();
+
+            return diary;
         }
     }
 }
