@@ -117,7 +117,7 @@ namespace Presentation.Areas.Educator.Controllers
                 Email = student.Email,
                 ProfilePhotoPath = student.ProfilePhotoPath,
                 Birthday = student.Birthday,
-                Gender = student.Gender,
+                Gender = student.Gender ?? false,
                 ParentName = student.ParentName,
                 Tel = student.Tel,
                 Evaluations = evaluationsOfStudent.Select(e => new EvaluateViewModel

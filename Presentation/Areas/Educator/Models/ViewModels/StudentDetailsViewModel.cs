@@ -9,7 +9,7 @@
         public string ProfilePhotoPath { get; set; }
         public DateTime Birthday { get; set; }
         public string Tel { get; set; }
-        public bool? Gender { get; set; }
+        public bool Gender { get; set; }
         public List<EvaluateViewModel> Evaluations { get; set; }
 
     }
