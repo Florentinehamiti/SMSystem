@@ -17,5 +17,8 @@ namespace SMSystem.Models.Entities
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
         public virtual Student Student { get; set; }
+        public int DiaryId { get; set; }
+        [ForeignKey("DiaryId")]
+        public virtual Diary Diary { get; set; }
     }
 }
