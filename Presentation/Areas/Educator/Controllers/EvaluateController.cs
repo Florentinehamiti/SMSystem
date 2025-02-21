@@ -33,6 +33,7 @@ namespace Presentation.Areas.Educator.Controllers
 
             var evaluationViewModels = evaluations.Select(e => new EvaluateViewModel
             {
+                StudentId = e.StudentId,
                 StudentName = e.Student.Name +" " +e.Student.Lastname,
                 SubjectName = e.Subject.Name,
                 Grade = e.Value
@@ -95,6 +96,38 @@ namespace Presentation.Areas.Educator.Controllers
             }
 
             return RedirectToAction("Index", "Subject", new { diaryId = model.DiaryId, subjectId = model.SubjectId });
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            var evaluationsOfStudent = _evaluationService.GetEvaluationsAndSubjectsForStudentByStudentId(id);
+
+            var student = _studentService.GetById(id);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+
+            var studentDetailsViewModel = new StudentDetailsViewModel
+            {
+                StudentId = student.Id,
+                FullName = student.Name + " " + student.Lastname,
+                Email = student.Email,
+                ProfilePhotoPath = student.ProfilePhotoPath,
+                Birthday = student.Birthday,
+                Gender = student.Gender,
+                ParentName = student.ParentName,
+                Tel = student.Tel,
+                Evaluations = evaluationsOfStudent.Select(e => new EvaluateViewModel
+                {
+                    SubjectName = e.Subject.Name,
+                    Grade = e.Value
+                }).ToList()
+            };
+
+            return View(studentDetailsViewModel);
         }
     }
 }

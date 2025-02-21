@@ -56,5 +56,10 @@ namespace SMSystem.App.Implementations
         {
             _evaluationRepository.Update(evaluation);
         }
+
+        public IEnumerable<Evaluation> GetEvaluationsAndSubjectsForStudentByStudentId(int id)
+        {
+            return _evaluationRepository.GetEvaluationsAndSubjectsForStudentByStudentId(id);
+        }
     }
 }

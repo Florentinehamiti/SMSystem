@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
 using SMSystem.Models.Entities;
 using System;
@@ -31,6 +32,16 @@ namespace SMSystem.App.Implementations
         {
             return _context.Evaluations.Where(x => x.DiaryId == diaryId).ToList();
         }
+
+        public IEnumerable<Evaluation> GetEvaluationsAndSubjectsForStudentByStudentId(int id)
+        {
+            return _context.Evaluations
+                .Where(x => x.StudentId == id)
+                .Include(e => e.Subject)
+                .Include(e => e.Student)
+                .ToList();
+        }
+
     }
 }
 

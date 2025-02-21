@@ -12,6 +12,7 @@ namespace SMSystem.App.Interfaces
         IEnumerable<Evaluation> GetEvaluationsBySubjectIdAndDiaryId(int subjectId, int diaryId);
         Evaluation GetEvaluationForStudentInSubject(int subjectId, int studentId);
         IEnumerable<Evaluation> GetAllEvaluationsForDiary(int diaryId);
+        IEnumerable<Evaluation> GetEvaluationsAndSubjectsForStudentByStudentId(int id);
 
     }
 }
