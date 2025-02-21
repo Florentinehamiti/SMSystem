@@ -32,6 +32,15 @@ namespace SMSystem.App.Implementations
                 .Include(e => e.Subject)
                 .ToListAsync();
         }
+        public async Task<IEnumerable<Remark>> GetRemarksAndSchoolHoursByDiaryId(int diaryId)
+        {
+            return await _context.Remarks
+               .Where(e => e.DiaryId == diaryId)
+               .Include(e => e.Student)
+               .Include(e => e.SchoolHour)
+                    .ThenInclude(sh => sh.Subject)
+               .ToListAsync();
+        }
 
         public async Task<Diary?> GetDiaryIdByTeacherEmailAsync(string teacherEmail)
         {

@@ -17,6 +17,7 @@ namespace SMSystem.App.Interfaces
         void Remove(Teacher teacher);
         Teacher GetByEmail(string email);
         Task<IEnumerable<Evaluation>> GetEvaluationsAndSubjectsByDiaryId(int diaryId);
+        Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId);
         Task<Diary?> GetDiaryIdForLoggedTeacherAsync(string teacherEmail);
     }
 }

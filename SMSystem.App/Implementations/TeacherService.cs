@@ -53,6 +53,11 @@ namespace SMSystem.App.Implementations
             return await _teacherRepository.GetEvaluationsAndSubjectsByDiaryId(diaryId);
         }
 
+        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId)
+        {
+            return await _teacherRepository.GetRemarksAndSchoolHoursByDiaryId(diaryId);
+        }
+
         public async Task<Diary?> GetDiaryIdForLoggedTeacherAsync(string teacherEmail)
         {
             return await _teacherRepository.GetDiaryIdByTeacherEmailAsync(teacherEmail);

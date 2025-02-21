@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Presentation.Areas.Educator.Models.ViewModels;
 using SMSystem.App.Interfaces;
 
 namespace Presentation.Areas.Educator.Controllers
@@ -7,24 +8,29 @@ namespace Presentation.Areas.Educator.Controllers
     {
         private readonly ITeacherService _teacherService;
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var teacherEmail = User.Identity.Name;
-        //    var diary = await _teacherService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
+        public RemarksController(ITeacherService teacherService)
+        {
+            _teacherService = teacherService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var teacherEmail = User.Identity.Name;
+            var diary = await _teacherService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
 
-        //    var remarks = await _teacherService.GetEvaluationsAndSubjectsByDiaryId(diary.Id);
+            var remarks = await _teacherService.GetRemarksAndSubjectsByDiaryId(diary.Id);
 
 
-        //    var evaluationViewModels = evaluations.Select(e => new EvaluateViewModel
-        //    {
-        //        StudentId = e.StudentId,
-        //        StudentName = e.Student.Name + " " + e.Student.Lastname,
-        //        SubjectName = e.Subject.Name,
-        //        Grade = e.Value
-        //    }).ToList();
+            var remarksViewModel = remarks.Select(r => new RemarkViewModel
+            {
+                StudentId = r.StudentId,
+                StudentName = r.Student.Name + " " + r.Student.Lastname,
+                RemarkInsertedDate = r.InsertedDate,
+                RemarkDescription = r.SchoolHour.SchoolHourDescribe,
+                SchoolHourDescription = r.SchoolHour.SchoolHourDescribe,
+                SubjectWhichRemarkWas = r.SchoolHour.Subject.Name
+            }).ToList();
 
-        //    return View(evaluationViewModels);
-
-        //}
+            return View(remarksViewModel);
+        }
     }
 }

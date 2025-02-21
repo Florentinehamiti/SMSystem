@@ -13,6 +13,7 @@ namespace SMSystem.App.Interfaces
         Teacher GetByEmail(string email);
         Task<IEnumerable<Evaluation>> GetEvaluationsAndSubjectsByDiaryId(int diaryId);
         Task<Diary?> GetDiaryIdByTeacherEmailAsync(string teacherEmail);
+        Task<IEnumerable<Remark>> GetRemarksAndSchoolHoursByDiaryId(int diaryId);
 
     }
 }
