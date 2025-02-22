@@ -31,14 +31,11 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
-
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student name</th>
-
-                                    @foreach (var subject in Model)
-                                    {
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@subject.SubjectName</th>
-                                    }
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"></th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark description</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark date</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,15 +47,22 @@
                                     <tr>
                                         <td class="text-xs font-weight-bold text-center m-3">@counter</td>
                                         <td class="">
-                                            <p class="text-xs font-weight-bold m-3">@student.StudentName</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.StudentName</p>
                                         </td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.Grade</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
+                                        </td>   
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkDescription</p>
+                                        </td>  
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>
                                         </td>
                                         <td class="d-flex align-items-center justify-content-center text-center">
-                                            <a asp-action="Detail" asp-controller="Evaluate" asp-area="Educator" asp-route-id="@student.StudentId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
+                                            <a asp-action="Detail" asp-controller="Remarks" asp-area="Educator" asp-route-id="@student.StudentId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
                                                 Shiko me shume
                                             </a>
+                                        </td>
                                     </tr>
                                     counter++;
                                 }

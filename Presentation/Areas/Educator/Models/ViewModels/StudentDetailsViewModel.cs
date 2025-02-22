@@ -1,4 +1,6 @@
-﻿namespace Presentation.Areas.Educator.Models.ViewModels
+﻿using SMSystem.Models.Entities;
+
+namespace Presentation.Areas.Educator.Models.ViewModels
 {
     public class StudentDetailsViewModel
     {
@@ -11,6 +13,7 @@
         public string Tel { get; set; }
         public bool Gender { get; set; }
         public List<EvaluateViewModel> Evaluations { get; set; }
+        public List<RemarkViewModel> Remarks { get; set; }
 
     }
 }

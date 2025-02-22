@@ -47,6 +47,8 @@ builder.Services.AddScoped<IEvaluationRepository, EvaluationRepository>();
 builder.Services.AddScoped<IEvaluationService, EvaluationService>();
 builder.Services.AddScoped<ISchoolHourRepository, SchoolHourRepository>();
 builder.Services.AddScoped<ISchoolHourService, SchoolHourService>();
+builder.Services.AddScoped<IRemarksRepository, RemarkRepository>();
+builder.Services.AddScoped<IRemarksService, RemarkService>();
 
 
 

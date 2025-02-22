@@ -1,0 +1,24 @@
+﻿using SMSystem.App.Interfaces;
+using SMSystem.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SMSystem.App.Implementations
+{
+    public class RemarkService : IRemarksService
+    {
+        private readonly IRemarksRepository _remarksRepository;
+        public RemarkService(IRemarksRepository remarksRepository)
+        {
+            _remarksRepository = remarksRepository;
+        }
+
+        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId)
+        {
+           return await _remarksRepository.GetRemarksAndSubjectsByDiaryId(diaryId);
+        }
+    }
+}

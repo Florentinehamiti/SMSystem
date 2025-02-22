@@ -32,7 +32,7 @@
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
 
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student name</th>
 
                                     @foreach (var subject in Model)
                                     {
@@ -59,6 +59,7 @@
                                             <a asp-action="Detail" asp-controller="Evaluate" asp-area="Educator" asp-route-id="@student.StudentId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
                                                 Shiko me shume
                                             </a>
+                                        </td>
                                     </tr>
                                     counter++;
                                 }
