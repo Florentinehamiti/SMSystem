@@ -35,5 +35,14 @@ namespace SMSystem.App.Implementations
 
             return diary;
         }
+
+        public async Task<IEnumerable<Student?>> GetStudentsForDiary(int diaryId)
+        {
+
+            var students = await _context.Students
+                 .Where(students => students.DiaryId == diaryId).ToListAsync();
+            return students;
+        }
     }
+
 }

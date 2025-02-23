@@ -12,6 +12,10 @@ namespace SMSystem.App.Implementations
     {
         private readonly IAbsenceRepository _absenceRepository;
 
+        public void AddAbsence(Absence absence)
+        {
+            _absenceRepository.Add(absence);
+        }
         public AbsenceService(IAbsenceRepository absenceRepository)
         {
             _absenceRepository = absenceRepository;

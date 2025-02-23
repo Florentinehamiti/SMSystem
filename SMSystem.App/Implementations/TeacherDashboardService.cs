@@ -30,5 +30,11 @@ namespace SMSystem.App.Implementations
             return await _teacherDashboardRepository.GetDiaryIdByTeacherEmailAsync(teacherEmail);
         }
 
+        public async Task<IEnumerable<Student?>> GetStudentsForDiary(int diaryId)
+        {
+            return await _teacherDashboardRepository.GetStudentsForDiary(diaryId);
+        }
+
+
     }
 }

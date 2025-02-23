@@ -27,5 +27,10 @@ namespace SMSystem.App.Implementations
             return _context.Absences.Where(x => x.StudentId == id && x.Status == false).Include(s => s.SchoolHour).ThenInclude(sub => sub.Subject).ToList();
         }
 
+        public void AddAbsence(Absence absence)
+        {
+            _context.Absences.Add(absence);
+        }
+
     }
 }

@@ -11,7 +11,7 @@ namespace SMSystem.App.Interfaces
     {
         IEnumerable<Absence> GetAllAbsencesForSubjectAndDiary(int diaryId);
         IEnumerable<Absence> GetAbsencesAndSubjectsForStudentByStudentId(int id);
-
+        void AddAbsence(Absence absence);
 
     }
 }

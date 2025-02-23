@@ -48,18 +48,25 @@
                                         <td class="align-middle text-center">
                                             <p class="text-xs text-secondary font-weight-bold mb-0">@hour.SchoolHourDescribe</p>
                                         </td>
-                                       
-                                       
+
+
                                         <td class="d-flex align-items-center justify-content-center">
-                                            <a asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
-                                            </a>
-                                            <a href="#deleteModal-@hour.SchoolHourId"
-                                               class="text-secondary font-weight-bold text-xs btn border mb-0 delete-button"
-                                               data-toggle="modal"
-                                               data-target="#deleteModal-@hour.SchoolHourId">
-                                                Delete
-                                            </a>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown-@hour.SchoolHourId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Actions
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="actionsDropdown-@hour.SchoolHourId">
+                                                    <a class="dropdown-item" asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId">
+                                                        Edit
+                                                    </a>
+                                                    <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#deleteModal-@hour.SchoolHourId">
+                                                        Delete
+                                                    </a>
+                                                    <a class="dropdown-item" asp-action="AddRemark" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId">
+                                                        Shto vërejtje
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
 
