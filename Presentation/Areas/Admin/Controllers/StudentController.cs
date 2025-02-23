@@ -41,7 +41,6 @@ namespace Presentation.Areas.Admin.Controllers
                     Tel=t.Tel,
                     Email = t.Email,
                     Gender = t.Gender,
-                    AddressId = t.AddressId,
                     ProfilePhotoPath = t.ProfilePhotoPath,
                     InsertedBy = _userService.GetUserId(),
                     InsertedDate = DateTime.Now,
@@ -164,7 +163,6 @@ namespace Presentation.Areas.Admin.Controllers
                     Email = student.Email,
                     Tel = student.Tel,
                     Gender = student.Gender,
-                    AddressId = student.AddressId,
                     ProfilePhotoPath = student.ProfilePhotoPath,
                     LUB = _userService.GetUserId(),
                     LUD = DateTime.Now,
@@ -202,7 +200,6 @@ namespace Presentation.Areas.Admin.Controllers
                     existingStudent.Email = studentViewModel.Email;
                     existingStudent.Tel = studentViewModel.Tel;
                     existingStudent.Gender = studentViewModel.Gender;
-                    existingStudent.AddressId = studentViewModel.AddressId;
                     existingStudent.ProfilePhotoPath = studentViewModel.ProfilePhotoPath;
                     existingStudent.LUB = _userService.GetUserId();
                     existingStudent.LUD = DateTime.Now;

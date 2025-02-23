@@ -14,9 +14,6 @@ namespace SMSystem.Models.Entities
         public int? ClassId { get; set; }
         [ForeignKey("ClassId")]
         public Classes Class { get; set; }
-        public int? AddressId { get; set; }
-        [ForeignKey("AddressId")]
-        public virtual Address? Address { get; set; }
         public string? Year { get; set; }
         public int? Paralel { get; set; }
         public int? TeacherId { get; set; }

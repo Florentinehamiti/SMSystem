@@ -16,9 +16,15 @@ namespace SMSystem.App.Implementations
         {
             _absenceRepository = absenceRepository;
         }
-        public IEnumerable<Absence> GetAllAbsencesForSubjectAndDiary(int subjectId, int diaryId)
+        public IEnumerable<Absence> GetAllAbsencesForSubjectAndDiary(int diaryId)
         {
-            return _absenceRepository.GetAbsencesBySubjectIdAndDiaryId(subjectId, diaryId);
+            return _absenceRepository.GetAbsencesByDiaryId(diaryId);
         }
+
+        public IEnumerable<Absence> GetAbsencesAndSubjectsForStudentByStudentId(int id)
+        {
+            return _absenceRepository.GetAbsencesAndSubjectsForStudentByStudentId(id);
+        }
+
     }
 }

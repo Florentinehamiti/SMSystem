@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AbsencesViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
+        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
+        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Remarks</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
+                            <h6>All remarks</h6>
+                        </div>
+                        <table class="table align-items-center mb-0 w-auto">
+
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Lenda ne te cilen mungoi</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Absence date</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Pershkrimi i ores se mbajtur</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var counter = 1;
+                                }
+                                @foreach (var student in Model)
+                                {
+                                    <tr>
+                                        <td class="text-xs font-weight-bold text-center m-3">@counter</td>
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.StudentName</p>
+                                        </td>
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichHasAbsences</p>
+                                        </td>
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.AbsenceDate</p>
+                                        </td>
+                                        <td class="">
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SchoolHourDescription</p>
+                                        </td>
+                                        <td class="d-flex align-items-center justify-content-center text-center">
+                                            <a asp-action="Detail" asp-controller="Absences" asp-area="Educator" asp-route-id="@student.StudentId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
+                                                Shiko me shume
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    counter++;
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

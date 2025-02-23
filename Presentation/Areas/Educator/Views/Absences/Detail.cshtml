@@ -58,9 +58,8 @@
 
 
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student Name </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject Which Remark Was registred</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark Description </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark Inserted Date</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject Which Absence Was registred</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Absence Inserted Date</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">School Hour Description</th>
                                 </tr>
                             </thead>
@@ -68,7 +67,7 @@
                                 @{
                                     var counter = 1;
                                 }
-                                @foreach (var student in Model.Remarks)
+                                @foreach (var student in Model.Absences)
                                 {
                                     <tr>
                                         <td class="text-xs font-weight-bold text-center m-3">@counter</td>
@@ -76,13 +75,10 @@
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.StudentName</p>
                                         </td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichHasAbsences</p>
                                         </td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkDescription</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.AbsenceDate</p>
                                         </td>
                                         <td class="">
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SchoolHourDescription</p>

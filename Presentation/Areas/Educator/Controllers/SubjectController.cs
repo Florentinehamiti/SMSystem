@@ -26,7 +26,7 @@ namespace Presentation.Areas.Educator.Controllers
         public IActionResult Index(int diaryId, int subjectId)
         {
             var students = _studentService.GetAllStudentsForDiary(diaryId);
-            var absences = _absenceService.GetAllAbsencesForSubjectAndDiary(subjectId, diaryId);
+            var absences = _absenceService.GetAllAbsencesForSubjectAndDiary(diaryId);
             var evaluations = _evaluationService.GetAllEvaluationsForSubjectAndDiary(subjectId, diaryId);
             var subject = _subjectService.GetById(subjectId);
 

@@ -31,7 +31,6 @@ namespace SMSystem.Data.Context
         public virtual DbSet<SchoolHour> SchoolHours { get; set; } = null!;
         public virtual DbSet<Student> Students { get; set; } = null!;
         public virtual DbSet<Diary> Diaries { get; set; } = null!;
-        public virtual DbSet<Address> Addresses { get; set; } = null!;
         public virtual DbSet<Evaluation> Evaluations { get; set; } = null!;
         public virtual DbSet<Remark> Remarks { get; set; } = null!;
         public virtual DbSet<RemarkStudent> RemarkStudents { get; set; } = null!;

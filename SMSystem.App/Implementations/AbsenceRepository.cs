@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Interfaces;
 using SMSystem.Data.Context;
 using SMSystem.Models.Entities;
 using System;
@@ -17,9 +18,14 @@ namespace SMSystem.App.Implementations
             _context = context;
         }
 
-        public IEnumerable<Absence> GetAbsencesBySubjectIdAndDiaryId(int subjectId, int diaryId)
+        public IEnumerable<Absence> GetAbsencesByDiaryId(int diaryId)
         {
-            return _context.Absences.Where(x => x.SubjectId == subjectId && x.DiaryId == diaryId).ToList();
+            return _context.Absences.Where(x => x.DiaryId == diaryId && x.Status == false).Include(s => s.Student).Include(s => s.SchoolHour).ThenInclude(sub => sub.Subject).ToList();
         }
+        public IEnumerable<Absence> GetAbsencesAndSubjectsForStudentByStudentId(int id)
+        {
+            return _context.Absences.Where(x => x.StudentId == id && x.Status == false).Include(s => s.SchoolHour).ThenInclude(sub => sub.Subject).ToList();
+        }
+
     }
 }

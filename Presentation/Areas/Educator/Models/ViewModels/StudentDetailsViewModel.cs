@@ -14,6 +14,7 @@ namespace Presentation.Areas.Educator.Models.ViewModels
         public bool Gender { get; set; }
         public List<EvaluateViewModel> Evaluations { get; set; }
         public List<RemarkViewModel> Remarks { get; set; }
+        public List<AbsencesViewModel> Absences { get; set; }
 
     }
 }

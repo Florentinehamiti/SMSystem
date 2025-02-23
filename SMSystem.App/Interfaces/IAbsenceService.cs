@@ -9,7 +9,9 @@ namespace SMSystem.App.Interfaces
 {
     public interface IAbsenceService
     {
-        IEnumerable<Absence> GetAllAbsencesForSubjectAndDiary(int subjectId, int diaryId);
+        IEnumerable<Absence> GetAllAbsencesForSubjectAndDiary(int diaryId);
+        IEnumerable<Absence> GetAbsencesAndSubjectsForStudentByStudentId(int id);
+
 
     }
 }
