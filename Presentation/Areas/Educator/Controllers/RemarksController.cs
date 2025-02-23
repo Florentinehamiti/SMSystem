@@ -44,7 +44,7 @@ namespace Presentation.Areas.Educator.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            var remarksOfStudent = await _remarksService.GetRemarksAndSubjectsByDiaryId(id);
+            var remarksOfStudent = await _remarksService.GetRemarksAndSubjectsForStudentByStudentId(id);
 
             var student = _studentService.GetById(id);
 

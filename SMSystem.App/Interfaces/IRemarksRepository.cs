@@ -9,6 +9,6 @@ namespace SMSystem.App.Interfaces
 {
     public interface IRemarksRepository : IRepository<Remark>
     {
-        public Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId);
+        public Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int id);
     }
 }

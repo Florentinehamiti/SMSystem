@@ -16,9 +16,9 @@ namespace SMSystem.App.Implementations
             _remarksRepository = remarksRepository;
         }
 
-        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId)
+        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int id)
         {
-           return await _remarksRepository.GetRemarksAndSubjectsByDiaryId(diaryId);
+           return await _remarksRepository.GetRemarksAndSubjectsForStudentByStudentId(id);
         }
     }
 }

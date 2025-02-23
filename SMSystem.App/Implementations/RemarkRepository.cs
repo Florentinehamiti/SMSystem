@@ -18,10 +18,10 @@ namespace SMSystem.App.Implementations
             _context = context;
         }
 
-        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId)
+        public async Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int id)
         {
             return await _context.Remarks
-                .Where(x => x.DiaryId == diaryId)
+                .Where(x => x.StudentId == id)
                 .Include(e => e.Student) 
                 .Include(e => e.SchoolHour) 
                 .ThenInclude(sh => sh.Subject) 

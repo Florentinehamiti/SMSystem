@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Areas\Educator\Views\Remarks\Detail.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\theme\css\formStyle.css" />
   </ItemGroup>
 
@@ -33,10 +29,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SMSystem.App\SMSystem.App.csproj" />
     <ProjectReference Include="..\SMSystem.Data\SMSystem.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Areas\Educator\Views\Remarks\Detail.cshtml" />
   </ItemGroup>
 
 </Project>

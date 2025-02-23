@@ -9,7 +9,7 @@ namespace SMSystem.App.Interfaces
 {
     public interface IRemarksService
     {
-        Task<IEnumerable<Remark>> GetRemarksAndSubjectsByDiaryId(int diaryId);
+        Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int diaryId);
 
     }
 }

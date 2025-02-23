@@ -68,12 +68,12 @@
                                 @{
                                     var counter = 1;
                                 }
-                                @foreach (var student in Model.Evaluations)
+                                @foreach (var student in Model.Remarks)
                                 {
                                     <tr>
                                         <td class="text-xs font-weight-bold text-center m-3">@counter</td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectName</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
                                         </td>
                                         <td class="">
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
@@ -82,9 +82,9 @@
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkDescription</p>
                                         </td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>
                                         </td>
-                                         <td class="">
+                                        <td class="">
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SchoolHourDescription</p>
                                         </td>
                                     </tr>
