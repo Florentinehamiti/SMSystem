@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<SchoolHourViewModel>
 
+    <style>
+.dropdown-toggle::after {
+    display: none !important;
+}
+</style>
 
 <div class="container-fluid py-4">
     
@@ -17,7 +22,7 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
+                    <div class=" p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
                             <h6>Te gjitha oret</h6>
                             <a asp-action="Create" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-primary">+ Regjistro oren mesimore</a>
@@ -50,19 +55,21 @@
                                         </td>
 
 
-                                        <td class="d-flex align-items-center justify-content-center">
+                                        <td class="mb-5">
                                             <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="actionsDropdown-@hour.SchoolHourId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Actions
-                                                </button>
+                                                <a class="dropdown-toggle text-dark text-decoration-none text-xs" href="#" role="button" id="actionsDropdown-@hour.SchoolHourId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Actions <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                                        <path d="M7.247 11.14 2.451 5.658c-.566-.63-.106-1.658.753-1.658h9.592c.86 0 1.32 1.028.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0"/>
+                                                    </svg>
+                                                </a>
                                                 <div class="dropdown-menu" aria-labelledby="actionsDropdown-@hour.SchoolHourId">
-                                                    <a class="dropdown-item" asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId">
+                                                    <a class="dropdown-item text-xs" asp-action="Edit" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId">
                                                         Edit
                                                     </a>
-                                                    <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#deleteModal-@hour.SchoolHourId">
+                                                    <a class="dropdown-item text-danger text-xs" href="#" data-toggle="modal" data-target="#deleteModal-@hour.SchoolHourId">
                                                         Delete
                                                     </a>
-                                                    <a class="dropdown-item" asp-action="AddRemark" asp-controller="Diary" asp-area="Admin" asp-route-id="@hour.SchoolHourId">
+                                                    <a class="dropdown-item text-xs" asp-action="AddRemarks" asp-controller="Remarks" asp-area="Educator" asp-route-schoolHourId="@hour.SchoolHourId" asp-route-studentId="@hour.DiaryId">
                                                         Shto vërejtje
                                                     </a>
                                                 </div>

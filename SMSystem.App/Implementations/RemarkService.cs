@@ -20,5 +20,11 @@ namespace SMSystem.App.Implementations
         {
            return await _remarksRepository.GetRemarksAndSubjectsForStudentByStudentId(id);
         }
+
+        public void AddRemarkForStudentBySchoolHourAndDiaryId(Remark remark)
+        {
+            _remarksRepository.AddRemarkForStudentBySchoolHourAndDiaryId(remark);
+        }
+
     }
 }

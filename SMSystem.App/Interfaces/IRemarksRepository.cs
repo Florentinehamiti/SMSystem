@@ -10,5 +10,6 @@ namespace SMSystem.App.Interfaces
     public interface IRemarksRepository : IRepository<Remark>
     {
         public Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int id);
+        public void AddRemarkForStudentBySchoolHourAndDiaryId(Remark remark);
     }
 }

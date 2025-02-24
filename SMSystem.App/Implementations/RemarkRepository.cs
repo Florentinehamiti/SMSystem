@@ -27,6 +27,11 @@ namespace SMSystem.App.Implementations
                 .ThenInclude(sh => sh.Subject) 
                 .ToListAsync();
         }
+
+        public void AddRemarkForStudentBySchoolHourAndDiaryId(Remark remark)
+        {
+            _context.Remarks.Add(remark);
+        }
     }
     
 }

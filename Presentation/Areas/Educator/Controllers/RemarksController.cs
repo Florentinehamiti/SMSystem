@@ -4,6 +4,7 @@ using Presentation.Areas.Educator.Models.ViewModels;
 using SMSystem.App.Constants;
 using SMSystem.App.Implementations;
 using SMSystem.App.Interfaces;
+using SMSystem.Models.Entities;
 
 namespace Presentation.Areas.Educator.Controllers
 {
@@ -14,12 +15,14 @@ namespace Presentation.Areas.Educator.Controllers
         private readonly ITeacherService _teacherService;
         private readonly IRemarksService _remarksService;
         private readonly IStudentService _studentService;
+        private readonly ISchoolHourService _schoolHourService;
 
-        public RemarksController(ITeacherService teacherService, IRemarksService remarksService, IStudentService studentService)
+        public RemarksController(ITeacherService teacherService, IRemarksService remarksService, IStudentService studentService, ISchoolHourService schoolHourService)
         {
             _teacherService = teacherService;
             _remarksService = remarksService;
             _studentService = studentService;
+            _schoolHourService = schoolHourService;
         }
         public async Task<IActionResult> Index()
         {
@@ -73,6 +76,18 @@ namespace Presentation.Areas.Educator.Controllers
             };
 
             return View(studentDetailsViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddRemark(int schoolHourId, int diaryId)
+        {
+            var remark = new RemarkViewModel
+            {
+               Students = _studentService.GetAllStudentsForDiary(diaryId),
+               SchoolHour = _schoolHourService.GetById(schoolHourId),
+            };
+           
+            return View(remark);
         }
     }
 }

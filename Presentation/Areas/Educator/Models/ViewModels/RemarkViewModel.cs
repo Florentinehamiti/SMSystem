@@ -1,4 +1,6 @@
-﻿namespace Presentation.Areas.Educator.Models.ViewModels
+﻿using SMSystem.Models.Entities;
+
+namespace Presentation.Areas.Educator.Models.ViewModels
 {
     public class RemarkViewModel
     {
@@ -8,6 +10,9 @@
         public DateTime? RemarkInsertedDate { get; set; }
         public string RemarkDescription { get; set; }
         public string SubjectWhichRemarkWas { get; set; }
+        public IEnumerable<Student> Students { get; set; }
+        public SchoolHour SchoolHour { get; set; }
+        public Diary Diary { get; set; }
 
     }
 }
