@@ -1,4 +1,5 @@
-﻿using SMSystem.Models.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace SMSystem.App.Interfaces
     {
         public Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int id);
         public void AddRemarkForStudentBySchoolHourAndDiaryId(Remark remark);
+        public Task<IEnumerable<Remark>> GetRemarksForLoggedStudentAsync(string studentEmail);
     }
 }

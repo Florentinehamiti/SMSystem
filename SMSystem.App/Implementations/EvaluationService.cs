@@ -61,5 +61,11 @@ namespace SMSystem.App.Implementations
         {
             return _evaluationRepository.GetEvaluationsAndSubjectsForStudentByStudentId(id);
         }
+
+        public async Task<IEnumerable<Evaluation>> GetEvaluationsForLoggedStudentAsync(string studentEmail)
+        {
+            return await _evaluationRepository.GetEvaluationsForLoggedStudentAsync(studentEmail);
+        }
+
     }
 }

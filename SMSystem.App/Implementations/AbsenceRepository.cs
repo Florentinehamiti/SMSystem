@@ -32,5 +32,14 @@ namespace SMSystem.App.Implementations
             _context.Absences.Add(absence);
         }
 
+        public async Task<IEnumerable<Absence>> GetAbsencesForLoggedStudentAsync(string studentEmail)
+        {
+            return await _context.Absences
+                .Include(a => a.Student)
+                .Include(a => a.SchoolHour)
+                .ThenInclude(sh => sh.Subject)
+                .Where(a => a.Student.Email == studentEmail)
+                .ToListAsync();
+        }
     }
 }

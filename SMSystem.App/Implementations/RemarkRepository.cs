@@ -32,6 +32,16 @@ namespace SMSystem.App.Implementations
         {
             _context.Remarks.Add(remark);
         }
+
+        public async Task<IEnumerable<Remark>> GetRemarksForLoggedStudentAsync(string studentEmail)
+        {
+            return await _context.Remarks
+                .Include(r => r.Student)
+                .Include(r => r.SchoolHour)
+                .ThenInclude(sh => sh.Subject)
+                .Where(r => r.Student.Email == studentEmail)
+                .ToListAsync();
+        }
     }
     
 }

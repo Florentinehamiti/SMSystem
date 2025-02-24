@@ -1,0 +1,90 @@
+﻿@model AbsenceViewModel
+
+<div class="container-fluid px-4 py-4">
+    <div class="row">
+        <div class="col-md-3">
+            @if (!string.IsNullOrWhiteSpace(Model.ProfilePhotoPath))
+            {
+                <img src="@Url.Content("~/Images/" + Model.ProfilePhotoPath)" alt="Profile Photo" class="mt-3 profile-pic w-80" />
+            }
+            else
+            {
+                <p class="text-warning">No profile photo available.</p>
+            }
+        </div>
+        <div class="col-md-3 mb-3 mt-3">
+            <label class="form-label font-weight-bold mx-0">Name</label>
+            <div class="form-control mb-2">@Model.FullName</div>
+            <label class="form-label mx-0 font-weight-bold">Parent name</label>
+            <div class="form-control mb-2">@Model.ParentName</div>
+            <label class="form-label mx-0 font-weight-bold">Email</label>
+            <div class="form-control mb-2">@Model.Email</div>
+        </div>
+        <div class="col-md-3 mb-3 mt-3">
+            <label class="form-label font-weight-bold mx-0">Telephone</label>
+            <div class="form-control mb-2">@Model.Tel</div>
+            <label class="form-label font-weight-bold mx-0">Birthday</label>
+            <div class="form-control mb-2">
+                @Model.Birthday?.ToString("MM/dd/yyyy")
+            </div>
+            <label class="form-label font-weight-bold mx-0">Gender</label>
+            <div class="form-control mb-2">
+                @(Model.Gender.HasValue ? (Model.Gender.Value ? "Male" : "Female") : "Not specified")
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                        <h6 class="text-white text-capitalize ps-3">Absences</h6>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Date</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Hour</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Absences != null && Model.Absences.Any())
+                                {
+                                    foreach (var absence in Model.Absences)
+                                    {
+                                        <tr>
+                                            <td class="">
+                                                <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@absence.Date.ToString("MM/dd/yyyy")</p>
+                                            </td>
+                                            <td class="">
+                                                <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@absence.HourNumber</p>
+                                            </td>
+                                            <td class="">
+                                                <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@absence.SubjectName</p>
+                                            </td>
+                                            <td class="">
+                                                <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@(absence.Status ? "Mungese" : "Mungese")</p>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" class="text-center text-warning">No absences available.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

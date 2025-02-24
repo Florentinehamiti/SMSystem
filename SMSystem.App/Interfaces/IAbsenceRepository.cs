@@ -1,4 +1,5 @@
-﻿using SMSystem.App.Implementations;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.App.Implementations;
 using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SMSystem.App.Interfaces
         IEnumerable<Absence> GetAbsencesByDiaryId(int diaryId);
         IEnumerable<Absence> GetAbsencesAndSubjectsForStudentByStudentId(int id);
         void Add(Absence absence);
-
+        Task<IEnumerable<Absence>> GetAbsencesForLoggedStudentAsync(string studentEmail);
+        
     }
 }

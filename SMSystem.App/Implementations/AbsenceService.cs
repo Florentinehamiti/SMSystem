@@ -30,5 +30,10 @@ namespace SMSystem.App.Implementations
             return _absenceRepository.GetAbsencesAndSubjectsForStudentByStudentId(id);
         }
 
+        public async Task<IEnumerable<Absence>> GetAbsencesForLoggedStudentAsync(string studentEmail)
+        {
+            return await _absenceRepository.GetAbsencesForLoggedStudentAsync(studentEmail);
+        }
     }
+  
 }

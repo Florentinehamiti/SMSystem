@@ -42,6 +42,11 @@ namespace SMSystem.App.Implementations
                 .ToList();
         }
 
+        public async Task<IEnumerable<Evaluation>> GetEvaluationsForLoggedStudentAsync(string studentEmail)
+        {
+            return _context.Evaluations.Where(s => s.Student.Email == studentEmail).Include(sub => sub.Subject).Include(st => st.Student);
+        }
+
     }
 }
 

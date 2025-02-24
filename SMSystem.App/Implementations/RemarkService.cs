@@ -31,5 +31,9 @@ namespace SMSystem.App.Implementations
             _remarksRepository.Add(remark);
         }
 
+        public Task<IEnumerable<Remark>> GetRemarksForLoggedStudentAsync(string studentEmail)
+        {
+            return _remarksRepository.GetRemarksForLoggedStudentAsync(studentEmail);
+        }
     }
 }

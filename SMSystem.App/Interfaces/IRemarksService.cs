@@ -12,5 +12,7 @@ namespace SMSystem.App.Interfaces
         void AddRemark(Remark remark);
         Task<IEnumerable<Remark>> GetRemarksAndSubjectsForStudentByStudentId(int diaryId);
         void AddRemarkForStudentBySchoolHourAndDiaryId(Remark remark);
+        Task<IEnumerable<Remark>> GetRemarksForLoggedStudentAsync(string studentEmail);
+
     }
 }

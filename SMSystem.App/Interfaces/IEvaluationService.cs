@@ -18,6 +18,7 @@ namespace SMSystem.App.Interfaces
         IEnumerable<Evaluation> GetAllEvaluationsForSubjectAndDiary(int subjectId, int diaryId);
         Evaluation GetEvaluationForStudentInSubject(int subjectId, int studentId);
         IEnumerable<Evaluation> GetEvaluationsAndSubjectsForStudentByStudentId(int id);
+        Task<IEnumerable<Evaluation>> GetEvaluationsForLoggedStudentAsync(string studentEmail);
 
     }
 }
