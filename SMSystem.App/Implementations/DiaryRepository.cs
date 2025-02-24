@@ -20,7 +20,7 @@ namespace SMSystem.App.Implementations
 
         public IQueryable<Diary> GetAllWithTeachers()
         {
-            return _context.Diaries.Include(d => d.Teacher);
+            return _context.Diaries.Include(d => d.Teacher).Include(c => c.Class);
         }
     }
 }

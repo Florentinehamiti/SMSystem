@@ -13,12 +13,12 @@ namespace SMSystem.Models.Entities
         public string Description { get; set; }
         public int SchoolHourId { get; set; }
         [ForeignKey("SchoolHourId")]
-        public virtual SchoolHour SchoolHour { get; set; }
+        public virtual SchoolHour? SchoolHour { get; set; }
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]
-        public virtual Student Student { get; set; }
+        public virtual Student? Student { get; set; }
         public int DiaryId { get; set; }
         [ForeignKey("DiaryId")]
-        public virtual Diary Diary { get; set; }
+        public virtual Diary? Diary { get; set; }
     }
 }

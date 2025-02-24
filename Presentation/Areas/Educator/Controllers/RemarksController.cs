@@ -37,7 +37,7 @@ namespace Presentation.Areas.Educator.Controllers
                 StudentId = r.StudentId,
                 StudentName = r.Student.Name + " " + r.Student.Lastname,
                 RemarkInsertedDate = r.InsertedDate,
-                RemarkDescription = r.SchoolHour.SchoolHourDescribe,
+                Description = r.SchoolHour.SchoolHourDescribe,
                 SchoolHourDescription = r.SchoolHour.SchoolHourDescribe,
                 SubjectWhichRemarkWas = r.SchoolHour.Subject.Name
             }).ToList();
@@ -69,7 +69,7 @@ namespace Presentation.Areas.Educator.Controllers
                 Remarks = remarksOfStudent.Select(e => new RemarkViewModel
                 {
                     SubjectWhichRemarkWas = e.SchoolHour.Subject.Name,
-                    RemarkDescription = e.Description,
+                    Description = e.Description,
                     RemarkInsertedDate = e.InsertedDate,
                     SchoolHourDescription = e.SchoolHour.SchoolHourDescribe,
                 }).ToList()
@@ -85,9 +85,34 @@ namespace Presentation.Areas.Educator.Controllers
             {
                Students = _studentService.GetAllStudentsForDiary(diaryId),
                SchoolHour = _schoolHourService.GetById(schoolHourId),
+               SchoolHourId = schoolHourId,
+               DiaryId = diaryId
             };
            
             return View(remark);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddRemark(Remark remark)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    remark.InsertedDate = DateTime.Now;
+                    //remark.InsertedBy = await _teacherService.GetByEmail(User.Identity.Name);
+                    _remarksService.AddRemark(remark);
+                    return RedirectToAction("Index");
+                }
+
+                return View(remark);
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(remark);
+            }
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Presentation.Areas.Educator.Models.ViewModels
         public string ParentName { get; set; }
         public string Email { get; set; }
         public string ProfilePhotoPath { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string Tel { get; set; }
         public bool Gender { get; set; }
         public List<EvaluateViewModel> Evaluations { get; set; }

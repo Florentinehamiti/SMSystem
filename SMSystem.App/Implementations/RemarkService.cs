@@ -26,5 +26,10 @@ namespace SMSystem.App.Implementations
             _remarksRepository.AddRemarkForStudentBySchoolHourAndDiaryId(remark);
         }
 
+        public void AddRemark(Remark remark)
+        {
+            _remarksRepository.Add(remark);
+        }
+
     }
 }

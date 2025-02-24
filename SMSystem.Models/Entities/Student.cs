@@ -13,7 +13,7 @@ namespace SMSystem.Models.Entities
         public string ParentName { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string Tel { get; set; }
         public string Email { get; set; }
         public bool? Gender { get; set; }

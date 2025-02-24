@@ -78,6 +78,13 @@ namespace Presentation.Areas.Educator.Controllers
             {
                 try
                 {
+                    // Debugging: Check if Students are coming in the request
+                    if (schoolHourVM.Students == null || !schoolHourVM.Students.Any())
+                    {
+                        ModelState.AddModelError("", "Students list is missing.");
+                        return View(schoolHourVM);
+                    }
+
                     var schoolHour = new SchoolHour
                     {
                         Date = schoolHourVM.Date,
@@ -92,15 +99,18 @@ namespace Presentation.Areas.Educator.Controllers
 
                     _schoolHourService.AddSchoolHour(schoolHour);
 
-                    
-                    foreach (var studentId in schoolHourVM.AbsentStudentIds)
+                    var absentStudents = schoolHourVM.Students
+                        .Where(s => schoolHourVM.PresentStudentIds == null || !schoolHourVM.PresentStudentIds.Contains(s.StudentId))
+                        .ToList();
+
+                    foreach (var student in absentStudents)
                     {
                         var absence = new Absence
                         {
                             SchoolHourId = schoolHour.Id,
-                            StudentId = studentId,
+                            StudentId = student.StudentId,
                             DiaryId = schoolHourVM.DiaryId,
-                            Status = true,
+                            Status = false, // Studentët janë të munguar
                             InsertedBy = _userService.GetUserId(),
                             InsertedDate = DateTime.Now,
                         };
@@ -116,6 +126,7 @@ namespace Presentation.Areas.Educator.Controllers
                 }
             }
 
+            // Reload students if there is a validation error
             var teacherEmail = User.Identity.Name;
             var diary = await _teacherDashboardService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
             schoolHourVM.Subjects = _subjectsService.GetSubjectsByClassId(diary.ClassId);
@@ -131,5 +142,9 @@ namespace Presentation.Areas.Educator.Controllers
 
             return View(schoolHourVM);
         }
+
+
+
+
     }
 }

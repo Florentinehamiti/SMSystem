@@ -1,5 +1,35 @@
-﻿@model RemarksViewModel
+﻿@model RemarkViewModel
 
 @{
     ViewData["Title"] = "Add Remark";
 }
+
+<div class="container-fluid px-4 py-4">
+    <form class="px-3" asp-action="AddRemark" asp-controller="Remarks" asp-area="Educator" enctype="multipart/form-data">
+        <input type="hidden" asp-for="@Model.SchoolHourId" />
+        <input type="hidden" asp-for="@Model.DiaryId" />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="StudentId" class="form-label font-weight-bold">Student</label>
+                    <select asp-for="StudentId" asp-items="@(new SelectList(Model.Students.Select(s => new { s.Id, FullName =  s.Name + " " + s.Lastname}), "Id", "FullName"))" class="form-control border px-2">
+                        <option value="">Select student</option>
+                    </select>
+                    <span asp-validation-for="StudentId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-container">
+                    <label asp-for="Description" class="form-label font-weight-bold">Description</label>
+                    <textarea asp-for="Description" placeholder="Please enter the description for remark..." class="form-control border px-2"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2 mt-5">
+            <a asp-action="Index" asp-controller="Remark" asp-area="Educator" type="button" class="btn btn-outline-secondary">Back</a>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+        </div>
+    </form>
+</div>

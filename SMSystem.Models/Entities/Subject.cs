@@ -12,7 +12,7 @@ namespace SMSystem.Models.Entities
         public string BookName { get; set; }
         [Required]
         public string Author { get; set; }
-        public int PublicationYear { get; set; }
+        public int? PublicationYear { get; set; }
         public int? ClassId { get; set; }
         [ForeignKey("ClassId")]
         public Classes Class { get; set; }

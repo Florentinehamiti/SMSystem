@@ -28,7 +28,7 @@
             <label class="form-label font-weight-bold mx-0">Telephone</label>
             <div class="form-control mb-2">@Model.Tel</div>
             <label class="form-label font-weight-bold mx-0">Birthday</label>
-            <div class="form-control mb-2">@Model.Birthday.ToString("MM/dd/yyyy")</div>
+            <div class="form-control mb-2">@Model.Birthday??.ToString("MM/dd/yyyy")</div>
             <label class="form-label font-weight-bold mx-0">Gender</label>
             <div class="form-control mb-2">
                 @(Model.Gender ? "Male" : "Female")
@@ -79,7 +79,7 @@
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
                                         </td>
                                         <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkDescription</p>
+                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.Description</p>
                                         </td>
                                         <td class="">
                                             <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>

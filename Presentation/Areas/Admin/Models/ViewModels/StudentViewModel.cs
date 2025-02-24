@@ -12,7 +12,7 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         public int? DiaryId { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public string Tel { get; set; }
         public string Email { get; set; }
         public string? ProfilePhotoPath { get; set; }

@@ -9,7 +9,7 @@ namespace Presentation.Areas.Admin.Models.ViewModels
         public string Name { get; set; }
         public string BookName { get; set; }
         public string Author { get; set; }
-        public int PublicationYear { get; set; }
+        public int? PublicationYear { get; set; }
         public int? ClassId { get; set; }
         [ForeignKey("ClassId")]
         public Classes? Class { get; set; }

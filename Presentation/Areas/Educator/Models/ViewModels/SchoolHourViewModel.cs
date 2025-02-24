@@ -15,5 +15,6 @@ namespace Presentation.Areas.Educator.Models.ViewModels
         public IEnumerable<Subject>? Subjects { get; set; }
         public List<StudentInfo> Students { get; set; } = new List<StudentInfo>();
         public List<int> AbsentStudentIds { get; set; } = new List<int>();
+        public List<int> PresentStudentIds { get; set; }
     }
 }

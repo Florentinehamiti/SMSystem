@@ -80,7 +80,7 @@
             <div class="col-md-6">
                 <div class="input-container">
                     <label asp-for="DiaryId" class="form-label font-weight-bold">Teacher</label>
-                    <select asp-for="DiaryId" asp-items="@(new SelectList(Model.Diaries.Select(d => new { d.Id, Naming = d.Teacher.Name + " " + d.Teacher.Surname + " - " + d.Class + " / " + d.Paralel }), "Id", "Naming"))" class="form-control border px-2">
+                    <select asp-for="DiaryId" asp-items="@(new SelectList(Model.Diaries.Select(d => new { d.Id, Naming = d.Teacher.Name + " " + d.Teacher.Surname + " - " + d.Class.ClassNumber + " / " + d.Paralel }), "Id", "Naming"))" class="form-control border px-2">
                         <option value="">Select diary</option>
                     </select>
                     <span asp-validation-for="DiaryId" class="text-danger"></span>

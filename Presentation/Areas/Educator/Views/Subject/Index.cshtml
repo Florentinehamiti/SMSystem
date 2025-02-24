@@ -30,9 +30,9 @@
 
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Grade</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Absences</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Remarks</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Grade</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Absences</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remarks</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -51,18 +51,18 @@
                                             </div>
                                         </td>
                                         @if(student.Grade > 0){
-                                            <td>@student.Grade</td>
+                                            <td class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7  text-center">@student.Grade</td>
                                         }else{
-                                            <td></td>
+                                            <td class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">/</td>
                                         }
                                         @if (student.TotalAbsences > 0)
                                         {
-                                            <td class="text-center">@student.TotalAbsences</td>
+                                            <td class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">@student.TotalAbsences</td>
                                         }else{
-                                            <td></td>
+                                            <td class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">/</td>
                                         }
                                         <td class="text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">Some Remarks</span>
+                                            <span class="text-secondary text-sm font-weight-bold">Some Remarks</span>
                                         </td>
 
                                         <td class="text-center">

@@ -25,17 +25,17 @@
         <div class="form-container sign-in-container">
             <form asp-action="Login" asp-controller="Account" asp-area="Client" method="post">
                 <h1>Sign in</h1>
-                <div class="social-container">
+                @* <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
+                </div> *@
+                @* <span>or use your account</span> *@
                 <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="Email" class="text-danger left"></span>
                 <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger left"></span>
-                <a asp-action="ForgotPassword" asp-controller="Account" asp-area="Client">Forgot your password?</a>
+                @* <a asp-action="ForgotPassword" asp-controller="Account" asp-area="Client">Forgot your password?</a> *@
                 <button>Sign In</button>
             </form>
         </div>
