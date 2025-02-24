@@ -15,13 +15,15 @@ namespace Presentation.Areas.Educator.Controllers
         private readonly IEvaluationService _evaluationService;
         private readonly ISubjectsService _subjectService;
         private readonly ITeacherService _teacherService;
+        private readonly IDiaryService _diaryService;
 
-        public EvaluateController(IStudentService studentService, IEvaluationService evaluationService, ISubjectsService subjectService, ITeacherService teacherService)
+        public EvaluateController(IStudentService studentService, IEvaluationService evaluationService, ISubjectsService subjectService, ITeacherService teacherService, IDiaryService diaryService)
         {
             _studentService = studentService;
             _evaluationService = evaluationService;
             _subjectService = subjectService;
             _teacherService = teacherService;
+            _diaryService = diaryService;
         }
         public async Task<IActionResult> Index()
         {
@@ -128,6 +130,21 @@ namespace Presentation.Areas.Educator.Controllers
             };
 
             return View(studentDetailsViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddEvaluation(int diaryId)
+        {
+            var diary = _diaryService.GetById(diaryId);
+            
+            var evaluateViewModel = new EvaluateViewModel
+            {
+                Subjects = _subjectService.GetSubjectsByClassId(diary.ClassId),
+                Students = _studentService.GetAllStudentsForDiary(diaryId),
+                DiaryId = diaryId,
+            };
+
+            return View(evaluateViewModel);
         }
     }
 }
