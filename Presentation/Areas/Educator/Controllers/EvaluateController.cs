@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Areas.Educator.Models.ViewModels;
 using SMSystem.App.Constants;
+using SMSystem.App.Implementations;
 using SMSystem.App.Interfaces;
 using SMSystem.Models.Entities;
 
@@ -29,21 +30,20 @@ namespace Presentation.Areas.Educator.Controllers
         {
             var teacherEmail = User.Identity.Name;
             var diary = await _teacherService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
-
             var evaluations = await _teacherService.GetEvaluationsAndSubjectsByDiaryId(diary.Id);
 
+            var groupedEvaluations = evaluations
+                .GroupBy(e => new { e.StudentId, e.Student.Name, e.Student.Lastname })
+                .Select(g => new EvaluateViewModel
+                {
+                    StudentId = g.Key.StudentId,
+                    StudentName = g.Key.Name + " " + g.Key.Lastname,
+                    Grades = g.ToDictionary(e => e.Subject.Name, e => e.Value)
+                }).ToList();
 
-            var evaluationViewModels = evaluations.Select(e => new EvaluateViewModel
-            {
-                StudentId = e.StudentId,
-                StudentName = e.Student.Name +" " +e.Student.Lastname,
-                SubjectName = e.Subject.Name,
-                Grade = e.Value
-            }).ToList();
-
-            return View(evaluationViewModels);
-
+            return View(groupedEvaluations);
         }
+
 
         [HttpGet]
         public IActionResult EvaluateStudent(int studentId, int subjectId, int diaryId)
@@ -84,16 +84,16 @@ namespace Presentation.Areas.Educator.Controllers
                     Value = model.GradeValue
                 };
 
-                _evaluationService.AddEvaluation(newEvaluation); 
+                _evaluationService.AddEvaluation(newEvaluation);
             }
             else
             {
-               
+
                 var existingEvaluation = _evaluationService.GetById(model.EvaluationId);
                 if (existingEvaluation != null)
                 {
                     existingEvaluation.Value = model.GradeValue;
-                    _evaluationService.Update(existingEvaluation); 
+                    _evaluationService.Update(existingEvaluation);
                 }
             }
 
@@ -133,18 +133,46 @@ namespace Presentation.Areas.Educator.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddEvaluation(int diaryId)
+        public async Task<IActionResult> AddEvaluation(int diaryId, int subjectId)
         {
-            var diary = _diaryService.GetById(diaryId);
-            
             var evaluateViewModel = new EvaluateViewModel
             {
-                Subjects = _subjectService.GetSubjectsByClassId(diary.ClassId),
                 Students = _studentService.GetAllStudentsForDiary(diaryId),
+                SubjectId =  subjectId,
                 DiaryId = diaryId,
             };
 
             return View(evaluateViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddEvaluation(EvaluateViewModel evaluation)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var registerEvaluation = new Evaluation
+                    {
+                       StudentId = evaluation.StudentId,
+                       InsertedDate = DateTime.Now,
+                       Value = evaluation.Grade,
+                       SubjectId = evaluation.SubjectId,
+                       DiaryId = evaluation.DiaryId,
+                    };
+
+                    _evaluationService.AddEvaluation(registerEvaluation);
+                    return RedirectToAction("Index", "SchoolHour", new { area = "Educator" });
+                }
+
+                return View(evaluation);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View(evaluation);
+            }
+
         }
     }
 }

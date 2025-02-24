@@ -7,6 +7,7 @@
 <div class="container-fluid px-4 py-4">
     <form class="px-3" asp-action="AddEvaluation" asp-controller="Evaluate" asp-area="Educator" enctype="multipart/form-data">
         <input type="hidden" asp-for="@Model.DiaryId" />
+        <input type="hidden" asp-for="SubjectId" />
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
@@ -19,15 +20,14 @@
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="SubjectId" class="form-label font-weight-bold">Student</label>
-                    <select asp-for="SubjectId" asp-items="@(new SelectList(Model.Subjects.Select(s => new { s.Id, FullName =  s.Name }), "Id", "FullName"))" class="form-control border px-2">
-                        <option value="">Select subject</option>
-                    </select>
-                    <span asp-validation-for="StudentId" class="text-danger"></span>
+                    <label asp-for="Grade" class="form-label font-weight-bold">Grade</label>
+                    <input type="number" asp-for="Grade" class="form-control border px-2"
+                           placeholder="Please enter the grade for student..."
+                           value="@(Model.Grade == 0 ? "" : Model.Grade.ToString())  />
+                    <span asp-validation-for="Grade" class="text-danger"></span>
                 </div>
             </div>
         </div>
-
         <div class="d-flex justify-content-end gap-2 mt-5">
             <a asp-action="Index" asp-controller="Evaluate" asp-area="Educator" type="button" class="btn btn-outline-secondary">Back</a>
             <button type="submit" class="btn btn-outline-primary">Save</button>

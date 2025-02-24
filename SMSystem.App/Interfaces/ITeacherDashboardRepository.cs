@@ -1,4 +1,5 @@
-﻿using SMSystem.Models.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SMSystem.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace SMSystem.App.Interfaces
         Task<List<Subject>> GetSubjectsByTeacherEmailAsync(string teacherEmail);
         Task<Diary?> GetDiaryIdByTeacherEmailAsync(string teacherEmail);
         Task<IEnumerable<Student?>> GetStudentsForDiary(int diaryId);
+        Task<List<Student>> GetTopStudentsWithGrade5Async(int subjectId);
+        Task<int> GetTotalAbsencesForSubjectAsync(int subjectId);
 
     }
 }

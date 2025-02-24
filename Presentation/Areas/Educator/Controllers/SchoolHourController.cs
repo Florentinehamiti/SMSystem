@@ -45,7 +45,8 @@ namespace Presentation.Areas.Educator.Controllers
                 SubjectName = sh.Subject.Name,
                 DiaryId = sh.DiaryId,
                 SchoolHourDescribe = sh.SchoolHourDescribe,
-                SchoolHourId = sh.Id
+                SchoolHourId = sh.Id,
+                SubjectId = sh.SubjectId,
             }).ToList();
 
 
@@ -78,7 +79,7 @@ namespace Presentation.Areas.Educator.Controllers
             {
                 try
                 {
-                    // Debugging: Check if Students are coming in the request
+                    
                     if (schoolHourVM.Students == null || !schoolHourVM.Students.Any())
                     {
                         ModelState.AddModelError("", "Students list is missing.");
@@ -110,7 +111,7 @@ namespace Presentation.Areas.Educator.Controllers
                             SchoolHourId = schoolHour.Id,
                             StudentId = student.StudentId,
                             DiaryId = schoolHourVM.DiaryId,
-                            Status = false, // Studentët janë të munguar
+                            Status = false, 
                             InsertedBy = _userService.GetUserId(),
                             InsertedDate = DateTime.Now,
                         };
@@ -126,7 +127,7 @@ namespace Presentation.Areas.Educator.Controllers
                 }
             }
 
-            // Reload students if there is a validation error
+           
             var teacherEmail = User.Identity.Name;
             var diary = await _teacherDashboardService.GetDiaryIdForLoggedTeacherAsync(teacherEmail);
             schoolHourVM.Subjects = _subjectsService.GetSubjectsByClassId(diary.ClassId);

@@ -32,7 +32,6 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Grade</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Absences</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remarks</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -61,9 +60,7 @@
                                         }else{
                                             <td class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">/</td>
                                         }
-                                        <td class="text-center">
-                                            <span class="text-secondary text-sm font-weight-bold">Some Remarks</span>
-                                        </td>
+                                      
 
                                         <td class="text-center">
                                             <a asp-action="EvaluateStudent" asp-controller="Evaluate" asp-area="Educator" asp-route-studentId="@student.StudentId" asp-route-diaryId="@Model.DiaryId" asp-route-subjectId="@Model.SubjectId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">

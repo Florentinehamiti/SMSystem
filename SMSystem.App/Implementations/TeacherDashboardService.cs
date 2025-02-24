@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SMSystem.App.Interfaces;
 using SMSystem.Data.Identity;
 using SMSystem.Models.Entities;
@@ -35,6 +36,14 @@ namespace SMSystem.App.Implementations
             return await _teacherDashboardRepository.GetStudentsForDiary(diaryId);
         }
 
+        public async Task<List<Student>> GetTopStudentsWithGrade5Async(int subjectId)
+        {
+            return await _teacherDashboardRepository.GetTopStudentsWithGrade5Async(subjectId);
+        }
 
+        public async Task<int> GetTotalAbsencesForSubjectAsync(int subjectId)
+        {
+            return await _teacherDashboardRepository.GetTotalAbsencesForSubjectAsync(subjectId);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SMSystem.Models.Entities;
+﻿using Presentation.Areas.Admin.Models.ViewModels;
+using SMSystem.Models.Entities;
 
 namespace Presentation.Areas.Educator.Models.ViewModels
 {
@@ -10,5 +11,10 @@ namespace Presentation.Areas.Educator.Models.ViewModels
         public IEnumerable<Student> Students { get; set; }
         public Subject Subject { get; set; }
         public IEnumerable<Subject> Subjects { get; set; }
+        public IEnumerable<Student> TopStudents { get; set; }
+        public Dictionary<int, List<Student>> SubjectStudents { get; set; } = new();
+        public Dictionary<int, int> SubjectAbsences { get; set; } = new();
+
     }
+
 }

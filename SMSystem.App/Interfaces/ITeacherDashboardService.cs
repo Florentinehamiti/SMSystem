@@ -12,6 +12,10 @@ namespace SMSystem.App.Interfaces
         Task<List<Subject>> GetSubjectsForLoggedTeacherAsync(string teacherEmail);
         Task<Diary?> GetDiaryIdForLoggedTeacherAsync(string teacherEmail);
         Task<IEnumerable<Student?>> GetStudentsForDiary(int diaryId);
+        Task<List<Student>> GetTopStudentsWithGrade5Async(int subjectId);
+        Task<int> GetTotalAbsencesForSubjectAsync(int subjectId);
+
+
 
     }
 }

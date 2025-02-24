@@ -100,9 +100,8 @@ namespace Presentation.Areas.Educator.Controllers
                 if (ModelState.IsValid)
                 {
                     remark.InsertedDate = DateTime.Now;
-                    //remark.InsertedBy = await _teacherService.GetByEmail(User.Identity.Name);
                     _remarksService.AddRemark(remark);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "SchoolHour", new { area = "Educator" });
                 }
 
                 return View(remark);

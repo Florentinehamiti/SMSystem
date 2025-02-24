@@ -167,9 +167,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lenda</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Top 5 nxenesit</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Top 4 nxenesit</th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Numri i mungesave</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mesatarja e notave</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -189,33 +188,32 @@
                                         </td>
                                         <td>
                                             <div class="avatar-group mt-2">
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                                                    <img src="~/theme/img/team-1.jpg" alt="team1">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                                                    <img src="~/theme/img/team-2.jpg" alt="team2">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                                                    <img src="~/theme/img/team-3.jpg" alt="team3">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                                                    <img src="~/theme/img/team-4.jpg" alt="team4">
-                                                </a>
+                                                @if (Model.SubjectStudents.ContainsKey(subject.Id))
+                                                {
+                                                    @foreach (var student in Model.SubjectStudents[subject.Id])
+                                                    {
+                                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@student.Name">
+                                                            <img src="@Url.Content("~/Images/" + @student.ProfilePhotoPath)" alt="@student.Name">
+                                                        </a>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-xs text-muted">Asnjë nxënës</span>
+                                                }
                                             </div>
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold"> $14,000 </span>
+                                        <td class="text-center">
+                                            @if (Model.SubjectAbsences.ContainsKey(subject.Id))
+                                            {
+                                                @Model.SubjectAbsences[subject.Id]
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">0</span>
+                                            }
                                         </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">60%</span>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </td>
+                                      
                                     </tr>
                                     }
                              

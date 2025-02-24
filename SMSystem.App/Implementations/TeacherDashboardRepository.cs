@@ -43,6 +43,30 @@ namespace SMSystem.App.Implementations
                  .Where(students => students.DiaryId == diaryId).ToListAsync();
             return students;
         }
+
+        public async Task<List<Student>> GetTopStudentsWithGrade5Async(int subjectId)
+        {
+            return await _context.Evaluations
+                .Where(g => g.SubjectId == subjectId && g.Value == 5)
+                .Select(g => new Student
+                {
+                    Id = g.Student.Id,
+                    Name = g.Student.Name,
+                    ProfilePhotoPath = g.Student.ProfilePhotoPath 
+                })
+                .Distinct()
+                .Take(4)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetTotalAbsencesForSubjectAsync(int subjectId)
+        {
+            return await _context.Absences
+                .Where(a => a.SchoolHour.SubjectId == subjectId && a.Status == false)
+                .CountAsync();
+        }
+
+
     }
 
 }
