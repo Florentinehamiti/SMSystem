@@ -1,4 +1,7 @@
 ﻿@model RemarkViewModel
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
 <div class="container-fluid px-4 py-4">
     <div class="row">
@@ -9,25 +12,25 @@
             }
             else
             {
-                <p class="text-warning">No profile photo available.</p>
+                <p class="text-warning">@Localizer["Nuk ka foto"]</p>
             }
         </div>
         <div class="col-md-3 mb-3 mt-3">
-            <label class="form-label font-weight-bold mx-0">Name</label>
+            <label class="form-label font-weight-bold mx-0">@Localizer["Name"]</label>
             <div class="form-control mb-2">@Model.FullName</div>
-            <label class="form-label mx-0 font-weight-bold">Parent name</label>
+            <label class="form-label mx-0 font-weight-bold">@Localizer["ParentName"]</label>
             <div class="form-control mb-2">@Model.ParentName</div>
-            <label class="form-label mx-0 font-weight-bold">Email</label>
+            <label class="form-label mx-0 font-weight-bold">@Localizer["Email"]</label>
             <div class="form-control mb-2">@Model.Email</div>
         </div>
         <div class="col-md-3 mb-3 mt-3">
-            <label class="form-label font-weight-bold mx-0">Telephone</label>
+            <label class="form-label font-weight-bold mx-0">@Localizer["Telephone"]</label>
             <div class="form-control mb-2">@Model.Tel</div>
-            <label class="form-label font-weight-bold mx-0">Birthday</label>
+            <label class="form-label font-weight-bold mx-0">@Localizer["Birthday"]</label>
             <div class="form-control mb-2">
                 @Model.Birthday?.ToString("MM/dd/yyyy")
             </div>
-            <label class="form-label font-weight-bold mx-0">Gender</label>
+            <label class="form-label font-weight-bold mx-0">@Localizer["Gender"]</label>
             <div class="form-control mb-2">
                 @(Model.Gender.HasValue ? (Model.Gender.Value ? "Male" : "Female") : "Not specified")
             </div>
@@ -39,7 +42,7 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Remarks</h6>
+                        <h6 class="text-white text-capitalize ps-3">@Localizer["Remarks"]</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -47,10 +50,10 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Date</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Hour</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Description</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Date"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Hour"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Subject"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Description"]</th>
                                 </tr>
                             </thead>
                             <tbody>

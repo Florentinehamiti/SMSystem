@@ -3,6 +3,11 @@
 @inject UserManager<ApplicationUser> UserManager
 @inject IHttpContextAccessor HttpContextAccessor
 
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
+
+
 @{
     var currentController = HttpContextAccessor.HttpContext?.Request.RouteValues["controller"]?.ToString();
 }
@@ -22,7 +27,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">@Localizer["Dashboard"]</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -30,7 +35,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">school</i>
                     </div>
-                    <span class="nav-link-text ms-1">Ora mesimore</span>
+                    <span class="nav-link-text ms-1">@Localizer["SchoolHour"]</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -38,7 +43,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">menu_book</i>
                     </div>
-                    <span class="nav-link-text ms-1">Vleresimit</span>
+                    <span class="nav-link-text ms-1">@Localizer["Evaluations"]</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -46,7 +51,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">stacked_bar_chart</i>
                     </div>
-                    <span class="nav-link-text ms-1">Verejtjet</span>
+                    <span class="nav-link-text ms-1">@Localizer["Remarks"]</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -54,7 +59,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">school</i>
                     </div>
-                    <span class="nav-link-text ms-1">Mungesat</span>
+                    <span class="nav-link-text ms-1">@Localizer["Absences"]</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -64,7 +69,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">logout</i>
                         </div>
-                        <span class="nav-link-text ms-1">Log Out</span>
+                        <span class="nav-link-text ms-1">@Localizer["LogOut"]</span>
                     </button>
                 </form>
             </li>

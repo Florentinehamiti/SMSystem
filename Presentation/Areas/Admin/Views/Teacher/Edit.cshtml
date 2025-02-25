@@ -1,5 +1,7 @@
 ﻿@model TeacherViewModel
-
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
 <div class="container-fluid px-4 py-4">
     <form class="px-3" asp-action="Edit" asp-controller="Teacher" asp-area="Admin" enctype="multipart/form-data">
@@ -10,13 +12,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Name" class="form-label font-weight-bold">Name</label>
+                    <label asp-for="Name" class="form-label font-weight-bold">@Localizer["Name"]</label>
                     <input asp-for="Name" placeholder="Name" type="text" class="form-control border px-2" />
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Surname" class="form-label font-weight-bold">Surname</label>
+                    <label asp-for="Surname" class="form-label font-weight-bold">@Localizer["Lastname"]</label>
                     <input asp-for="Surname" placeholder="Surname" type="text" class="form-control border px-2" />
                 </div>
             </div>
@@ -26,14 +28,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Email" class="form-label font-weight-bold">Email</label>
+                    <label asp-for="Email" class="form-label font-weight-bold">@Localizer["Email"]</label>
                     <input asp-for="Email" placeholder="Email" type="text" class="form-control border px-2" />
                 </div>
             </div>
             <div class="col-md-6 d-flex align-items-center">
                 <div class="form-check form-switch d-flex align-items-center">
                     <input class="form-check-input" asp-for="Qualified" type="checkbox" id="flexSwitchCheckDefault" />
-                    <label class="form-check-label mx-3 mb-0" for="Qualified">Qualified</label>
+                    <label class="form-check-label mx-3 mb-0" for="Qualified">@Localizer["Qualified"]</label>
                 </div>
             </div>
         </div>
@@ -42,7 +44,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label class="font-weight-bold">Profile Picture</label>
+                    <label class="font-weight-bold">@Localizer["ProfilePic"]</label>
                     <input asp-for="ProfilePhoto" type="file" class="form-control" />
                     @if (!string.IsNullOrEmpty(Model.ProfilePhotoPath))
                     {
@@ -52,7 +54,7 @@
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Birthday" class="form-label font-weight-bold">Birthday</label>
+                    <label asp-for="Birthday" class="form-label font-weight-bold">@Localizer["Birthday"]</label>
                     <input asp-for="Birthday" type="date" class="form-control border px-2" />
                 </div>
             </div>
@@ -60,8 +62,8 @@
 
   
         <div class="d-flex justify-content-end gap-2">
-            <a asp-action="Index" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-outline-secondary">Back</a>
-            <button type="submit" class="btn btn-outline-primary">Save</button>
+            <a asp-action="Index" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-outline-secondary">@Localizer["Back"]</a>
+            <button type="submit" class="btn btn-outline-primary">@Localizer["Save"]</button>
         </div>
     </form>
 </div>

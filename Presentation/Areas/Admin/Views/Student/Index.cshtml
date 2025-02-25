@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
 <div class="container-fluid py-4">
     @if (TempData["SuccessMessage"] != null)
@@ -51,13 +54,13 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Students</h6>
+                        <h6 class="text-white text-capitalize ps-3">@Localizer["Students"]</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>All students</h6>
+                            <h6>@Localizer["AllStudents"]</h6>
                             <a asp-action="Create" asp-controller="Student" asp-area="Admin" type="button" class="btn btn-primary">+ Add new</a>
                         </div>
                         <table class="table align-items-center mb-0">
@@ -65,10 +68,10 @@
                             <thead>
 
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name and surname</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Qualified</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Birthday</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Name and surname"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Localizer["Email"]</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Gender"]</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Birthday"]</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -97,7 +100,9 @@
                                             </span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">@student.Birthday</span>
+                                            <span class="text-secondary text-xs font-weight-bold">
+                                                @student.Birthday?.ToString("dd/MM/yyyy")
+                                            </span>
                                         </td>
                                         <td class="d-flex align-items-center justify-content-center">
                                             <a asp-action="Edit" asp-controller="Student" asp-area="Admin" asp-route-id="@student.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
@@ -128,7 +133,7 @@
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                     <form asp-action="Delete" asp-controller="Student" asp-area="Admin" method="post">
                                                         <input type="hidden" name="id" value="@student.Id" />
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="submit" class="btn btn-danger">@Localizer["Delete"]</button>
                                                     </form>
                                                 </div>
                                             </div>

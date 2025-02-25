@@ -1,5 +1,7 @@
 ﻿@model Presentation.Areas.Client.Models.ViewModels.DashboardViewModel
-
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -13,7 +15,7 @@
                         <i class="material-icons opacity-10">groups</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Nota mesatare</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["AverageeGrade"]</p>
                         <h4 class="mb-0">@Model.AverageGrade.ToString("0.00")</h4>
                     </div>
                 </div>
@@ -29,7 +31,7 @@
                         <i class="material-icons opacity-10">school</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Mungesa</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Absences"]</p>
                         <h4 class="mb-0">@Model.TotalAbsences</h4>
                     </div>
                 </div>
@@ -45,7 +47,7 @@
                         <i class="material-icons opacity-10">stacked_bar_chart</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Verejtje</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Remarks"]</p>
                         <h4 class="mb-0">@Model.TotalRemarks</h4>
                     </div>
                 </div>

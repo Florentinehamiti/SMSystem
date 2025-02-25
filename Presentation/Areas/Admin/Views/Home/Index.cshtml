@@ -1,4 +1,7 @@
-﻿@model DashboardViewModel
+﻿@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
+@model DashboardViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -12,7 +15,7 @@
                         <i class="material-icons opacity-10">school</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Students</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Students"]</p>
                         <h4 class="mb-0">@Model.TotalStudents</h4>
                     </div>
                 </div>
@@ -29,7 +32,7 @@
                         <i class="material-icons opacity-10">stacked_bar_chart</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Classes</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Profesors"]</p>
                         <h4 class="mb-0">@Model.TotalTeachers</h4>
                     </div>
                 </div>
@@ -46,7 +49,7 @@
                         <i class="material-icons opacity-10">groups</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Proffesors</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Diaries"]</p>
                         <h4 class="mb-0">@Model.TotalDiaries</h4>
                     </div>
                 </div>
@@ -63,7 +66,7 @@
                         <i class="material-icons opacity-10">menu_book</i>
                     </div>
                     <div class="text-end pt-1">
-                        <p class="text-sm mb-0 text-capitalize">Subjects</p>
+                        <p class="text-sm mb-0 text-capitalize">@Localizer["Subjects"]</p>
                         <h4 class="mb-0">@Model.TotalSubjects</h4>
                     </div>
                 </div>
@@ -85,8 +88,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h6 class="mb-0 ">Student registrations statistics</h6>
-                    <p class="text-sm ">Student statistics by month</p>
+                    <h6 class="mb-0 ">@Localizer["StudentsStatistics"]</h6>
+                    <p class="text-sm ">@Localizer["StudentsStatisticsByMonth"]</p>
                     <hr class="dark horizontal">
                     <div class="d-flex ">
                 
@@ -104,8 +107,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h6 class="mb-0 "> Classes registrations statistics</h6>
-                    <p class="text-sm ">Classes statistics by month</p>
+                    <h6 class="mb-0 ">@Localizer["SubjectsStatistics"]</h6>
+                    <p class="text-sm ">@Localizer["SubjectsStatisticsByMonth"]</p>
                     <hr class="dark horizontal">
                     <div class="d-flex ">
                        
@@ -123,8 +126,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h6 class="mb-0 ">Professors registrations statistics</h6>
-                    <p class="text-sm ">Professors statistics by month</p>
+                    <h6 class="mb-0 ">@Localizer["ProfessorsStatistics"]</h6>
+                    <p class="text-sm ">@Localizer["ProfessorsStatisticsByMonth"]</p>
                     <hr class="dark horizontal">
                     <div class="d-flex ">
                       

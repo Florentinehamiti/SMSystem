@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<EvaluateViewModel>
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -9,8 +12,8 @@
 <div class="container-fluid py-4">
 
     <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
-        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
-        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
+        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> @Localizer["ExportToPdf"] </button>
+        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> @Localizer["ExportToExcel"] </button>
     </div>
 
     <div class="row">
@@ -18,19 +21,19 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Evaluations</h6>
+                        <h6 class="text-white text-capitalize ps-3">@Localizer["Evaluations"]</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>All evaluations</h6>
+                            <h6>@Localizer["AllEvaluations"]</h6>
                         </div>
                         <table class="table align-items-center mb-0 w-auto">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Name"]</th>
                                     @foreach (var subject in Model.SelectMany(m => m.Grades.Keys).Distinct())
                                     {
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@subject</th>
@@ -59,7 +62,7 @@
                                         }
                                         <td class="d-flex align-items-center justify-content-center text-center">
                                             <a asp-action="Detail" asp-controller="Evaluate" asp-area="Educator" asp-route-id="@student.StudentId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0">
-                                                Shiko me shume
+                                                @Localizer["View more"] 
                                             </a>
                                         </td>
                                     </tr>
@@ -73,3 +76,38 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+        asp-fallback-test="window.jQuery"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+        crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+
+    document.getElementById('exportPdf').addEventListener('click', function () {
+        const doc = new jspdf.jsPDF();
+        doc.autoTable({
+            html: '.table',
+            theme: 'grid',
+            headStyles: { fillColor: [41, 128, 185] },
+            styles: { fontSize: 10, cellPadding: 2 },
+            margin: { top: 10 },
+        });
+        doc.save('Evaluations.pdf');
+    });
+
+
+    document.getElementById('exportExcel').addEventListener('click', function () {
+        const table = document.querySelector('.table');
+        const workbook = XLSX.utils.table_to_book(table, { sheet: 'Students' });
+        XLSX.writeFile(workbook, 'Evaluations.xlsx');
+    });
+</script>

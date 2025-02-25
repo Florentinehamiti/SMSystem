@@ -1,10 +1,34 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Presentation
 @using SMSystem.Data.Identity
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> SharedLocalizer
 
+@{
+	var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+<style>
+	#gjuha {
+		position: relative;
+		display: inline-block;
+	}
+
+	#gjuha i {
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
+</style>
 
 
 <!--Navbar -->
@@ -12,11 +36,38 @@
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">@SharedLocalizer["Pages"]</a></li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">@SharedLocalizer["Dashboard"]</li>
             </ol>
-            <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+            <h6 class="font-weight-bolder mb-0">@SharedLocalizer["Dashboard"]</h6>
         </nav>
+		<div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+			<div class="ms-md-auto pe-md-3 d-flex align-items-center">
+				<ul class="ml-auto w-100">
+					<form asp-controller="Language" asp-action="SetLanguage" asp-area="Client" method="post">
+						<input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+						<div class="input-container" id="gjuha">
+							<select name="culture" class="form-control border px-5" onchange="checkCultureChange(this);">
+								<option value="sq-AL">Shqip <i class="flag-icon flag-icon-al"></i></option>
+								<option value="en-US">English <i class="flag-icon flag-icon-us"></i></option>
+							</select>
+							<i class="fas fa-chevron-down"></i>
+						</div>
+					</form>
+				</ul>
+
+			</div>
+		</div>
     </div>
 </nav>
 <!-- End Navbar -->
+<script>
+	function checkCultureChange(selectElement) {
+		   const currentCulture = '@culture';
+		   const selectedCulture = selectElement.value;
+
+		   if (currentCulture !== selectedCulture) {
+			   selectElement.form.submit();
+		   }
+	   }
+</script>

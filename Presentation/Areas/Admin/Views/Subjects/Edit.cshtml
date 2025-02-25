@@ -1,37 +1,41 @@
 ﻿@model SubjectViewModel
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
+
 <div class="container-fluid px-4 py-4">
     <form class="px-3" asp-action="Edit" asp-controller="Subjects" asp-area="Admin" method="post">
         <input type="hidden" asp-for="Id" />
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Name" class="form-label font-weight-bold">Title</label>
+                    <label asp-for="Name" class="form-label font-weight-bold">@Localizer["Title"]</label>
                     <input asp-for="Name" type="text" class="form-control border px-2" placeholder="Subject title">
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="ClassId" class="form-label font-weight-bold">Class</label>
+                    <label asp-for="ClassId" class="form-label font-weight-bold">@Localizer["Class"]</label>
                     <select asp-for="ClassId" asp-items="@(new SelectList(Model.Classes.Select(c => new { c.Id, FullName =  c.ClassNumber}), "Id", "FullName"))" class="form-control border px-2">
-                        <option value="">Select class</option>
+                        <option value="">@Localizer["SelectClass"]</option>
                     </select>
                     <span asp-validation-for="ClassId" class="text-danger"></span>
                 </div>
             </div>
         </div>
-        <h6 class="mt-2">Book details</h6>
+        <h6 class="mt-2">@Localizer["BookDetails"]</h6>
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="BookName" class="form-label font-weight-bold">Book</label>
+                    <label asp-for="BookName" class="form-label font-weight-bold">@Localizer["Book"]</label>
                     <input asp-for="BookName" type="text" class="form-control border px-2" placeholder="Book title">
                     <span asp-validation-for="BookName" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Author" class="form-label font-weight-bold">Author</label>
+                    <label asp-for="Author" class="form-label font-weight-bold">@Localizer["Author"]</label>
                     <input asp-for="Author" type="text" class="form-control border px-2" placeholder="Author name">
                     <span asp-validation-for="Author" class="text-danger"></span>
                 </div>
@@ -40,22 +44,22 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="PublicationYear" class="form-label font-weight-bold">Publication date</label>
+                    <label asp-for="PublicationYear" class="form-label font-weight-bold">@Localizer["PublicationDate"]</label>
                     <input asp-for="PublicationYear" placeholder="Publication year" type="number" class="form-control border px-2">
                     <span asp-validation-for="PublicationYear" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label class="form-label font-weight-bold">Edition</label>
+                    <label class="form-label font-weight-bold">@Localizer["Edition"]</label>
                     <input type="text" class="form-control border px-2" placeholder="Book edition">
                     <span class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="d-flex justify-content-end gap-2">
-            <a asp-action="Subjects" asp-controller="Home" asp-area="Admin" type="button" class="btn btn-outline-secondary">Back</a>
-            <button type="submit" class="btn btn-outline-primary">Save</button>
+            <a asp-action="Subjects" asp-controller="Home" asp-area="Admin" type="button" class="btn btn-outline-secondary">@Localizer["Back"]</a>
+            <button type="submit" class="btn btn-outline-primary">@Localizer["Save"]</button>
         </div>
     </form>
 </div>

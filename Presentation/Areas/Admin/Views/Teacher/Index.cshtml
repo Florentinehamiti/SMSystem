@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<TeacherViewModel>
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -44,8 +47,8 @@
 
     }
     <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
-        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
-        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
+        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> @Localizer["ExportToPdf"]</button>
+        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i>@Localizer["ExportToExcel"]</button>
     </div>
     <div class="row">
         <div class="col-12">
@@ -53,24 +56,24 @@
                
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Teachers</h6>
+                        <h6 class="text-white text-capitalize ps-3">@Localizer["Teachers"]</h6>
                     </div>
                 </div>
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>All teachers</h6>
-                            <a asp-action="Create" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-primary">+ Add new</a>
+                            <h6>@Localizer["AllTeachers"]</h6>
+                            <a asp-action="Create" asp-controller="Teacher" asp-area="Admin" type="button" class="btn btn-primary">@Localizer["AddNew"]</a>
                         </div>
                         <table class="table align-items-center mb-0">
 
                             <thead>
 
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name and surname</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Qualified</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Birthday</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Name and surname"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Localizer["Email"]</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Qualified"]</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Birthday"]</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -90,7 +93,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">Lecturer</p>
+                                            <p class="text-xs font-weight-bold mb-0">@Localizer["Lecturer"]</p>
                                             <p class="text-xs text-secondary mb-0">@teacher.Email</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
@@ -101,13 +104,13 @@
                                         </td>
                                         <td class="d-flex align-items-center justify-content-center">
                                             <a asp-action="Edit" asp-controller="Teacher" asp-area="Admin" asp-route-id="@teacher.Id" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
+                                                @Localizer["Edit"]
                                             </a>
                                             <a href="#deleteModal-@teacher.Id"
                                                class="text-secondary font-weight-bold text-xs btn border mb-0 delete-button"
                                                data-toggle="modal"
                                                data-target="#deleteModal-@teacher.Id">
-                                                Delete
+                                                @Localizer["Delete"]
                                             </a>
                                         </td>
                                     </tr>

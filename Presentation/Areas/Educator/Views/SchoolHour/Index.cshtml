@@ -1,153 +1,157 @@
 ﻿@model IEnumerable<SchoolHourViewModel>
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
-    <style>
-.dropdown-toggle::after {
-    display: none !important;
-}
+<style>
+	.dropdown-toggle::after {
+		display: none !important;
+	}
 </style>
 
 <div class="container-fluid py-4">
-    
-    <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
-        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
-        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
-    </div>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Oret mesimore</h6>
-                    </div>
-                </div>
-                <div class="card-body px-0 pb-2">
-                    <div class=" p-0">
-                        <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>Te gjitha oret</h6>
-                            <a asp-action="Create" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-primary">+ Regjistro oren mesimore</a>
-                        </div>
-                        <table class="table align-items-center mb-0">
+	<div class="d-flex justify-content-end align-items-end mt-1 mx-4">
+		<button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> @Localizer["ExportToPdf"] </button>
+		<button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> @Localizer["ExportToExcel"]</button>
+	</div>
 
-                            <thead>
+	<div class="row">
+		<div class="col-12">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<h6 class="text-white text-capitalize ps-3">@Localizer["SchoolHour"]</h6>
+					</div>
+				</div>
+				<div class="card-body px-0 pb-2">
+					<div class=" p-0">
+						<div class="d-flex justify-content-between align-items-center mt-1 mx-4">
+							<h6>Te gjitha oret</h6>
+							<a asp-action="Create" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-primary"> @Localizer["RegisterSchoolHour"]</a>
+						</div>
+						<table class="table align-items-center mb-0">
 
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lenda mesimore</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Koha e mbajtjes</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pershkrimi i mbajtjes se ores</th>
-                                    <th class="text-secondary opacity-7"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+							<thead>
 
-                                @foreach (var hour in Model)
-                                {
-                                    <tr>
+								<tr>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Subject"]</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">@Localizer["TimeHour"]  </th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Description"]</th>
+									<th class="text-secondary opacity-7"></th>
+								</tr>
+							</thead>
+							<tbody>
 
-                                        <td class="">
-                                            <p class="text-xs font-weight-bold m-3">@hour.SubjectName</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0">@hour.Date</p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0">@hour.SchoolHourDescribe</p>
-                                        </td>
+								@foreach (var hour in Model)
+								{
+									<tr>
 
-
-                                        <td class="mb-5">
-                                            <div class="dropdown">
-                                                <a class="dropdown-toggle text-dark text-decoration-none text-xs" href="#" role="button" id="actionsDropdown-@hour.SchoolHourId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Actions <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                                        <path d="M7.247 11.14 2.451 5.658c-.566-.63-.106-1.658.753-1.658h9.592c.86 0 1.32 1.028.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0"/>
-                                                    </svg>
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="actionsDropdown-@hour.SchoolHourId">
-                                                    <a class="dropdown-item text-xs" asp-action="AddRemark" asp-controller="Remarks" asp-area="Educator" asp-route-schoolHourId="@hour.SchoolHourId" asp-route-diaryId="@hour.DiaryId">
-                                                        Shto vërejtje
-                                                    </a>
-                                                    <a class="dropdown-item text-xs" asp-action="AddEvaluation" asp-controller="Evaluate" asp-area="Educator" asp-route-diaryId="@hour.DiaryId" asp-route-subjectId="@hour.SubjectId">
-                                                        Shto vleresim
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <div class="modal fade" id="deleteModal-@hour.SchoolHourId" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@hour.SchoolHourId" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel-@hour.SchoolHourId">Confirm Deletion</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete this diary?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                    <form asp-action="Delete" asp-controller="Diary" asp-area="Admin" method="post">
-                                                        <input type="hidden" name="id" value="@hour.SchoolHourId" />
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
+										<td class="">
+											<p class="text-xs font-weight-bold m-3">@hour.SubjectName</p>
+										</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0">@hour.Date</p>
+										</td>
+										<td class="align-middle text-center">
+											<p class="text-xs text-secondary font-weight-bold mb-0">@hour.SchoolHourDescribe</p>
+										</td>
 
 
+										<td class="mb-5">
+											<div class="dropdown">
+												<a class="dropdown-toggle text-dark text-decoration-none text-xs" href="#" role="button" id="actionsDropdown-@hour.SchoolHourId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													@Localizer["Actions"]
+													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+														<path d="M7.247 11.14 2.451 5.658c-.566-.63-.106-1.658.753-1.658h9.592c.86 0 1.32 1.028.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0" />
+													</svg>
+												</a>
+												<div class="dropdown-menu" aria-labelledby="actionsDropdown-@hour.SchoolHourId">
+													<a class="dropdown-item text-xs" asp-action="AddRemark" asp-controller="Remarks" asp-area="Educator" asp-route-schoolHourId="@hour.SchoolHourId" asp-route-diaryId="@hour.DiaryId">
+														@Localizer["AddAbsence"]
+													</a>
+													<a class="dropdown-item text-xs" asp-action="AddEvaluation" asp-controller="Evaluate" asp-area="Educator" asp-route-diaryId="@hour.DiaryId" asp-route-subjectId="@hour.SubjectId">
+														@Localizer["AddEvaluation"]
+													</a>
+												</div>
+											</div>
+										</td>
+									</tr>
 
-                            </tbody>
-                        </table>
+									<div class="modal fade" id="deleteModal-@hour.SchoolHourId" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-@hour.SchoolHourId" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="deleteModalLabel-@hour.SchoolHourId">Confirm Deletion</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													Are you sure you want to delete this diary?
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+													<form asp-action="Delete" asp-controller="Diary" asp-area="Admin" method="post">
+														<input type="hidden" name="id" value="@hour.SchoolHourId" />
+														<button type="submit" class="btn btn-danger">Delete</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								}
 
 
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							</tbody>
+						</table>
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-        asp-fallback-test="window.jQuery"
-        crossorigin="anonymous">
+		asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+		asp-fallback-test="window.jQuery"
+		crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"
-        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
-        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-        crossorigin="anonymous">
+		asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+		asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+		crossorigin="anonymous">
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-    $(document).on('click', '.delete-button', function () {
-        const diaryId = $(this).data('id');
-        $('#deleteTeacherId').val(diaryId);
-    });
-    
-    document.getElementById('exportPdf').addEventListener('click', function () {
-        const doc = new jspdf.jsPDF();
-        doc.autoTable({
-            html: '.table',
-            theme: 'grid',
-            headStyles: { fillColor: [41, 128, 185] },
-            styles: { fontSize: 10, cellPadding: 2 },
-            margin: { top: 10 },
-        });
-        doc.save('Students.pdf');
-    });
+	$(document).on('click', '.delete-button', function () {
+		const diaryId = $(this).data('id');
+		$('#deleteTeacherId').val(diaryId);
+	});
+
+	document.getElementById('exportPdf').addEventListener('click', function () {
+		const doc = new jspdf.jsPDF();
+		doc.autoTable({
+			html: '.table',
+			theme: 'grid',
+			headStyles: { fillColor: [41, 128, 185] },
+			styles: { fontSize: 10, cellPadding: 2 },
+			margin: { top: 10 },
+		});
+		doc.save('SchoolHour.pdf');
+	});
 
 
-    document.getElementById('exportExcel').addEventListener('click', function () {
-        const table = document.querySelector('.table');
-        const workbook = XLSX.utils.table_to_book(table, { sheet: 'Students' });
-        XLSX.writeFile(workbook, 'Students.xlsx');
-    });
+	document.getElementById('exportExcel').addEventListener('click', function () {
+		const table = document.querySelector('.table');
+		const workbook = XLSX.utils.table_to_book(table, { sheet: 'Students' });
+		XLSX.writeFile(workbook, 'SchoolHour.xlsx');
+	});
 </script>
 

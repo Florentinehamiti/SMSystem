@@ -1,4 +1,7 @@
-﻿	@model SchoolHourViewModel
+﻿@model SchoolHourViewModel
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
 	<div class="container-fluid px-4 py-4">
 		<form class="px-3" asp-action="Create" asp-controller="SchoolHour" asp-area="Educator">
@@ -9,31 +12,31 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="input-container">
-						<label asp-for="HourNumber" class="form-label font-weight-bold">Numri i ores</label>
+					<label asp-for="HourNumber" class="form-label font-weight-bold">@Localizer["NumriOres"]</label>
 						<input asp-for="HourNumber" placeholder="Numri i ores" type="number" class="form-control border px-2" value="@(Model.HourNumber > 0 ? Model.HourNumber.ToString() : "")" />
 						<span asp-validation-for="HourNumber" class="text-danger"></span>
 					</div>
 					<div class="input-container mt-2">
-						<label asp-for="Date" class="form-label font-weight-bold">Koha e mbajtjes se ores mesimore</label>
+					<label asp-for="Date" class="form-label font-weight-bold">@Localizer["TimeSchoolHour"]</label>
 						<input asp-for="Date" placeholder="Paralel" type="datetime" readonly class="form-control border px-2" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm")" />
 						<span asp-validation-for="Date" class="text-danger"></span>
 					</div>
 					<div class="input-container mt-2">
-						<label asp-for="SubjectId" class="form-label font-weight-bold">Lenda</label>
+					<label asp-for="SubjectId" class="form-label font-weight-bold">@Localizer["Subject"]</label>
 						<select asp-for="SubjectId" asp-items="@(new SelectList(Model.Subjects.Select(t => new { t.Id, FullName = t.Name }), "Id", "FullName"))" class="form-control border px-2">
-							<option value="">Select Subject</option>
+						<option value="">@Localizer["SelectSubject"]</option>
 						</select>
 						<span asp-validation-for="SubjectId" class="text-danger"></span>
 					</div>
 					<div class="input-container mt-2">
-						<label asp-for="SchoolHourDescribe" class="form-label font-weight-bold">Përshkrimi i orës mësimore</label>
+					<label asp-for="SchoolHourDescribe" class="form-label font-weight-bold">@Localizer["School hour description"]</label>
 						<textarea asp-for="SchoolHourDescribe" placeholder="Shkruaj përshkrimin e orës mësimore..." class="form-control border px-2" rows="4"></textarea>
 						<span asp-validation-for="SchoolHourDescribe" class="text-danger"></span>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label class="form-label font-weight-bold">Present students</label>
+					<label class="form-label font-weight-bold">@Localizer["PresentStudents"]</label>
 					@foreach (var student in Model.Students)
 					{
 						<div class="form-check px-0">
@@ -55,8 +58,8 @@
 				</div>
 			</div>
 			<div class="d-flex justify-content-end gap-2">
-				<a asp-action="Index" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-outline-secondary">Back</a>
-				<button type="submit" class="btn btn-outline-primary">Save</button>
+			<a asp-action="Index" asp-controller="SchoolHour" asp-area="Educator" type="button" class="btn btn-outline-secondary">@Localizer["Back"]</a>
+			<button type="submit" class="btn btn-outline-primary">@Localizer["Save"]</button>
 			</div>
 		</form>
 	</div>

@@ -2,13 +2,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 
 <div class="container-fluid py-4">
     
     <div class="d-flex justify-content-end align-items-end mt-1 mx-4">
-        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> Export to PDF</button>
-        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> Export to Excel</button>
+        <button id="exportPdf" class="btn btn-light border me-2"><i class="fa fa-file-pdf"></i> @Localizer["ExportToPdf"] </button>
+        <button id="exportExcel" class="btn btn-dark"><i class="fa fa-file-excel"></i> @Localizer["ExportToExcel"]</button>
     </div>
     <div class="row">
         <div class="col-12">
@@ -22,16 +24,16 @@
                 <div class="card-body px-0 pb-2">
                     <div class="table-responsive p-0">
                         <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>All students</h6>
+                            <h6>@Localizer["AllStudents"]</h6>
                         </div>
                         <table class="table align-items-center mb-0">
 
                             <thead>
 
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Student</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Grade</th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Absences</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">@Localizer["Student"]</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">@Localizer["Grade"]</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Absences"]</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -64,7 +66,7 @@
 
                                         <td class="text-center">
                                             <a asp-action="EvaluateStudent" asp-controller="Evaluate" asp-area="Educator" asp-route-studentId="@student.StudentId" asp-route-diaryId="@Model.DiaryId" asp-route-subjectId="@Model.SubjectId" class="text-secondary font-weight-bold text-xs btn border mx-3 mb-0" data-toggle="tooltip" data-original-title="Edit user">
-                                                Vlereso
+                                                @Localizer["Evaluate"]
                                             </a>
                                         </td>
                                     </tr>

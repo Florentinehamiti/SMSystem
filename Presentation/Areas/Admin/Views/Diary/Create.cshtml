@@ -1,18 +1,21 @@
-﻿@model DiaryViewModel
+﻿@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
+@model DiaryViewModel
 
 <div class="container-fluid px-4 py-4">
     <form class="px-3" asp-action="Create" asp-controller="Diary" asp-area="Admin" enctype="multipart/form-data">
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="SchoolCode" class="form-label font-weight-bold">School Code</label>
+                    <label asp-for="SchoolCode" class="form-label font-weight-bold">@Localizer["SchoolCode"]</label>
                     <input asp-for="SchoolCode" placeholder="School Code" type="number" class="form-control border px-2" />
                     <span asp-validation-for="SchoolCode" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Year" class="form-label font-weight-bold">Academic year</label>
+                    <label asp-for="Year" class="form-label font-weight-bold">@Localizer["AcademicYear"]</label>
                     <input asp-for="Year" placeholder="Year of studies" class="form-control border px-2" />
                     <span asp-validation-for="Year" class="text-danger"></span>
                 </div>
@@ -22,7 +25,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="ClassId" class="form-label font-weight-bold">Class</label>
+                    <label asp-for="ClassId" class="form-label font-weight-bold">@Localizer["Class"]</label>
                     <select asp-for="ClassId" asp-items="@(new SelectList(Model.Classes.Select(c => new { c.Id, FullName =  c.ClassNumber}), "Id", "FullName"))" class="form-control border px-2">
                         <option value="">Select class</option>
                     </select>
@@ -31,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="Paralel" class="form-label font-weight-bold">Paralel</label>
+                    <label asp-for="Paralel" class="form-label font-weight-bold">@Localizer["Paralel"]</label>
                     <input asp-for="Paralel" placeholder="Paralel" type="number" class="form-control border px-2" />
                     <span asp-validation-for="Paralel" class="text-danger"></span>
                 </div>
@@ -42,9 +45,9 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-container">
-                    <label asp-for="TeacherId" class="form-label font-weight-bold">Teacher</label>
+                    <label asp-for="TeacherId" class="form-label font-weight-bold">@Localizer["Teacher"]</label>
                     <select asp-for="TeacherId" asp-items="@(new SelectList(Model.Teachers.Select(t => new { t.Id, FullName = t.Name + " " + t.Surname }), "Id", "FullName"))" class="form-control border px-2">
-                        <option value="">Select Teacher</option>
+                        <option value="">@Localizer["SelectTeacher"]</option>
                     </select>
                     <span asp-validation-for="TeacherId" class="text-danger"></span>
                 </div>
@@ -53,8 +56,8 @@
         </div>
 
         <div class="d-flex justify-content-end gap-2">
-            <a asp-action="Index" asp-controller="Diary" asp-area="Admin" type="button" class="btn btn-outline-secondary">Back</a>
-            <button type="submit" class="btn btn-outline-primary">Save</button>
+            <a asp-action="Index" asp-controller="Diary" asp-area="Admin" type="button" class="btn btn-outline-secondary">@Localizer["Back"]</a>
+            <button type="submit" class="btn btn-outline-primary">@Localizer["Save"]</button>
         </div>
     </form>
 </div>

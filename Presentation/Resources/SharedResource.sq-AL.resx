@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Absence Date" xml:space="preserve">
+    <value>Data e mungesës</value>
+  </data>
   <data name="Absences" xml:space="preserve">
     <value>Mungesat</value>
   </data>
   <data name="AbsencesNr" xml:space="preserve">
     <value>Numri i mungesave</value>
+  </data>
+  <data name="AcademicYear" xml:space="preserve">
+    <value>Viti akademik</value>
   </data>
   <data name="Actions" xml:space="preserve">
     <value>Veprime</value>
@@ -135,11 +141,38 @@
   <data name="AddNew" xml:space="preserve">
     <value>+ Shto të ri</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>Të gjitha</value>
+  </data>
+  <data name="AllDiaries" xml:space="preserve">
+    <value>Të gjithë ditarët</value>
+  </data>
+  <data name="AllEvaluations" xml:space="preserve">
+    <value>Të gjitha vlerësimet</value>
+  </data>
+  <data name="AllRemarks" xml:space="preserve">
+    <value>Të gjitha vërejtjet</value>
+  </data>
   <data name="AllSchoolHours" xml:space="preserve">
     <value>Të gjitha orët</value>
   </data>
+  <data name="AllTeachers" xml:space="preserve">
+    <value>Të gjithë mësimdhënësit</value>
+  </data>
   <data name="AreUSure" xml:space="preserve">
     <value>A jeni të sigurt që dëshironi të fshini këtë mësues?</value>
+  </data>
+  <data name="AreYouSureDiary" xml:space="preserve">
+    <value>A jeni të sigurt që dëshironi të fshini këtë ditar?</value>
+  </data>
+  <data name="AreYouSureStudent" xml:space="preserve">
+    <value>A jeni të sigurt që dëshironi të fshini këtë nxënës?</value>
+  </data>
+  <data name="AreYouSureSubject" xml:space="preserve">
+    <value>A jeni të sigurt që dëshironi të fshini këtë lëndë?</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autori</value>
   </data>
   <data name="AverageeGrade" xml:space="preserve">
     <value>Nota mesatare</value>
@@ -149,6 +182,15 @@
   </data>
   <data name="Birthday" xml:space="preserve">
     <value>Ditëlindja</value>
+  </data>
+  <data name="Book" xml:space="preserve">
+    <value>Libri</value>
+  </data>
+  <data name="BookAuthor" xml:space="preserve">
+    <value>Autori i librit</value>
+  </data>
+  <data name="BookDetails" xml:space="preserve">
+    <value>Detajet e librit</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Anulo</value>
@@ -183,13 +225,16 @@
   <data name="Edit" xml:space="preserve">
     <value>Ndrysho</value>
   </data>
+  <data name="Edition" xml:space="preserve">
+    <value>Edicioni</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Adresa elektronike</value>
   </data>
   <data name="Evaluate" xml:space="preserve">
     <value>Vlerëso</value>
   </data>
-  <data name="EvaluateStudents" xml:space="preserve">
+  <data name="EvaluateStudent" xml:space="preserve">
     <value>Vlerëso nxënësit</value>
   </data>
   <data name="Evaluations" xml:space="preserve">
@@ -201,6 +246,9 @@
   <data name="ExportToPdf" xml:space="preserve">
     <value>Eksporto në PDF</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>Femër</value>
+  </data>
   <data name="Gender" xml:space="preserve">
     <value>Gjinia</value>
   </data>
@@ -210,8 +258,17 @@
   <data name="Hour" xml:space="preserve">
     <value>Ora</value>
   </data>
-  <data name="Logout" xml:space="preserve">
+  <data name="Lastname" xml:space="preserve">
+    <value>Mbiemri</value>
+  </data>
+  <data name="Lecturer" xml:space="preserve">
+    <value>Ligjërues</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
     <value>Shkyçu</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Mashkull</value>
   </data>
   <data name="MyAbsences" xml:space="preserve">
     <value>Mungesat e mia</value>
@@ -225,6 +282,18 @@
   <data name="Name" xml:space="preserve">
     <value>Emri</value>
   </data>
+  <data name="Name and surname" xml:space="preserve">
+    <value>Emri dhe mbiemri</value>
+  </data>
+  <data name="Nuk ka foto" xml:space="preserve">
+    <value>Nuk ka foto</value>
+  </data>
+  <data name="Nuk ka mungesa" xml:space="preserve">
+    <value>Nuk ka mungesa</value>
+  </data>
+  <data name="NumriOres" xml:space="preserve">
+    <value>Numri i orës</value>
+  </data>
   <data name="Pages" xml:space="preserve">
     <value>Faqet</value>
   </data>
@@ -232,10 +301,16 @@
     <value>Paralelja</value>
   </data>
   <data name="ParentName" xml:space="preserve">
-    <value>EmriPrindit</value>
+    <value>Emri i prindit</value>
   </data>
   <data name="PleaseEnterTheDescriptioForRemark" xml:space="preserve">
     <value>Ju lutem shënoni përshkrimin për vërejtjen...</value>
+  </data>
+  <data name="PresentStudents" xml:space="preserve">
+    <value>Studentët prezent</value>
+  </data>
+  <data name="Profesors" xml:space="preserve">
+    <value>Mësimdhënësit</value>
   </data>
   <data name="ProfessorsStatistics" xml:space="preserve">
     <value>Statistikat e profesorëve</value>
@@ -246,11 +321,20 @@
   <data name="ProfilePic" xml:space="preserve">
     <value>Fotografia e profilit</value>
   </data>
+  <data name="PublicationDate" xml:space="preserve">
+    <value>Data e publikimi</value>
+  </data>
+  <data name="PublicationYear" xml:space="preserve">
+    <value>Viti i publikimit</value>
+  </data>
   <data name="Qualified" xml:space="preserve">
     <value>Kualifikuar</value>
   </data>
   <data name="RegisterSchoolHour" xml:space="preserve">
     <value>+ Regjistro orën mësimore</value>
+  </data>
+  <data name="RemarkDate" xml:space="preserve">
+    <value>Data e vërejtjes</value>
   </data>
   <data name="Remarks" xml:space="preserve">
     <value>Vërejtjet</value>
@@ -258,11 +342,20 @@
   <data name="Save" xml:space="preserve">
     <value>Ruaj</value>
   </data>
+  <data name="School hour description" xml:space="preserve">
+    <value>Përshkrimi i orës nësimore</value>
+  </data>
   <data name="SchoolCode" xml:space="preserve">
     <value>Kodi i shkollës</value>
   </data>
   <data name="SchoolHour" xml:space="preserve">
     <value>Ora mësimore</value>
+  </data>
+  <data name="SelectClass" xml:space="preserve">
+    <value>Përzgjedh klasën</value>
+  </data>
+  <data name="SelectDiary" xml:space="preserve">
+    <value>Përzgjedh ditarin</value>
   </data>
   <data name="SelectStudent" xml:space="preserve">
     <value>Përzgjedh nxënësin</value>
@@ -273,11 +366,11 @@
   <data name="Status" xml:space="preserve">
     <value>Statusi</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="Student" xml:space="preserve">
     <value>Nxënësi</value>
+  </data>
+  <data name="StudentName" xml:space="preserve">
+    <value>Emri i nxënësit</value>
   </data>
   <data name="Students" xml:space="preserve">
     <value>Nxënësit</value>
@@ -291,6 +384,9 @@
   <data name="Subject" xml:space="preserve">
     <value>Lënda</value>
   </data>
+  <data name="Subjects" xml:space="preserve">
+    <value>Lëndët</value>
+  </data>
   <data name="SubjectSchool" xml:space="preserve">
     <value>Lënda mësimore</value>
   </data>
@@ -299,6 +395,9 @@
   </data>
   <data name="SubjectsStatisticsByMonth" xml:space="preserve">
     <value>Statistikat e lëndëve për muaj</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Mësuesi</value>
   </data>
   <data name="Teachers" xml:space="preserve">
     <value>Mësuesit</value>
@@ -309,13 +408,22 @@
   <data name="TimeHour" xml:space="preserve">
     <value>Koha e mbajtjes</value>
   </data>
+  <data name="TimeSchoolHour" xml:space="preserve">
+    <value>Koha e mbajtjes së orës mësimore</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titulli</value>
+  </data>
   <data name="Top4Students" xml:space="preserve">
     <value>Top 4 nxënësit</value>
+  </data>
+  <data name="View more" xml:space="preserve">
+    <value>Shiko me shume</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Viti</value>
   </data>
   <data name="YearOfStudies" xml:space="preserve">
-    <value>Viti akademik</value>
+    <value>Viti i studimeve</value>
   </data>
 </root>

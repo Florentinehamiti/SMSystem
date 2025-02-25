@@ -1,108 +1,112 @@
 ﻿@model StudentDetailsViewModel
-
+@using Microsoft.Extensions.Localization
+@using Presentation
+@inject IStringLocalizer<SharedResource> Localizer
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "Details";
 }
 
 <div class="container-fluid px-4 py-4">
-    <div class="row">
-        <div class="col-md-3">
-            @if (!string.IsNullOrEmpty(Model.ProfilePhotoPath))
-            {
-                <img src="@Url.Content("~/Images/" + Model.ProfilePhotoPath)" alt="Profile Photo" class="mt-3 profile-pic w-80" />
-            }
-            else
-            {
-                <p class="text-warning">No profile photo available.</p>
-            }
-        </div>
-        <div class="col-md-3 mb-3 mt-3">
-            <label class="form-label font-weight-bold mx-0">Name</label>
-            <div class="form-control mb-2">@Model.FullName</div>
-            <label class="form-label mx-0 font-weight-bold">Parent name</label>
-            <div class="form-control mb-2">@Model.ParentName</div>
-            <label class="form-label mx-0 font-weight-bold">Email</label>
-            <div class="form-control mb-2">@Model.Email</div>
-        </div>
-        <div class="col-md-3 mb-3 mt-3">
-            <label class="form-label font-weight-bold mx-0">Telephone</label>
-            <div class="form-control mb-2">@Model.Tel</div>
-            <label class="form-label font-weight-bold mx-0">Birthday</label>
-            <div class="form-control mb-2">@Model.Birthday??.ToString("MM/dd/yyyy")</div>
-            <label class="form-label font-weight-bold mx-0">Gender</label>
-            <div class="form-control mb-2">
-                @(Model.Gender ? "Male" : "Female")
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-3">
+			@if (!string.IsNullOrEmpty(Model.ProfilePhotoPath))
+			{
+				<img src="@Url.Content("~/Images/" + Model.ProfilePhotoPath)" alt="Profile Photo" class="mt-3 profile-pic w-80" />
+			}
+			else
+			{
+				<p class="text-warning">@Localizer["Nuk ka foto"]</p>
+			}
+		</div>
+		<div class="col-md-3 mb-3 mt-3">
+			<label class="form-label font-weight-bold mx-0">@Localizer["Name"]</label>
+			<div class="form-control mb-2">@Model.FullName</div>
+			<label class="form-label mx-0 font-weight-bold">@Localizer["ParentName"]</label>
+			<div class="form-control mb-2">@Model.ParentName</div>
+			<label class="form-label mx-0 font-weight-bold">@Localizer["Email"]</label>
+			<div class="form-control mb-2">@Model.Email</div>
+		</div>
+		<div class="col-md-3 mb-3 mt-3">
+			<label class="form-label font-weight-bold mx-0">@Localizer["Telephone"]</label>
+			<div class="form-control mb-2">@Model.Tel</div>
+			<label class="form-label font-weight-bold mx-0">@Localizer["Birthday"]</label>
+			<div class="form-control mb-2">@Model.Birthday??.ToString("MM/dd/yyyy")</div>
+			<label class="form-label font-weight-bold mx-0">@Localizer["Gender"]</label>
+			<div class="form-control mb-2">
+				@(Model.Gender ? "Male" : "Female")
+			</div>
+		</div>
+	</div>
 
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Remarks</h6>
-                    </div>
-                </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <div class="d-flex justify-content-between align-items-center mt-1 mx-4">
-                            <h6>@Model.FullName evaluations</h6>
-                        </div>
-                        <table class="table align-items-center mb-0 w-auto">
+	<div class="row">
+		<div class="col-12">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<h6 class="text-white text-capitalize ps-3">@Localizer["Remarks"]</h6>
+					</div>
+				</div>
+				<div class="card-body px-0 pb-2">
+					<div class="table-responsive p-0">
+						<div class="d-flex justify-content-between align-items-center mt-1 mx-4">
+							<h6>@Model.FullName evaluations</h6>
+						</div>
+						<table class="table align-items-center mb-0 w-auto">
 
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
-
-
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Student Name </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Subject Which Remark Was registred</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark Description </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Remark Inserted Date</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">School Hour Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @{
-                                    var counter = 1;
-                                }
-                                @foreach (var student in Model.Remarks)
-                                {
-                                    <tr>
-                                        <td class="text-xs font-weight-bold text-center m-3">@counter</td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.StudentName</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.Description</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>
-                                        </td>
-                                        <td class="">
-                                            <p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SchoolHourDescription</p>
-                                        </td>
-                                    </tr>
-                                    counter++;
-                                }
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+							<thead>
+								<tr>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 w-3">#</th>
 
 
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Name"]</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Subject"]</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["Description"]</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["RemarkDate"] </th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">@Localizer["School Hour Description"]</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									var counter = 1;
+								}
+								@foreach (var student in Model.Remarks)
+								{
+									<tr>
+										<td class="text-xs font-weight-bold text-center m-3">@counter</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.StudentName</p>
+										</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SubjectWhichRemarkWas</p>
+										</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.Description</p>
+										</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.RemarkInsertedDate?.ToString("MM/dd/yyyy")</p>
+										</td>
+										<td class="">
+											<p class="text-xs text-secondary font-weight-bold mb-0 text-center">@student.SchoolHourDescription</p>
+										</td>
+									</tr>
+									counter++;
+								}
 
-            <div class="d-flex justify-content-end gap-2">
-                <a asp-action="Index" asp-controller="Evaluate" asp-area="Educator" class="btn btn-outline-secondary">
-                    Back
-                </a>
-            </div>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 
-        </div>
+
+
+			<div class="d-flex justify-content-end gap-2">
+				<a asp-action="Index" asp-controller="Evaluate" asp-area="Educator" class="btn btn-outline-secondary">
+					@Localizer["Back"]
+				</a>
+			</div>
+
+		</div>
+	</div>
+</div>

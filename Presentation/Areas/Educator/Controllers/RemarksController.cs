@@ -37,7 +37,7 @@ namespace Presentation.Areas.Educator.Controllers
                 StudentId = r.StudentId,
                 StudentName = r.Student.Name + " " + r.Student.Lastname,
                 RemarkInsertedDate = r.InsertedDate,
-                Description = r.SchoolHour.SchoolHourDescribe,
+                Description = r.Description,
                 SchoolHourDescription = r.SchoolHour.SchoolHourDescribe,
                 SubjectWhichRemarkWas = r.SchoolHour.Subject.Name
             }).ToList();

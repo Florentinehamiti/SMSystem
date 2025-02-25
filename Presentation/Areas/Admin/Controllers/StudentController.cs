@@ -146,6 +146,7 @@ namespace Presentation.Areas.Admin.Controllers
             try
             {
                 var student = _studentService.GetById(id);
+                var diaries = _diaryService.GetDiariesWithTeachers();
 
                 if (student == null)
                 {
@@ -156,7 +157,8 @@ namespace Presentation.Areas.Admin.Controllers
                 {
                     Id = student.Id,
                     ParentName = student.ParentName,
-                    //DiaryId = student.DiaryId,
+                    DiaryId = student.DiaryId,
+                    Diaries = diaries,
                     Name = student.Name,
                     Lastname = student.Lastname,
                     Birthday = student.Birthday,
@@ -193,7 +195,7 @@ namespace Presentation.Areas.Admin.Controllers
 
 
                     existingStudent.ParentName = studentViewModel.ParentName;
-                    //existingStudent.DiaryId = studentViewModel.DiaryId;
+                    existingStudent.DiaryId = studentViewModel.DiaryId;
                     existingStudent.Name = studentViewModel.Name;
                     existingStudent.Lastname = studentViewModel.Lastname;
                     existingStudent.Birthday = studentViewModel.Birthday;
