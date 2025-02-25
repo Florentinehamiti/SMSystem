@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Areas.Client.Models;
+using Presentation.Areas.Client.Models.ViewModels;
 using SMSystem.App.Constants;
+using SMSystem.App.Interfaces;
 using System.Diagnostics;
 
 namespace Presentation.Areas.Client
@@ -10,25 +12,43 @@ namespace Presentation.Areas.Client
     [Authorize(Roles = AreasConstants.Client)]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IEvaluationService _evaluationService;
+        private readonly IAbsenceService _absenceService;
+        private readonly IRemarksService _remarksService;
+
+        public HomeController(
+            IEvaluationService evaluationService,
+            IAbsenceService absenceService,
+            IRemarksService remarksService)
         {
-            return View();
+            _evaluationService = evaluationService;
+            _absenceService = absenceService;
+            _remarksService = remarksService;
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            var studentEmail = User.Identity.Name;
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+           
+            var evaluations = await _evaluationService.GetEvaluationsForLoggedStudentAsync(studentEmail);
+            var absences = await _absenceService.GetAbsencesForLoggedStudentAsync(studentEmail);
+            var remarks = await _remarksService.GetRemarksForLoggedStudentAsync(studentEmail);
 
-        public IActionResult Subjects()
-        {
-            return View();
+           
+            var averageGrade = evaluations.Any() ? evaluations.Average(e => e.Value) : 0;
+            var totalAbsences = absences.Count();
+            var totalRemarks = remarks.Count();
+
+           
+            var dashboardViewModel = new DashboardViewModel
+            {
+                AverageGrade = averageGrade,
+                TotalAbsences = totalAbsences,
+                TotalRemarks = totalRemarks
+            };
+
+            return View(dashboardViewModel);
         }
     }
 }
